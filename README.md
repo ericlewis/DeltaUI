@@ -1,6 +1,9 @@
 # DeltaUI
 SwiftUI + CoreData user interface for DeltaCore & Friends. Styled after Apple Music.
 
+| ![1](https://imgur.com/L5VsH6Z.png) | ![2](https://imgur.com/TUtp5wZ.png) | ![3](https://imgur.com/SIn2Ald.png) | ![4](https://imgur.com/OR2nAOF.png) |
+|-------------------------------------|-------------------------------------|-------------------------------------|-------------------------------------|
+
 ## :warning: Before you go any further
 This app is fairly useless without the All.json file, which contains the references to games. At some point, there might be a built in browser and local / iCloud file management. I don't really plan to distribute this, in any way. It is up to you to build it.
 
