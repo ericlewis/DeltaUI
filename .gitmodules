@@ -18,4 +18,4 @@
 	url = https://github.com/rileytestut/GBADeltaCore
 [submodule "SwiftSoup"]
 	path = SwiftSoup
-	url = https://github.com/Dschee/SwiftSoup
+	url = https://github.com/scinfu/SwiftSoup
