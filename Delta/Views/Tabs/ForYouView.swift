@@ -1,0 +1,81 @@
+import SwiftUI
+import CoreData
+
+struct HeaderView: View {
+    var console: Console
+    var isSeeAllEnabled: Bool
+    
+    @Binding var fetchRequest: NSFetchRequest<GameEntity>?
+    
+    var body: some View {
+        HStack {
+            Text(console.title).font(.title).bold().foregroundColor(.primary)
+            Spacer()
+            if isSeeAllEnabled {
+                NavigationLink(destination: GameListView(fetchRequest: fetchRequest ?? FetchRequests.recentlyPlayed(console: console, limit: 100)).navigationBarTitle(console.title)) {
+                    Text("See All")
+                    .font(.body)
+                }
+            }
+        }
+    }
+}
+
+struct HorizontalGameScroller: View {
+    @FetchRequest(fetchRequest: FetchRequests.recentlyPlayed(console: .gba)) var results: FetchedGames
+    
+    var console: Console
+    var text: String?
+    var action: (() -> Void)?
+    
+    init(_ console: Console, text: String? = nil, action: (() -> Void)? = nil) {
+        self.console = console
+        self.text = text
+        self.action = action
+        _results = .init(fetchRequest: FetchRequests.recentlyPlayed(console: console))
+    }
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            HeaderView(console: console, isSeeAllEnabled: console == .all, fetchRequest: .constant(nil))
+            .padding(.horizontal)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 0) {
+                    Text("").padding(.leading)
+                    ForEach(results) {
+                        GameGridCell($0)
+                        .frame(width: 200)
+                        .padding(.trailing)
+                    }
+                }
+            }
+            .padding(.bottom)
+            Divider()
+            .padding(.horizontal)
+        }
+    }
+}
+
+struct ForYouView: View {
+    var body: some View {
+        ScrollView {
+            Divider()
+                .padding(.leading)
+            HorizontalGameScroller(.all, text: "Recently Played") {
+                print("do shit")
+            }
+            HorizontalGameScroller(.gba)
+            HorizontalGameScroller(.gbc)
+            HorizontalGameScroller(.gb)
+            HorizontalGameScroller(.snes)
+            HorizontalGameScroller(.nes)
+        }
+        .navigationBarTitle("For You")
+    }
+}
+
+struct ForYouView_Previews: PreviewProvider {
+    static var previews: some View {
+        ForYouView()
+    }
+}

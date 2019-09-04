@@ -1,0 +1,21 @@
+[submodule "DeltaCore"]
+	path = DeltaCore
+	url = https://github.com/rileytestut/DeltaCore
+[submodule "SNESDeltaCore"]
+	path = SNESDeltaCore
+	url = https://github.com/rileytestut/SNESDeltaCore
+[submodule "NESDeltaCore"]
+	path = NESDeltaCore
+	url = https://github.com/rileytestut/NESDeltaCore
+[submodule "N64DeltaCore"]
+	path = N64DeltaCore
+	url = https://github.com/rileytestut/N64DeltaCore
+[submodule "GBCDeltaCore"]
+	path = GBCDeltaCore
+	url = https://github.com/rileytestut/GBCDeltaCore
+[submodule "GBADeltaCore"]
+	path = GBADeltaCore
+	url = https://github.com/rileytestut/GBADeltaCore
+[submodule "SwiftSoup"]
+	path = SwiftSoup
+	url = https://github.com/Dschee/SwiftSoup

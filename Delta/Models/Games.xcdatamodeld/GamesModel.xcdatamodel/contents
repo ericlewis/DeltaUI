@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14897.2" systemVersion="19A546d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="GameEntity" representedClassName="GameEntity" syncable="YES">
+        <attribute name="downloadedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="downloadURL" optional="YES" attributeType="URI"/>
+        <attribute name="favorited" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="URI"/>
+        <attribute name="lastPlayed" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="productURL" optional="YES" attributeType="URI"/>
+        <attribute name="romName" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="playlists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlaylistEntity" inverseName="games" inverseEntity="PlaylistEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="productURL"/>
+                <constraint value="downloadURL"/>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="PlaylistEntity" representedClassName="PlaylistEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="games" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameEntity" inverseName="playlists" inverseEntity="GameEntity"/>
+    </entity>
+    <elements>
+        <element name="GameEntity" positionX="-63" positionY="-18" width="128" height="208"/>
+        <element name="PlaylistEntity" positionX="-54" positionY="63" width="128" height="103"/>
+    </elements>
+</model>
