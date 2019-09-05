@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct BrowseView: View {
+    @State var isShowingWebBrowser = false
+    
     var body: some View {
         List {
             ConsoleLibraryCell(.gba, libraryOnly: false)
@@ -10,6 +12,14 @@ struct BrowseView: View {
             ConsoleLibraryCell(.nes, libraryOnly: false)
         }
         .navigationBarTitle("Browse")
+        .navigationBarItems(trailing: Button(action: {
+            self.isShowingWebBrowser.toggle()
+        }) {
+            Image(systemSymbol: .globe)
+            .sheet(isPresented: $isShowingWebBrowser) {
+                WebViewChrome()
+            }
+        })
     }
 }
 
