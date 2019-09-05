@@ -15,6 +15,14 @@
 		6818AAF62320180700C67FDA /* PlatformsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818AAF52320180700C67FDA /* PlatformsView.swift */; };
 		6818AAF8232019E500C67FDA /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818AAF7232019E500C67FDA /* PlaylistView.swift */; };
 		6818AAFB2320242200C67FDA /* AddToPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818AAFA2320242200C67FDA /* AddToPlaylist.swift */; };
+		6818AB8C23214CED00C67FDA /* GBADeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26223198C4200D30DA1 /* GBADeltaCore.framework */; platformFilter = ios; };
+		6818AB8D23214CED00C67FDA /* GBADeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26223198C4200D30DA1 /* GBADeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6818AB8E23214CED00C67FDA /* GBCDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26B23198C4800D30DA1 /* GBCDeltaCore.framework */; platformFilter = ios; };
+		6818AB8F23214CED00C67FDA /* GBCDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26B23198C4800D30DA1 /* GBCDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6818AB9023214CED00C67FDA /* NESDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28423198C5600D30DA1 /* NESDeltaCore.framework */; platformFilter = ios; };
+		6818AB9123214CED00C67FDA /* NESDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28423198C5600D30DA1 /* NESDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6818AB9223214CED00C67FDA /* SNESDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28D23198C5E00D30DA1 /* SNESDeltaCore.framework */; platformFilter = ios; };
+		6818AB9323214CED00C67FDA /* SNESDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28D23198C5E00D30DA1 /* SNESDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		681C7A302318350A00DFC744 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A2F2318350A00DFC744 /* LibraryView.swift */; };
 		681C7A43231838C800DFC744 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A42231838C800DFC744 /* GridView.swift */; };
 		681C7A452318477000DFC744 /* GameGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A442318477000DFC744 /* GameGridCell.swift */; };
@@ -35,14 +43,6 @@
 		6882E2DF2320C1C00003AA02 /* ZIPFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6856F86A2315E5C80060CC7A /* ZIPFoundation.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6882E2E02320C1C20003AA02 /* DeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC25B23198C3D00D30DA1 /* DeltaCore.framework */; platformFilter = ios; };
 		6882E2E12320C1C20003AA02 /* DeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC25B23198C3D00D30DA1 /* DeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6882E2E22320C1CD0003AA02 /* GBADeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26223198C4200D30DA1 /* GBADeltaCore.framework */; platformFilter = ios; };
-		6882E2E32320C1CD0003AA02 /* GBADeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26223198C4200D30DA1 /* GBADeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6882E2E42320C1CD0003AA02 /* GBCDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26B23198C4800D30DA1 /* GBCDeltaCore.framework */; platformFilter = ios; };
-		6882E2E52320C1CD0003AA02 /* GBCDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26B23198C4800D30DA1 /* GBCDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6882E2E62320C1CD0003AA02 /* NESDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28423198C5600D30DA1 /* NESDeltaCore.framework */; platformFilter = ios; };
-		6882E2E72320C1CD0003AA02 /* NESDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28423198C5600D30DA1 /* NESDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6882E2E82320C1CD0003AA02 /* SNESDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28D23198C5E00D30DA1 /* SNESDeltaCore.framework */; platformFilter = ios; };
-		6882E2E92320C1CD0003AA02 /* SNESDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28D23198C5E00D30DA1 /* SNESDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6882E2EB2320C3430003AA02 /* AddPlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882E2EA2320C3430003AA02 /* AddPlaylistCell.swift */; };
 		6882E2ED2320C3820003AA02 /* PlaylistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882E2EC2320C3820003AA02 /* PlaylistCell.swift */; };
 		6882E2F02320C4070003AA02 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882E2EF2320C4070003AA02 /* URLImage.swift */; };
@@ -141,11 +141,11 @@
 			dstSubfolderSpec = 10;
 			files = (
 				6882E2E12320C1C20003AA02 /* DeltaCore.framework in Embed Frameworks */,
-				6882E2E52320C1CD0003AA02 /* GBCDeltaCore.framework in Embed Frameworks */,
+				6818AB8F23214CED00C67FDA /* GBCDeltaCore.framework in Embed Frameworks */,
 				6882E2DF2320C1C00003AA02 /* ZIPFoundation.framework in Embed Frameworks */,
-				6882E2E92320C1CD0003AA02 /* SNESDeltaCore.framework in Embed Frameworks */,
-				6882E2E32320C1CD0003AA02 /* GBADeltaCore.framework in Embed Frameworks */,
-				6882E2E72320C1CD0003AA02 /* NESDeltaCore.framework in Embed Frameworks */,
+				6818AB9323214CED00C67FDA /* SNESDeltaCore.framework in Embed Frameworks */,
+				6818AB8D23214CED00C67FDA /* GBADeltaCore.framework in Embed Frameworks */,
+				6818AB9123214CED00C67FDA /* NESDeltaCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,15 +214,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				6882E2E02320C1C20003AA02 /* DeltaCore.framework in Frameworks */,
-				6882E2E42320C1CD0003AA02 /* GBCDeltaCore.framework in Frameworks */,
-				6882E2E62320C1CD0003AA02 /* NESDeltaCore.framework in Frameworks */,
+				6818AB8E23214CED00C67FDA /* GBCDeltaCore.framework in Frameworks */,
+				6818AB9023214CED00C67FDA /* NESDeltaCore.framework in Frameworks */,
 				68149F862315C5A000421038 /* Files in Frameworks */,
 				6818AABA231F061D00C67FDA /* URLImage in Frameworks */,
 				68149F7E2315C0DB00421038 /* SFSafeSymbols in Frameworks */,
 				6882E2D42320C1350003AA02 /* SwiftSoup in Frameworks */,
 				6882E2DE2320C1C00003AA02 /* ZIPFoundation.framework in Frameworks */,
-				6882E2E22320C1CD0003AA02 /* GBADeltaCore.framework in Frameworks */,
-				6882E2E82320C1CD0003AA02 /* SNESDeltaCore.framework in Frameworks */,
+				6818AB8C23214CED00C67FDA /* GBADeltaCore.framework in Frameworks */,
+				6818AB9223214CED00C67FDA /* SNESDeltaCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

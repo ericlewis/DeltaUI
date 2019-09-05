@@ -49,7 +49,7 @@ struct FetchRequests {
         let request: NSFetchRequest<GameEntity> = GameEntity.fetchRequest() as! NSFetchRequest<GameEntity>
         request.sortDescriptors = [NSSortDescriptor(key: "downloadedAt", ascending: false)]
         request.predicate = NSPredicate(format: "downloadedAt != nil")
-        request.fetchLimit = 60
+        request.fetchLimit = 40
           
         return request
     }
