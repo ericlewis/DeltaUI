@@ -19,7 +19,7 @@ struct DeltaView: View {
       .actionSheet(isPresented: self.$menu.isShowing) {
         ActionSheet.EmulatorMenu(store: self.store, menu: self.menu)
       }
-      .highPriorityGesture(self.gesture)
+      .highPriorityGesture(self.gesture) // i keep the modal open
     }
   }
 }

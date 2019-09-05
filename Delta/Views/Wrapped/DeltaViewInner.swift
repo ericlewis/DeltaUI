@@ -21,10 +21,12 @@ struct DeltaViewInner: UIViewControllerRepresentable {
     return vc
   }
   
-  func updateUIViewController(_ uiViewController: GameViewController, context: Context) {
-    uiViewController.view.setNeedsUpdateConstraints()
+  func updateUIViewController(_ gameViewController: GameViewController, context: Context) {
+    // fixes layout when rotating
+    gameViewController.view.setNeedsUpdateConstraints()
+    
     if let game = game {
-      uiViewController.game = game.game
+      gameViewController.game = game.game
     }
   }
   
@@ -36,6 +38,14 @@ struct DeltaViewInner: UIViewControllerRepresentable {
     }
     
     func gameViewController(_ gameViewController: GameViewController, handleMenuInputFrom gameController: GameController) {
+      
+      let url = FileManager.default.temporaryDirectory
+      let saveState = gameViewController.emulatorCore?.saveSaveState(to: url)
+      let ooo = SaveStateEntity()
+      ooo.fileURL = saveState?.fileURL
+      ooo.type = ""
+      ooo.game = parent.game
+      
       parent.pressedMenu()
     }
   }

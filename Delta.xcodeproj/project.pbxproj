@@ -57,6 +57,7 @@
 		6882E3032320D3AC0003AA02 /* EmulatorMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882E3022320D3AC0003AA02 /* EmulatorMenu.swift */; };
 		6882E3052320D4480003AA02 /* DeltaViewInner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882E3042320D4480003AA02 /* DeltaViewInner.swift */; };
 		6882E3072320D6400003AA02 /* PlaylistStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882E3062320D6400003AA02 /* PlaylistStore.swift */; };
+		6882E3092320DAD30003AA02 /* SaveStateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882E3082320DAD30003AA02 /* SaveStateEntity.swift */; };
 		688D50C62315888900B9127F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688D50C52315888900B9127F /* AppDelegate.swift */; };
 		688D50C82315888900B9127F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688D50C72315888900B9127F /* SceneDelegate.swift */; };
 		688D50CA2315888900B9127F /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688D50C92315888900B9127F /* RootView.swift */; };
@@ -193,6 +194,7 @@
 		6882E3022320D3AC0003AA02 /* EmulatorMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmulatorMenu.swift; sourceTree = "<group>"; };
 		6882E3042320D4480003AA02 /* DeltaViewInner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltaViewInner.swift; sourceTree = "<group>"; };
 		6882E3062320D6400003AA02 /* PlaylistStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistStore.swift; sourceTree = "<group>"; };
+		6882E3082320DAD30003AA02 /* SaveStateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveStateEntity.swift; sourceTree = "<group>"; };
 		688D50C22315888900B9127F /* Delta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Delta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		688D50C52315888900B9127F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		688D50C72315888900B9127F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				681C7A4E231860A000DFC744 /* GameEntity.swift */,
 				6856F876231617D30060CC7A /* Games.xcdatamodeld */,
 				6882E2F92320CC710003AA02 /* PlaylistEntity.swift */,
+				6882E3082320DAD30003AA02 /* SaveStateEntity.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				681C7A4D2318600900DFC744 /* FetchRequests.swift in Sources */,
 				6882E2F82320C87F0003AA02 /* PlaceholderView.swift in Sources */,
 				6818AAF62320180700C67FDA /* PlatformsView.swift in Sources */,
+				6882E3092320DAD30003AA02 /* SaveStateEntity.swift in Sources */,
 				6882E2FC2320CD0D0003AA02 /* MenuStore.swift in Sources */,
 				6818AAF8232019E500C67FDA /* PlaylistView.swift in Sources */,
 				688D50C62315888900B9127F /* AppDelegate.swift in Sources */,
