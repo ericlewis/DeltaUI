@@ -3,11 +3,11 @@ import SwiftUI
 struct PlatformsView: View {
     var body: some View {
         List {
-            ConsoleLibraryCell(.gba)
-            ConsoleLibraryCell(.gbc)
-            ConsoleLibraryCell(.gb)
-            ConsoleLibraryCell(.snes)
-            ConsoleLibraryCell(.nes)
+            ConsoleCell(.gba)
+            ConsoleCell(.gbc)
+            ConsoleCell(.gb)
+            ConsoleCell(.snes)
+            ConsoleCell(.nes)
         }
         .navigationBarTitle("Platforms")
     }
