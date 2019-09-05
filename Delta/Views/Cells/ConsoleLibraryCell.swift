@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ConsoleLibraryCell: View {
+struct ConsoleCell: View {
     var console: Console
     var libraryOnly: Bool
     

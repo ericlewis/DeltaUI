@@ -16,7 +16,7 @@ struct FetchRequests {
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         return request
     }
-    
+
     static func allGames(console: Console, inLibrary: Bool = false) -> NSFetchRequest<GameEntity> {
         let request: NSFetchRequest<GameEntity> = GameEntity.fetchRequest() as! NSFetchRequest<GameEntity>
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]

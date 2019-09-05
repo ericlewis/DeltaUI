@@ -3,11 +3,11 @@ import SwiftUI
 struct BrowseView: View {
     var body: some View {
         List {
-            ConsoleLibraryCell(.gba, libraryOnly: false)
-            ConsoleLibraryCell(.gbc, libraryOnly: false)
-            ConsoleLibraryCell(.gb, libraryOnly: false)
-            ConsoleLibraryCell(.snes, libraryOnly: false)
-            ConsoleLibraryCell(.nes, libraryOnly: false)
+            ConsoleCell(.gba, libraryOnly: false)
+            ConsoleCell(.gbc, libraryOnly: false)
+            ConsoleCell(.gb, libraryOnly: false)
+            ConsoleCell(.snes, libraryOnly: false)
+            ConsoleCell(.nes, libraryOnly: false)
         }
         .navigationBarTitle("Browse")
     }
