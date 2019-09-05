@@ -99,6 +99,31 @@ extension GameEntity {
     func download() {
         guard let url = downloadURL else {return}
         
+        if url.pathExtension == "zip" {
+            self.task = DownloadStore.shared.download(url: url, progress: { _ in
+                DispatchQueue.main.async {
+                    self.objectWillChange.send()
+                }
+            }) { err, url in
+                let dest = self.gameDir(for: self)
+                
+                try? FileManager().unzipItem(at: url!, to: dest)
+                let first = try? Folder(path: dest.path).files.first
+                let path = first?.path
+                let url = URL(fileURLWithPath: path!)
+                
+                DispatchQueue.main.async {
+                    self.objectWillChange.send()
+                    self.gameURL = dest.appendingPathComponent(url.lastPathComponent, isDirectory: false)
+                    self.downloadedAt = Date()
+                    try? self.managedObjectContext?.save()
+                    self.task = nil
+                }
+            }
+            
+            return
+        }
+        
         DispatchQueue.global(qos: .userInitiated).async {
             guard let html = try? String(contentsOf: url, encoding: .ascii) else {return}
             let doc = try? SwiftSoup.parse(html)

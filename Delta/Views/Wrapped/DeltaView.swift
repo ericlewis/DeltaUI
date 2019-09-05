@@ -13,13 +13,17 @@ struct DeltaView: View {
       }
       .edgesIgnoringSafeArea(.all)
       .sheet(isPresented: self.$menu.isShowingAddToPlaylist) {
-        AddToPlaylist(isShowing: self.$menu.isShowingAddToPlaylist, game: self.store.game!)
-          .environment(\.managedObjectContext, self.store.game!.managedObjectContext!)
+        if self.menu.isShowingSavedStates {
+            SaveStatesView(game: self.store.game!)
+        } else {
+            AddToPlaylist(isShowing: self.$menu.isShowingAddToPlaylist, game: self.store.game!)
+            .environment(\.managedObjectContext, self.store.game!.managedObjectContext!)
+        }
       }
       .actionSheet(isPresented: self.$menu.isShowing) {
         ActionSheet.EmulatorMenu(store: self.store, menu: self.menu)
       }
       .highPriorityGesture(self.gesture) // i keep the modal open
     }
-  }
+}
 }

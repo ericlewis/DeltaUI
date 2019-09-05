@@ -14,6 +14,7 @@
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="playlists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlaylistEntity" inverseName="games" inverseEntity="PlaylistEntity"/>
         <relationship name="saveState" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SaveStateEntity" inverseName="game" inverseEntity="SaveStateEntity"/>
+        <relationship name="saveStates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SaveStateEntity"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="productURL"/>
@@ -29,14 +30,15 @@
         <relationship name="games" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameEntity" inverseName="playlists" inverseEntity="GameEntity"/>
     </entity>
     <entity name="SaveStateEntity" representedClassName="SaveStateEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="fileURL" optional="YES" attributeType="URI"/>
         <attribute name="imageFileURL" optional="YES" attributeType="URI"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GameEntity" inverseName="saveState" inverseEntity="GameEntity"/>
     </entity>
     <elements>
-        <element name="GameEntity" positionX="-63" positionY="-18" width="128" height="238"/>
-        <element name="PlaylistEntity" positionX="-54" positionY="63" width="128" height="103"/>
-        <element name="SaveStateEntity" positionX="-54" positionY="72" width="128" height="103"/>
+        <element name="GameEntity" positionX="-63" positionY="-18" width="128" height="253"/>
+        <element name="PlaylistEntity" positionX="120.17578125" positionY="-6.953125" width="128" height="103"/>
+        <element name="SaveStateEntity" positionX="295.33203125" positionY="37.6796875" width="128" height="118"/>
     </elements>
 </model>

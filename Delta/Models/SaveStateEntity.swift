@@ -10,9 +10,10 @@ extension SaveStateEntity {
         let save = self.init(context: ctx)
         
         save.fileURL = saveState.fileURL
-        print(save.fileURL)
         save.type = game.game?.type.rawValue
         save.game = game
+        save.createdAt = Date()
+        
         try? ctx.save()
         
         return save

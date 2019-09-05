@@ -64,7 +64,7 @@ struct RootView: View {
             searchTab
             settingsTab
         }
-        .background(DeltaView())
+        .overlay(DeltaView())
         .edgesIgnoringSafeArea(.top)
     }
 }
