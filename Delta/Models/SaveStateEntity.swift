@@ -1,6 +1,7 @@
 import CoreData
 import DeltaCore
 
+@objc(SaveStateEntity)
 public class SaveStateEntity: NSManagedObject {}
 
 extension SaveStateEntity {
