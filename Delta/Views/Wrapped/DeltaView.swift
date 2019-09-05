@@ -8,7 +8,7 @@ struct DeltaView: View {
   
   var body: some View {
     EmptyView().sheet(isPresented: $store.isShowingEmulator) {
-      DeltaViewInner(self.$store.game) {
+    DeltaViewInner(self.$store.game, pause: self.$menu.isShowing) {
         self.menu.isShowing.toggle()
       }
       .edgesIgnoringSafeArea(.all)

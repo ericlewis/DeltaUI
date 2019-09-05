@@ -19,9 +19,7 @@ class CurrentlyPlayingStore: ObservableObject {
           self.isShowingEmulator = true
           game.updateLastPlayed()
         } else {
-          game.download(callback: { _ in
-            
-          })
+          game.download()
         }
       }
       
