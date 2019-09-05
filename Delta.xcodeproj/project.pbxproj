@@ -16,7 +16,6 @@
 		6818AAF62320180700C67FDA /* PlatformsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818AAF52320180700C67FDA /* PlatformsView.swift */; };
 		6818AAF8232019E500C67FDA /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818AAF7232019E500C67FDA /* PlaylistView.swift */; };
 		6818AAFB2320242200C67FDA /* AddToPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818AAFA2320242200C67FDA /* AddToPlaylist.swift */; };
-		6818AB7523206E1400C67FDA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818AB7423206E1400C67FDA /* WebView.swift */; };
 		681C7A302318350A00DFC744 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A2F2318350A00DFC744 /* LibraryView.swift */; };
 		681C7A43231838C800DFC744 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A42231838C800DFC744 /* GridView.swift */; };
 		681C7A452318477000DFC744 /* GameGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A442318477000DFC744 /* GameGridCell.swift */; };
@@ -149,7 +148,6 @@
 		6818AAF52320180700C67FDA /* PlatformsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformsView.swift; sourceTree = "<group>"; };
 		6818AAF7232019E500C67FDA /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
 		6818AAFA2320242200C67FDA /* AddToPlaylist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPlaylist.swift; sourceTree = "<group>"; };
-		6818AB7423206E1400C67FDA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		681C7A2F2318350A00DFC744 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		681C7A42231838C800DFC744 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		681C7A442318477000DFC744 /* GameGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameGridCell.swift; sourceTree = "<group>"; };
@@ -222,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				6818AAFA2320242200C67FDA /* AddToPlaylist.swift */,
-				6818AB7423206E1400C67FDA /* WebView.swift */,
 			);
 			path = Sheets;
 			sourceTree = "<group>";
@@ -596,7 +593,6 @@
 				6818AAE2232000E500C67FDA /* MenuStore.swift in Sources */,
 				681C7A4723184DB100DFC744 /* ForYouView.swift in Sources */,
 				6818AAF42320097100C67FDA /* LibraryCell.swift in Sources */,
-				6818AB7523206E1400C67FDA /* WebView.swift in Sources */,
 				6818AAF2232005F700C67FDA /* PlaylistsView.swift in Sources */,
 				688D50C82315888900B9127F /* SceneDelegate.swift in Sources */,
 				6856F878231617D30060CC7A /* Games.xcdatamodeld in Sources */,
