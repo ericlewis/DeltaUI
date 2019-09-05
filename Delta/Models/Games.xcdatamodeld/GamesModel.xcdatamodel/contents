@@ -4,6 +4,7 @@
         <attribute name="downloadedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="downloadURL" optional="YES" attributeType="URI"/>
         <attribute name="favorited" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="gameURL" optional="YES" attributeType="URI"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="image" optional="YES" attributeType="URI"/>
         <attribute name="lastPlayed" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -29,12 +30,13 @@
     </entity>
     <entity name="SaveStateEntity" representedClassName="SaveStateEntity" syncable="YES" codeGenerationType="category">
         <attribute name="fileURL" optional="YES" attributeType="URI"/>
+        <attribute name="imageFileURL" optional="YES" attributeType="URI"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GameEntity" inverseName="saveState" inverseEntity="GameEntity"/>
     </entity>
     <elements>
-        <element name="GameEntity" positionX="-63" positionY="-18" width="128" height="223"/>
+        <element name="GameEntity" positionX="-63" positionY="-18" width="128" height="238"/>
         <element name="PlaylistEntity" positionX="-54" positionY="63" width="128" height="103"/>
-        <element name="SaveStateEntity" positionX="-54" positionY="72" width="128" height="88"/>
+        <element name="SaveStateEntity" positionX="-54" positionY="72" width="128" height="103"/>
     </elements>
 </model>

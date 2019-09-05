@@ -23,6 +23,9 @@
 		6818AB9123214CED00C67FDA /* NESDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28423198C5600D30DA1 /* NESDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6818AB9223214CED00C67FDA /* SNESDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28D23198C5E00D30DA1 /* SNESDeltaCore.framework */; platformFilter = ios; };
 		6818AB9323214CED00C67FDA /* SNESDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28D23198C5E00D30DA1 /* SNESDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6818ABA8232188F300C67FDA /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818ABA7232188F300C67FDA /* StorageProtocol.swift */; };
+		6818ABB623218E8D00C67FDA /* OurGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818ABB523218E8D00C67FDA /* OurGameViewController.swift */; };
+		6818ABB82321979200C67FDA /* DownloadStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818ABB72321979200C67FDA /* DownloadStore.swift */; };
 		681C7A302318350A00DFC744 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A2F2318350A00DFC744 /* LibraryView.swift */; };
 		681C7A43231838C800DFC744 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A42231838C800DFC744 /* GridView.swift */; };
 		681C7A452318477000DFC744 /* GameGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A442318477000DFC744 /* GameGridCell.swift */; };
@@ -38,6 +41,7 @@
 		6856F878231617D30060CC7A /* Games.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6856F876231617D30060CC7A /* Games.xcdatamodeld */; };
 		6856F87C2316B82A0060CC7A /* SearchNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6856F87B2316B82A0060CC7A /* SearchNavigationView.swift */; };
 		6856F8862316BA1F0060CC7A /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6856F8852316BA1F0060CC7A /* ActivityView.swift */; };
+		687DDCDA2321B97C0087DDC7 /* ProgressView in Frameworks */ = {isa = PBXBuildFile; productRef = 687DDCD92321B97C0087DDC7 /* ProgressView */; };
 		6882E2D42320C1350003AA02 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 6882E2D32320C1350003AA02 /* SwiftSoup */; };
 		6882E2DE2320C1C00003AA02 /* ZIPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6856F86A2315E5C80060CC7A /* ZIPFoundation.framework */; platformFilter = ios; };
 		6882E2DF2320C1C00003AA02 /* ZIPFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6856F86A2315E5C80060CC7A /* ZIPFoundation.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -160,6 +164,9 @@
 		6818AAF52320180700C67FDA /* PlatformsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformsView.swift; sourceTree = "<group>"; };
 		6818AAF7232019E500C67FDA /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
 		6818AAFA2320242200C67FDA /* AddToPlaylist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPlaylist.swift; sourceTree = "<group>"; };
+		6818ABA7232188F300C67FDA /* StorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProtocol.swift; sourceTree = "<group>"; };
+		6818ABB523218E8D00C67FDA /* OurGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurGameViewController.swift; sourceTree = "<group>"; };
+		6818ABB72321979200C67FDA /* DownloadStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadStore.swift; sourceTree = "<group>"; };
 		681C7A2F2318350A00DFC744 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		681C7A42231838C800DFC744 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		681C7A442318477000DFC744 /* GameGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameGridCell.swift; sourceTree = "<group>"; };
@@ -216,6 +223,7 @@
 				6882E2E02320C1C20003AA02 /* DeltaCore.framework in Frameworks */,
 				6818AB8E23214CED00C67FDA /* GBCDeltaCore.framework in Frameworks */,
 				6818AB9023214CED00C67FDA /* NESDeltaCore.framework in Frameworks */,
+				687DDCDA2321B97C0087DDC7 /* ProgressView in Frameworks */,
 				68149F862315C5A000421038 /* Files in Frameworks */,
 				6818AABA231F061D00C67FDA /* URLImage in Frameworks */,
 				68149F7E2315C0DB00421038 /* SFSafeSymbols in Frameworks */,
@@ -246,6 +254,22 @@
 				6818AAFA2320242200C67FDA /* AddToPlaylist.swift */,
 			);
 			path = Sheets;
+			sourceTree = "<group>";
+		};
+		6818ABB3232188F900C67FDA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				6818ABA7232188F300C67FDA /* StorageProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		6818ABB423218E6C00C67FDA /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6818ABB523218E8D00C67FDA /* OurGameViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		681C7A52231861DE00DFC744 /* Tabs */ = {
@@ -403,10 +427,11 @@
 			isa = PBXGroup;
 			children = (
 				681C7A4A23185E0400DFC744 /* CurrentlyPlayingStore.swift */,
+				6818ABB72321979200C67FDA /* DownloadStore.swift */,
 				6818AAE1232000E500C67FDA /* MenuStore.swift */,
-				688D5104231592CC00B9127F /* SearchStore.swift */,
-				6882E2FF2320D0F70003AA02 /* RecentStore.swift */,
 				6882E3062320D6400003AA02 /* PlaylistStore.swift */,
+				6882E2FF2320D0F70003AA02 /* RecentStore.swift */,
+				688D5104231592CC00B9127F /* SearchStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -440,16 +465,18 @@
 		688D50C42315888900B9127F /* Delta */ = {
 			isa = PBXGroup;
 			children = (
-				688D51242315B8DF00B9127F /* Delta.entitlements */,
 				6818AACE231F339D00C67FDA /* all.json */,
+				6856F8802316B9360060CC7A /* App Launch */,
+				688D50CB2315888B00B9127F /* Assets.xcassets */,
+				688D51242315B8DF00B9127F /* Delta.entitlements */,
+				6882E2EE2320C3DE0003AA02 /* Extensions */,
 				688D50D32315888B00B9127F /* Info.plist */,
 				688D50D02315888B00B9127F /* LaunchScreen.storyboard */,
-				688D50CB2315888B00B9127F /* Assets.xcassets */,
-				6856F8802316B9360060CC7A /* App Launch */,
-				6882E2EE2320C3DE0003AA02 /* Extensions */,
 				6856F8812316B9440060CC7A /* Models */,
 				688D50CD2315888B00B9127F /* Preview Content */,
+				6818ABB3232188F900C67FDA /* Protocols */,
 				6882E2FB2320CC7B0003AA02 /* Stores */,
+				6818ABB423218E6C00C67FDA /* View Controllers */,
 				6856F87F2316B91F0060CC7A /* Views */,
 			);
 			path = Delta;
@@ -506,6 +533,7 @@
 				68149F852315C5A000421038 /* Files */,
 				6818AAB9231F061D00C67FDA /* URLImage */,
 				6882E2D32320C1350003AA02 /* SwiftSoup */,
+				687DDCD92321B97C0087DDC7 /* ProgressView */,
 			);
 			productName = Delta;
 			productReference = 688D50C22315888900B9127F /* Delta.app */;
@@ -540,6 +568,7 @@
 				68149F842315C5A000421038 /* XCRemoteSwiftPackageReference "Files" */,
 				6818AAB8231F061D00C67FDA /* XCRemoteSwiftPackageReference "url-image" */,
 				6882E2D22320C1350003AA02 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				687DDCD82321B97C0087DDC7 /* XCRemoteSwiftPackageReference "ProgressView" */,
 			);
 			productRefGroup = 688D50C32315888900B9127F /* Products */;
 			projectDirPath = "";
@@ -663,6 +692,7 @@
 				6818AAFB2320242200C67FDA /* AddToPlaylist.swift in Sources */,
 				681C7A4D2318600900DFC744 /* FetchRequests.swift in Sources */,
 				6882E2F82320C87F0003AA02 /* PlaceholderView.swift in Sources */,
+				6818ABA8232188F300C67FDA /* StorageProtocol.swift in Sources */,
 				6818AAF62320180700C67FDA /* PlatformsView.swift in Sources */,
 				6882E3092320DAD30003AA02 /* SaveStateEntity.swift in Sources */,
 				6882E2FC2320CD0D0003AA02 /* MenuStore.swift in Sources */,
@@ -682,6 +712,7 @@
 				681C7A5B2318725000DFC744 /* ConsoleLibraryCell.swift in Sources */,
 				6882E2FA2320CC710003AA02 /* PlaylistEntity.swift in Sources */,
 				681C7A49231858CD00DFC744 /* SearchView.swift in Sources */,
+				6818ABB82321979200C67FDA /* DownloadStore.swift in Sources */,
 				6882E3002320D0F70003AA02 /* RecentStore.swift in Sources */,
 				6856F87C2316B82A0060CC7A /* SearchNavigationView.swift in Sources */,
 				681C7A452318477000DFC744 /* GameGridCell.swift in Sources */,
@@ -692,6 +723,7 @@
 				688D50CA2315888900B9127F /* RootView.swift in Sources */,
 				681C7A43231838C800DFC744 /* GridView.swift in Sources */,
 				6832F4642316E219002B3FD9 /* GameListView.swift in Sources */,
+				6818ABB623218E8D00C67FDA /* OurGameViewController.swift in Sources */,
 				681C7A51231861B400DFC744 /* GameListCell.swift in Sources */,
 				6882E2F52320C65D0003AA02 /* Game.swift in Sources */,
 				6882E3072320D6400003AA02 /* PlaylistStore.swift in Sources */,
@@ -920,6 +952,14 @@
 				minimumVersion = 0.6.1;
 			};
 		};
+		687DDCD82321B97C0087DDC7 /* XCRemoteSwiftPackageReference "ProgressView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ericlewis/ProgressView";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		6882E2D22320C1350003AA02 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scinfu/SwiftSoup";
@@ -945,6 +985,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6818AAB8231F061D00C67FDA /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
+		};
+		687DDCD92321B97C0087DDC7 /* ProgressView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 687DDCD82321B97C0087DDC7 /* XCRemoteSwiftPackageReference "ProgressView" */;
+			productName = ProgressView;
 		};
 		6882E2D32320C1350003AA02 /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;
