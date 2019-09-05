@@ -1,4 +1,5 @@
 import DeltaCore
+import Files
 
 class OurGameViewController: GameViewController, StorageProtocol {
     
@@ -62,26 +63,25 @@ class OurGameViewController: GameViewController, StorageProtocol {
     }
     
     private func persistState() {
-        guard let gameEnt = self.gameEnt, let context = gameEnt.managedObjectContext,
-              let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+        guard let gameEnt = self.gameEnt, let context = gameEnt.managedObjectContext else {
             return
         }
         
-        let url = dir.appendingPathComponent(UUID().uuidString, isDirectory: false)
-        
+        let url = saveStatesDir(for: gameEnt).appendingPathComponent(UUID().uuidString, isDirectory: false)
         guard let saveState = emulatorCore?.saveSaveState(to: url) else {
             return
         }
         
         let save = SaveStateEntity.SaveState(game: gameEnt, saveState: saveState)
-                
+        gameEnt.saveState = save
+
         if let outputImage = gameView.outputImage,
            let quartzImage = imageContext.createCGImage(outputImage, from: outputImage.extent),
            let data = UIImage(cgImage: quartzImage).pngData() {
             do {
                 let url = newImageFile()
-                save.imageFileURL = url
                 try data.write(to: url, options: [.atomicWrite])
+                save.imageFileURL = url
             }
             catch {
                 print(url)

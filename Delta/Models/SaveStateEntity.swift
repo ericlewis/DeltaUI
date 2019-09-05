@@ -10,6 +10,7 @@ extension SaveStateEntity {
         let save = self.init(context: ctx)
         
         save.fileURL = saveState.fileURL
+        print(save.fileURL)
         save.type = game.game?.type.rawValue
         save.game = game
         try? ctx.save()
@@ -23,7 +24,8 @@ extension SaveStateEntity {
     
     var loadable: DeltaCore.SaveState? {
         guard let url = fileURL, let game = self.game else {return nil}
-        return DeltaCore.SaveState(fileURL: saveStatesDir(for: game).appendingPathComponent(url.lastPathComponent, isDirectory: false),
-                                   gameType: gameType)
+        let fileURL = saveStatesDir(for: game).appendingPathComponent(url.lastPathComponent, isDirectory: false)
+        print(fileURL)
+        return DeltaCore.SaveState(fileURL: fileURL, gameType: gameType)
     }
 }

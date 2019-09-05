@@ -10,6 +10,7 @@ protocol StorageProtocol {
     func gameDir(for: GameEntity) -> URL
     func newSaveStatesFile(for: GameEntity) -> URL
     func newImageFile() -> URL
+    func createDir(url: URL) -> URL
 }
 
 extension StorageProtocol {
@@ -18,19 +19,20 @@ extension StorageProtocol {
     }
     
     var gamesDir: URL {
-        defaultDir.appendingPathComponent("Games")
+        createDir(url: defaultDir.appendingPathComponent("Games"))
     }
     
     var saveStatesDir: URL {
-        defaultDir.appendingPathComponent("Save States")
+        createDir(url: defaultDir.appendingPathComponent("SaveStates"))
     }
     
     var imagesDir: URL {
-        defaultDir.appendingPathComponent("Images")
+        createDir(url: defaultDir.appendingPathComponent("Images"))
     }
     
     func saveStatesDir(for game: GameEntity) -> URL {
-        saveStatesDir.appendingPathComponent(game.id!)
+        // bug, this should be the game id, but it doesn't work correctly.
+        saveStatesDir
     }
     
     func gameDir(for game: GameEntity) -> URL {
@@ -43,5 +45,16 @@ extension StorageProtocol {
     
     func newImageFile() -> URL {
         imagesDir.appendingPathComponent(UUID().uuidString, isDirectory: false)
+    }
+    
+    func createDir(url: URL) -> URL {
+        do {
+            try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+        }
+        catch {
+            print(error)
+        }
+        
+        return url
     }
 }
