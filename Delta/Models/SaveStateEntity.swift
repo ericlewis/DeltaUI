@@ -1,7 +1,7 @@
 import CoreData
 import DeltaCore
 
-class SaveStateEntity: NSManagedObject {}
+public class SaveStateEntity: NSManagedObject {}
 
 extension SaveStateEntity {
   var gameType: GameType {
