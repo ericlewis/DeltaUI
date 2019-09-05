@@ -11,27 +11,6 @@ struct SearchViewContainer: View {
     }
 }
 
-class RecentStore: ObservableObject {
-    @Published var entries = [String]()
-    
-    func save(_ searchTerm: String) {
-        entries = NSSet(array: [searchTerm] + entries).allObjects as? [String] ?? []
-        
-        DispatchQueue.global(qos: .background).async {
-            UserDefaults.standard.set(self.entries, forKey: "entries")
-        }
-    }
-    
-    func clear() {
-        entries = []
-        UserDefaults.standard.removeObject(forKey: "entries")
-    }
-    
-    init() {
-        entries = UserDefaults.standard.array(forKey: "entries") as? [String] ?? []
-    }
-}
-
 struct RecentSearches: View {
     @ObservedObject var store: SearchStore
     @ObservedObject var recent: RecentStore
@@ -127,6 +106,7 @@ struct SearchView: View {
             }
         }
         .onPreferenceChange(ScrollingKeyTypes.PrefKey.self) { values in
+            // this whole mess just dismisses the keyboard
             if let last = self.last, let value = values.first?.bounds.minY, last > value && !self.store.searchTerm.isEmpty && (!self.gb.games.isEmpty || !self.gba.games.isEmpty || !self.gbc.games.isEmpty || !self.snes.games.isEmpty || !self.nes.games.isEmpty) {
                 let keyWindow = UIApplication.shared.connectedScenes
                 .filter({$0.activationState == .foregroundActive})
