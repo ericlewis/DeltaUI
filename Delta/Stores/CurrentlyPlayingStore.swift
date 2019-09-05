@@ -13,13 +13,15 @@ class CurrentlyPlayingStore: ObservableObject {
     }
   
     func selected(_ game: GameEntity) -> () -> Void {
-      func selected() {
-        // handle downloads
-        
+      func selected() {        
         if game.hasROM {
           self.game = game
           self.isShowingEmulator = true
           game.updateLastPlayed()
+        } else {
+          game.download(callback: { _ in
+            
+          })
         }
       }
       
