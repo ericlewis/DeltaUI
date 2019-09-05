@@ -9,21 +9,13 @@
 /* Begin PBXBuildFile section */
 		68149F7E2315C0DB00421038 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 68149F7D2315C0DB00421038 /* SFSafeSymbols */; };
 		68149F862315C5A000421038 /* Files in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 68149F852315C5A000421038 /* Files */; };
-		6818AAB0231EDDF600C67FDA /* ZIPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6856F86A2315E5C80060CC7A /* ZIPFoundation.framework */; platformFilter = ios; };
 		6818AABA231F061D00C67FDA /* URLImage in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 6818AAB9231F061D00C67FDA /* URLImage */; };
-		6818AACF231F339D00C67FDA /* all.json in Resources */ = {isa = PBXBuildFile; fileRef = 6818AACE231F339D00C67FDA /* all.json */; };
 		6818AAE2232000E500C67FDA /* MenuStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818AAE1232000E500C67FDA /* MenuStore.swift */; };
 		6818AAF2232005F700C67FDA /* PlaylistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818AAF1232005F700C67FDA /* PlaylistsView.swift */; };
 		6818AAF42320097100C67FDA /* LibraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818AAF32320097100C67FDA /* LibraryCell.swift */; };
 		6818AAF62320180700C67FDA /* PlatformsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818AAF52320180700C67FDA /* PlatformsView.swift */; };
 		6818AAF8232019E500C67FDA /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818AAF7232019E500C67FDA /* PlaylistView.swift */; };
 		6818AAFB2320242200C67FDA /* AddToPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818AAFA2320242200C67FDA /* AddToPlaylist.swift */; };
-		6818AB1C23203ED100C67FDA /* GBADeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26223198C4200D30DA1 /* GBADeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6818AB1E23203ED100C67FDA /* GBCDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26B23198C4800D30DA1 /* GBCDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6818AB2223203ED100C67FDA /* SNESDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28D23198C5E00D30DA1 /* SNESDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6818AB47232043A800C67FDA /* NESDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28423198C5600D30DA1 /* NESDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6818AB7223205C7E00C67FDA /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6818AB6923205C5E00C67FDA /* SwiftSoup.framework */; platformFilter = ios; };
-		6818AB7323205C7E00C67FDA /* SwiftSoup.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6818AB6923205C5E00C67FDA /* SwiftSoup.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6818AB7523206E1400C67FDA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818AB7423206E1400C67FDA /* WebView.swift */; };
 		681C7A302318350A00DFC744 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A2F2318350A00DFC744 /* LibraryView.swift */; };
 		681C7A43231838C800DFC744 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A42231838C800DFC744 /* GridView.swift */; };
@@ -38,11 +30,22 @@
 		681C7A59231871A500DFC744 /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A58231871A500DFC744 /* BrowseView.swift */; };
 		681C7A5B2318725000DFC744 /* ConsoleLibraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A5A2318725000DFC744 /* ConsoleLibraryCell.swift */; };
 		6832F4642316E219002B3FD9 /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6832F4632316E219002B3FD9 /* GameListView.swift */; };
-		684AC29123198C8000D30DA1 /* DeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC25B23198C3D00D30DA1 /* DeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		684AC2C223198E5B00D30DA1 /* ZIPFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC2C023198E5B00D30DA1 /* ZIPFoundation.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6856F878231617D30060CC7A /* Games.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6856F876231617D30060CC7A /* Games.xcdatamodeld */; };
 		6856F87C2316B82A0060CC7A /* SearchNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6856F87B2316B82A0060CC7A /* SearchNavigationView.swift */; };
 		6856F8862316BA1F0060CC7A /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6856F8852316BA1F0060CC7A /* ActivityView.swift */; };
+		6882E2D42320C1350003AA02 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 6882E2D32320C1350003AA02 /* SwiftSoup */; };
+		6882E2DE2320C1C00003AA02 /* ZIPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6856F86A2315E5C80060CC7A /* ZIPFoundation.framework */; platformFilter = ios; };
+		6882E2DF2320C1C00003AA02 /* ZIPFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6856F86A2315E5C80060CC7A /* ZIPFoundation.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6882E2E02320C1C20003AA02 /* DeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC25B23198C3D00D30DA1 /* DeltaCore.framework */; platformFilter = ios; };
+		6882E2E12320C1C20003AA02 /* DeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC25B23198C3D00D30DA1 /* DeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6882E2E22320C1CD0003AA02 /* GBADeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26223198C4200D30DA1 /* GBADeltaCore.framework */; platformFilter = ios; };
+		6882E2E32320C1CD0003AA02 /* GBADeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26223198C4200D30DA1 /* GBADeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6882E2E42320C1CD0003AA02 /* GBCDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26B23198C4800D30DA1 /* GBCDeltaCore.framework */; platformFilter = ios; };
+		6882E2E52320C1CD0003AA02 /* GBCDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26B23198C4800D30DA1 /* GBCDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6882E2E62320C1CD0003AA02 /* NESDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28423198C5600D30DA1 /* NESDeltaCore.framework */; platformFilter = ios; };
+		6882E2E72320C1CD0003AA02 /* NESDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28423198C5600D30DA1 /* NESDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6882E2E82320C1CD0003AA02 /* SNESDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28D23198C5E00D30DA1 /* SNESDeltaCore.framework */; platformFilter = ios; };
+		6882E2E92320C1CD0003AA02 /* SNESDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28D23198C5E00D30DA1 /* SNESDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		688D50C62315888900B9127F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688D50C52315888900B9127F /* AppDelegate.swift */; };
 		688D50C82315888900B9127F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688D50C72315888900B9127F /* SceneDelegate.swift */; };
 		688D50CA2315888900B9127F /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688D50C92315888900B9127F /* RootView.swift */; };
@@ -54,41 +57,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6818AB6823205C5E00C67FDA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6818AB6023205C5E00C67FDA /* SwiftSoup.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8CE418161DAA54A900240B42;
-			remoteInfo = "SwiftSoup-iOS";
-		};
-		6818AB6A23205C5E00C67FDA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6818AB6023205C5E00C67FDA /* SwiftSoup.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BD3B5BA91FBED933001FDB3B;
-			remoteInfo = "SwiftSoup-macOS";
-		};
-		6818AB6C23205C5E00C67FDA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6818AB6023205C5E00C67FDA /* SwiftSoup.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BD3B5BEC1FC063BD001FDB3B;
-			remoteInfo = "SwiftSoup-tvOS";
-		};
-		6818AB6E23205C5E00C67FDA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6818AB6023205C5E00C67FDA /* SwiftSoup.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BD3B5C2F1FC06423001FDB3B;
-			remoteInfo = "SwiftSoup-watchOS";
-		};
-		6818AB7023205C5E00C67FDA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6818AB6023205C5E00C67FDA /* SwiftSoup.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8CE4181F1DAA54A900240B42;
-			remoteInfo = SwiftSoupTests;
-		};
 		684AC25A23198C3D00D30DA1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 684AC25523198C3D00D30DA1 /* DeltaCore.xcodeproj */;
@@ -161,13 +129,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				684AC29123198C8000D30DA1 /* DeltaCore.framework in Embed Frameworks */,
-				6818AB1E23203ED100C67FDA /* GBCDeltaCore.framework in Embed Frameworks */,
-				6818AB7323205C7E00C67FDA /* SwiftSoup.framework in Embed Frameworks */,
-				684AC2C223198E5B00D30DA1 /* ZIPFoundation.framework in Embed Frameworks */,
-				6818AB47232043A800C67FDA /* NESDeltaCore.framework in Embed Frameworks */,
-				6818AB1C23203ED100C67FDA /* GBADeltaCore.framework in Embed Frameworks */,
-				6818AB2223203ED100C67FDA /* SNESDeltaCore.framework in Embed Frameworks */,
+				6882E2E12320C1C20003AA02 /* DeltaCore.framework in Embed Frameworks */,
+				6882E2E52320C1CD0003AA02 /* GBCDeltaCore.framework in Embed Frameworks */,
+				6882E2DF2320C1C00003AA02 /* ZIPFoundation.framework in Embed Frameworks */,
+				6882E2E92320C1CD0003AA02 /* SNESDeltaCore.framework in Embed Frameworks */,
+				6882E2E32320C1CD0003AA02 /* GBADeltaCore.framework in Embed Frameworks */,
+				6882E2E72320C1CD0003AA02 /* NESDeltaCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,7 +149,6 @@
 		6818AAF52320180700C67FDA /* PlatformsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformsView.swift; sourceTree = "<group>"; };
 		6818AAF7232019E500C67FDA /* PlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
 		6818AAFA2320242200C67FDA /* AddToPlaylist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPlaylist.swift; sourceTree = "<group>"; };
-		6818AB6023205C5E00C67FDA /* SwiftSoup.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftSoup.xcodeproj; path = SwiftSoup/SwiftSoup.xcodeproj; sourceTree = "<group>"; };
 		6818AB7423206E1400C67FDA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		681C7A2F2318350A00DFC744 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		681C7A42231838C800DFC744 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
@@ -225,11 +191,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6818AAB0231EDDF600C67FDA /* ZIPFoundation.framework in Frameworks */,
+				6882E2E02320C1C20003AA02 /* DeltaCore.framework in Frameworks */,
+				6882E2E42320C1CD0003AA02 /* GBCDeltaCore.framework in Frameworks */,
+				6882E2E62320C1CD0003AA02 /* NESDeltaCore.framework in Frameworks */,
 				68149F862315C5A000421038 /* Files in Frameworks */,
-				6818AB7223205C7E00C67FDA /* SwiftSoup.framework in Frameworks */,
 				6818AABA231F061D00C67FDA /* URLImage in Frameworks */,
 				68149F7E2315C0DB00421038 /* SFSafeSymbols in Frameworks */,
+				6882E2D42320C1350003AA02 /* SwiftSoup in Frameworks */,
+				6882E2DE2320C1C00003AA02 /* ZIPFoundation.framework in Frameworks */,
+				6882E2E22320C1CD0003AA02 /* GBADeltaCore.framework in Frameworks */,
+				6882E2E82320C1CD0003AA02 /* SNESDeltaCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,18 +225,6 @@
 				6818AB7423206E1400C67FDA /* WebView.swift */,
 			);
 			path = Sheets;
-			sourceTree = "<group>";
-		};
-		6818AB6123205C5E00C67FDA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6818AB6923205C5E00C67FDA /* SwiftSoup.framework */,
-				6818AB6B23205C5E00C67FDA /* SwiftSoup.framework */,
-				6818AB6D23205C5E00C67FDA /* SwiftSoup.framework */,
-				6818AB6F23205C5E00C67FDA /* SwiftSoup.framework */,
-				6818AB7123205C5E00C67FDA /* SwiftSoupTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		681C7A52231861DE00DFC744 /* Tabs */ = {
@@ -443,7 +402,6 @@
 		68F25B472318108400D7A64A /* Cores */ = {
 			isa = PBXGroup;
 			children = (
-				6818AB6023205C5E00C67FDA /* SwiftSoup.xcodeproj */,
 				684AC28723198C5D00D30DA1 /* SNESDeltaCore.xcodeproj */,
 				684AC27D23198C5600D30DA1 /* NESDeltaCore.xcodeproj */,
 				684AC26523198C4800D30DA1 /* GBCDeltaCore.xcodeproj */,
@@ -474,6 +432,7 @@
 				68149F7D2315C0DB00421038 /* SFSafeSymbols */,
 				68149F852315C5A000421038 /* Files */,
 				6818AAB9231F061D00C67FDA /* URLImage */,
+				6882E2D32320C1350003AA02 /* SwiftSoup */,
 			);
 			productName = Delta;
 			productReference = 688D50C22315888900B9127F /* Delta.app */;
@@ -507,6 +466,7 @@
 				68149F7C2315C0DB00421038 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				68149F842315C5A000421038 /* XCRemoteSwiftPackageReference "Files" */,
 				6818AAB8231F061D00C67FDA /* XCRemoteSwiftPackageReference "url-image" */,
+				6882E2D22320C1350003AA02 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = 688D50C32315888900B9127F /* Products */;
 			projectDirPath = "";
@@ -531,10 +491,6 @@
 					ProductGroup = 684AC28823198C5D00D30DA1 /* Products */;
 					ProjectRef = 684AC28723198C5D00D30DA1 /* SNESDeltaCore.xcodeproj */;
 				},
-				{
-					ProductGroup = 6818AB6123205C5E00C67FDA /* Products */;
-					ProjectRef = 6818AB6023205C5E00C67FDA /* SwiftSoup.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
@@ -544,41 +500,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		6818AB6923205C5E00C67FDA /* SwiftSoup.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftSoup.framework;
-			remoteRef = 6818AB6823205C5E00C67FDA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		6818AB6B23205C5E00C67FDA /* SwiftSoup.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftSoup.framework;
-			remoteRef = 6818AB6A23205C5E00C67FDA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		6818AB6D23205C5E00C67FDA /* SwiftSoup.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftSoup.framework;
-			remoteRef = 6818AB6C23205C5E00C67FDA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		6818AB6F23205C5E00C67FDA /* SwiftSoup.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftSoup.framework;
-			remoteRef = 6818AB6E23205C5E00C67FDA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		6818AB7123205C5E00C67FDA /* SwiftSoupTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SwiftSoupTests.xctest;
-			remoteRef = 6818AB7023205C5E00C67FDA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		684AC25B23198C3D00D30DA1 /* DeltaCore.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -650,7 +571,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				688D50D22315888B00B9127F /* LaunchScreen.storyboard in Resources */,
-				6818AACF231F339D00C67FDA /* all.json in Resources */,
 				688D50CF2315888B00B9127F /* Preview Assets.xcassets in Resources */,
 				688D50CC2315888B00B9127F /* Assets.xcassets in Resources */,
 			);
@@ -916,6 +836,14 @@
 				minimumVersion = 0.6.1;
 			};
 		};
+		6882E2D22320C1350003AA02 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -933,6 +861,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6818AAB8231F061D00C67FDA /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
+		};
+		6882E2D32320C1350003AA02 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6882E2D22320C1350003AA02 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
 		};
 /* End XCSwiftPackageProductDependency section */
 
