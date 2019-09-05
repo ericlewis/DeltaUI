@@ -28,14 +28,14 @@ struct DeltaViewInner: UIViewControllerRepresentable {
         // fixes layout when rotating
         gameViewController.view.setNeedsUpdateConstraints()
         
-        if game?.romURL == gameViewController.game?.fileURL {
-            return
-        }
-        
         if pause {
             gameViewController.pauseEmulation()
         } else {
             gameViewController.resumeEmulation()
+        }
+        
+        if game?.romURL == gameViewController.game?.fileURL {
+            return
         }
         
         if let game = game {
