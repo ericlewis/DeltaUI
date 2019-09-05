@@ -6,7 +6,7 @@ public class SaveStateEntity: NSManagedObject {}
 
 extension SaveStateEntity {
   var gameType: GameType {
-    .gba
+    GameType(type!)
   }
   
   var loadable: SaveState? {
