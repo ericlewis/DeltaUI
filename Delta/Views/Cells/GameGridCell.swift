@@ -3,8 +3,6 @@ import URLImage
 
 struct GameGridCell: View {
   @EnvironmentObject var store: CurrentlyPlayingStore
-  @Environment(\.managedObjectContext) var context
-  
   @ObservedObject var game: GameEntity
   
   init(_ game: GameEntity) {

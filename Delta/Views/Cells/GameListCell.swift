@@ -3,7 +3,6 @@ import SFSafeSymbols
 import URLImage
 
 struct GameListCell: View {
-  @Environment(\.managedObjectContext) var context
   @EnvironmentObject var store: CurrentlyPlayingStore
   @ObservedObject var game: GameEntity
   
