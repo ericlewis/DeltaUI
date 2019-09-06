@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct RootView: View {    
-    @State var selection = 0
+    @ObservedObject var navigation = NavigationStore()
 
     var libraryTab: some View {
         NavigationView {
@@ -57,7 +57,7 @@ struct RootView: View {
     }
     
     var body: some View {
-        TabView(selection: $selection) {
+        TabView(selection: $navigation.selectedTab) {
             libraryTab
             forYouTab
             browseTab

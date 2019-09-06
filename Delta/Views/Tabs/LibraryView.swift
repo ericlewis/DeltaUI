@@ -24,10 +24,10 @@ struct LibraryView: View {
 struct LibraryButtons: View {
   var body: some View {
     Group {
-      NavigationLink(destination: GameListView(fetchRequest: FetchRequests.allFavorites()).navigationBarTitle("Favorites")) {
+    NavigationLink(destination: Destination.allFavorites()) {
         LibraryCell(title: "Favorites", showChevron: true)
       }
-      NavigationLink(destination: GameListView(fetchRequest: FetchRequests.allGames(console: .all, inLibrary: true)).navigationBarTitle("Games")) {
+      NavigationLink(destination: Destination.allLibraryGames()) {
         LibraryCell(title: "Games", showChevron: true)
       }
       NavigationLink(destination: PlatformsView()) {
