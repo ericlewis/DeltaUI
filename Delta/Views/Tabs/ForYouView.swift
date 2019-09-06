@@ -64,6 +64,7 @@ struct FavoriteForYouView: View {
                 Text("Favorites").font(.title).bold().foregroundColor(.white)
             }
             .padding()
+            .shadow(radius: 10)
         }
     }
 }

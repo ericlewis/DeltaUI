@@ -14,6 +14,7 @@ struct BrowseCell: View {
                 Text(console.title).font(.title).bold().foregroundColor(.white)
             }
             .padding([.leading, .trailing])
+            .shadow(radius: 5)
         }
     }
 }
