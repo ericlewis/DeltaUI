@@ -3,19 +3,65 @@ import URLImage
 
 struct SaveStatesView: View {
     @ObservedObject var game: GameEntity
+    var selected: (SaveStateEntity?) -> Void
+
+    var saves: [SaveStateEntity] {
+        (game.saveStates?.allObjects as? [SaveStateEntity])?.reversed() ?? []
+    }
     
-    struct Cell: View, StorageProtocol {
-        var state: SaveStateEntity
-        var auto = false
-        
-        let formatter = RelativeDateTimeFormatter()
-        
-        init(_ state: SaveStateEntity, auto: Bool = false) {
-            self.state = state
-            self.auto = auto
+    var body: some View {
+        NavigationView {
+            GridView(saves, columns: 2, columnsInLandscape: 3, vSpacing: 15, hPadding: 0, header: {
+              VStack(alignment: .leading) {
+                Divider()
+                if self.game.saveState != nil {
+                    SaveStateCell(self.game.saveState!, auto: true, selected: {
+                        let v = $0
+                        v.extraGame = self.game
+                        self.selected(v)
+                    })
+                }
+                Text("All Saves")
+                  .font(.title)
+                  .bold()
+                  .padding(.top)
+              }
+            }) {
+                SaveStateCell($0, auto: false, selected: {
+                    let v = $0
+                    v.extraGame = self.game
+                    self.selected(v)
+                })
+            }
+            .padding(.horizontal)
+            .navigationBarTitle("Save States")
+            .navigationBarItems(trailing: Button(action: {
+                self.selected(nil)
+            }) {
+                Text("Done").bold()
+            })
         }
-        
-        var body: some View {
+        .accentColor(.purple)
+    }
+}
+
+struct SaveStateCell: View, StorageProtocol {
+    var state: SaveStateEntity
+    var auto = false
+    var selected: (SaveStateEntity) -> Void
+    
+    let formatter = RelativeDateTimeFormatter()
+    
+    init(_ state: SaveStateEntity, auto: Bool = false, selected: @escaping (SaveStateEntity) -> Void) {
+        self.state = state
+        self.auto = auto
+        self.selected = selected
+    }
+    
+    var body: some View {
+        Button(action: {
+            self.selected(self.state)
+        }) {
             ZStack(alignment: .bottomLeading) {
                 URLImage(imagesDir.appendingPathComponent(state.imageFileURL!.lastPathComponent, isDirectory: false), placeholder: {
                     Rectangle()
@@ -36,34 +82,5 @@ struct SaveStatesView: View {
                 .shadow(radius: 2)
             }
         }
-    }
-    
-    var saves: [SaveStateEntity] {
-        (game.saveStates?.allObjects as? [SaveStateEntity])?.reversed() ?? []
-    }
-    
-    var body: some View {
-        NavigationView {
-            GridView(saves, columns: 2, columnsInLandscape: 3, vSpacing: 15, hPadding: 0, header: {
-              VStack(alignment: .leading) {
-                Divider()
-                if self.game.saveState != nil {
-                    Cell(self.game.saveState!, auto: true)
-                }
-                Text("All Saves")
-                  .font(.title)
-                  .bold()
-                  .padding(.top)
-              }
-            }) {
-              Cell($0)
-            }
-            .padding(.horizontal)
-            .navigationBarTitle("Save States")
-            .navigationBarItems(trailing: Button(action: {}) {
-                Text("Done").bold()
-            })
-        }
-        .accentColor(.purple)
     }
 }

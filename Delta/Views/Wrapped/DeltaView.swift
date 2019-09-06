@@ -10,13 +10,17 @@ struct DeltaView: View {
   
   var body: some View {
     EmptyView().sheet(isPresented: $store.isShowingEmulator) {
-        DeltaViewInner(self.$store.game, pause: self.$menu.isShowing, saveState: self.$saveState) {
+        DeltaViewInner(self.$store.game, pause: self.$menu.isShowing, saveState: self.$saveState, loadSaveState: self.$store.loadSaveState) {
         self.menu.isShowing.toggle()
       }
       .edgesIgnoringSafeArea(.all)
       .sheet(isPresented: self.$menu.isShowingAddToPlaylist) {
         if self.menu.isShowingSavedStates {
-            SaveStatesView(game: self.store.game!)
+            SaveStatesView(game: self.store.game!) {
+                self.menu.isShowingAddToPlaylist = false
+                self.menu.isShowingSavedStates = false
+                self.store.selectedSave($0)
+            }
         } else {
             AddToPlaylist(isShowing: self.$menu.isShowingAddToPlaylist, game: self.store.game!)
             .environment(\.managedObjectContext, self.store.game!.managedObjectContext!)

@@ -84,7 +84,10 @@ struct GameContextMenu: View {
                 }
             }
             .sheet(isPresented: $isShowingSaveStates) {
-                SaveStatesView(game: self.game)
+                SaveStatesView(game: self.game) {
+                    self.isShowingSaveStates = false
+                    self.currentlyPlaying.selectedSave($0)
+                }
             }
             if game.hasROM {
                 Button(action: toggleConfirmRemove) {

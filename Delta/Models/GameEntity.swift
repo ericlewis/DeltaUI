@@ -14,7 +14,7 @@ class GameEntity: NSManagedObject, Codable, Identifiable, StorageProtocol {
     }
 
     @Published var task: DownloadTask?
-    
+        
     public var romURL: URL? {
         guard let path = gameURL?.lastPathComponent else {
             return nil

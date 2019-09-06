@@ -1,9 +1,21 @@
 import DeltaCore
 import Files
 
+extension Notification.Name {
+    static let myExampleNotification = Notification.Name("an-example-notification")
+}
+
 class OurGameViewController: GameViewController, StorageProtocol {
     
     var gameEnt: GameEntity?
+    var stateToLoad: SaveStateEntity? {
+        didSet {
+            let state = self.stateToLoad
+            if gameEnt != nil && state != nil {
+                try? emulatorCore?.load(state!.loadableWithGame(gameEnt!)!)
+            }
+        }
+    }
     
     private let imageContext = CIContext(options: [.workingColorSpace: NSNull()])
 
@@ -54,7 +66,11 @@ class OurGameViewController: GameViewController, StorageProtocol {
                 return
             }
             
-            try emulatorCore?.load(save)
+            if self.stateToLoad != nil {
+                try emulatorCore?.load(self.stateToLoad!.loadableWithGame(gameEnt!)!)
+            } else {
+                try emulatorCore?.load(save)
+            }
             
             if isRunning {
                 resumeEmulation()

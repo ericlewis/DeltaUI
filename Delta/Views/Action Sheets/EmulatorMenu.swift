@@ -13,7 +13,7 @@ extension ActionSheet {
                 menu.isShowingAddToPlaylist.toggle()
             },
             .default(Text("View Saved States")) {
-                menu.isShowingAddToPlaylist.toggle() // lazy af
+                menu.isShowingAddToPlaylist.toggle() // lazy af, we just reuse the same toggle and set another. this needs to be a proper enum
                 menu.isShowingSavedStates = true
             },
             .default(Text("Save State")) {
