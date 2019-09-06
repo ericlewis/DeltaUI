@@ -19,7 +19,7 @@ struct GameGridCell: View {
                     .contextMenu {
                         GameContextMenu(game: game)
                 }
-                if game.task != nil {
+                if game.task != nil || game == store.game {
                     ActivityView()
                     .padding(5)
                     .background(Color.white)

@@ -37,6 +37,9 @@ struct GameListCell: View {
                 .foregroundColor(.accentColor)
                 .animation(.spring())
             }
+            if game == store.game {
+                ActivityView()
+            }
         }
         .contextMenu {
             GameContextMenu(game: game)

@@ -74,22 +74,22 @@ struct GameContextMenu: View {
                 AddToPlaylist(isShowing: self.$isShowingAddToPlaylist, game: self.game)
                     .environment(\.managedObjectContext, self.context)
             }
-            Button(action: {
-                self.isShowingSaveStates.toggle()
-            }) {
-                HStack {
-                    Text("View Save States")
-                    Spacer()
-                    Image(systemSymbol: .moon)
-                }
-            }
-            .sheet(isPresented: $isShowingSaveStates) {
-                SaveStatesView(game: self.game) {
-                    self.isShowingSaveStates = false
-                    self.currentlyPlaying.selectedSave($0)
-                }
-            }
             if game.hasROM {
+                Button(action: {
+                    self.isShowingSaveStates.toggle()
+                }) {
+                    HStack {
+                        Text("View Save States")
+                        Spacer()
+                        Image(systemSymbol: .moon)
+                    }
+                }
+                .sheet(isPresented: $isShowingSaveStates) {
+                    SaveStatesView(game: self.game) {
+                        self.isShowingSaveStates = false
+                        self.currentlyPlaying.selectedSave($0)
+                    }
+                }
                 Button(action: toggleConfirmRemove) {
                     HStack {
                         Text("Delete from Library")

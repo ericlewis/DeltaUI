@@ -20,6 +20,7 @@ extension ActionSheet {
                 saveState()
             },
             .destructive(Text("Close & Auto Save Game")) {
+                store.game = nil
                 store.isShowingEmulator.toggle()
             },
             .cancel()
