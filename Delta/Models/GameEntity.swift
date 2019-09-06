@@ -165,6 +165,20 @@ extension GameEntity {
     }
 }
 
+extension GameEntity {
+    @objc func titleInitial() -> String {
+        let startIndex = title!.startIndex
+        let first = title![...startIndex]
+        let string = String(first)
+        
+        if string.characterCount(for: .decimalDigits) > 0 {
+            return "#"
+        }
+        
+        return String(first)
+    }
+}
+
 struct SearchResults: Codable {
     var results: [GameEntity]
 }

@@ -8,6 +8,7 @@ struct GameContextMenu: View {
     
     @State private var isShowingAddToPlaylist = false
     @State private var isShowingConfirmRemove = false
+    @State private var isShowingSaveStates = false
 
     func play() {
         currentlyPlaying.selectedGame(game)
@@ -72,6 +73,18 @@ struct GameContextMenu: View {
             .sheet(isPresented: $isShowingAddToPlaylist) {
                 AddToPlaylist(isShowing: self.$isShowingAddToPlaylist, game: self.game)
                     .environment(\.managedObjectContext, self.context)
+            }
+            Button(action: {
+                self.isShowingSaveStates.toggle()
+            }) {
+                HStack {
+                    Text("View Save States")
+                    Spacer()
+                    Image(systemSymbol: .moon)
+                }
+            }
+            .sheet(isPresented: $isShowingSaveStates) {
+                SaveStatesView(game: self.game)
             }
             if game.hasROM {
                 Button(action: toggleConfirmRemove) {

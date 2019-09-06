@@ -33,6 +33,7 @@ struct GameListCell: View {
             Spacer()
             if !game.hasROM && game.task == nil {
                 Image(systemSymbol: .icloudAndArrowDown)
+                .font(.system(size: 20, weight: .semibold, design: .default))
                 .foregroundColor(.accentColor)
                 .animation(.spring())
             }

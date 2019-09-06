@@ -2,18 +2,17 @@ import SwiftUI
 import CoreData
 
 struct GameListView: View {
-    @FetchRequest(fetchRequest: FetchRequests.allGames(console: .gba, inLibrary: true)) var results: FetchedGames
+    let fetchRequest: NSFetchRequest<GameEntity>
         
     init(fetchRequest: NSFetchRequest<GameEntity>) {
-        _results = .init(fetchRequest: fetchRequest)
+        self.fetchRequest = fetchRequest
     }
     
     var body: some View {
-        List {
-            ForEach(results) { rom in
-                GameListCell(rom)
-            }
+        TableView(fetchRequest, sectionNameKeyPath: "titleInitial") {
+            GameListCell($0)
         }
-        .listStyle(DefaultListStyle())
+        .edgesIgnoringSafeArea(.all)
     }
 }
+

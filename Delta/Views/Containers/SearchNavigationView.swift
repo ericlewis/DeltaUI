@@ -6,6 +6,13 @@ struct SearchNavigationView<Content: View>: UIViewControllerRepresentable {
     var showScope: Bool = false
     var content: () -> Content
     
+    init(searchText: Binding<String>, scope: Binding<Int>, showScope: Bool, @ViewBuilder content: @escaping () -> Content) {
+        _searchText = searchText
+        _scope = scope
+        self.showScope = showScope
+        self.content = content
+    }
+    
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }

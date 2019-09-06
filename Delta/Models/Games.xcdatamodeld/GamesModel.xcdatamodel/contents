@@ -11,6 +11,7 @@
         <attribute name="productURL" optional="YES" attributeType="URI"/>
         <attribute name="romName" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="titleInitial" optional="YES" transient="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="playlists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlaylistEntity" inverseName="games" inverseEntity="PlaylistEntity"/>
         <relationship name="saveState" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SaveStateEntity" inverseName="game" inverseEntity="SaveStateEntity"/>
@@ -37,7 +38,7 @@
         <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GameEntity" inverseName="saveState" inverseEntity="GameEntity"/>
     </entity>
     <elements>
-        <element name="GameEntity" positionX="-63" positionY="-18" width="128" height="253"/>
+        <element name="GameEntity" positionX="-63" positionY="-18" width="128" height="268"/>
         <element name="PlaylistEntity" positionX="120.17578125" positionY="-6.953125" width="128" height="103"/>
         <element name="SaveStateEntity" positionX="295.33203125" positionY="37.6796875" width="128" height="118"/>
     </elements>
