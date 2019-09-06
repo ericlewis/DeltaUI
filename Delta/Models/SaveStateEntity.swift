@@ -2,7 +2,13 @@ import CoreData
 import DeltaCore
 
 @objc(SaveStateEntity)
-public class SaveStateEntity: NSManagedObject, StorageProtocol {}
+public class SaveStateEntity: NSManagedObject, StorageProtocol, Identifiable {
+    public var id: URL {
+        fileURL!
+    }
+    
+    var extraGame: GameEntity?
+}
 
 extension SaveStateEntity {
     static func SaveState(game: GameEntity, saveState: SaveStateProtocol) -> Self {
@@ -26,7 +32,12 @@ extension SaveStateEntity {
     var loadable: DeltaCore.SaveState? {
         guard let url = fileURL, let game = self.game else {return nil}
         let fileURL = saveStatesDir(for: game).appendingPathComponent(url.lastPathComponent, isDirectory: false)
-        print(fileURL)
+        return DeltaCore.SaveState(fileURL: fileURL, gameType: gameType)
+    }
+    
+    func loadableWithGame(_ game: GameEntity) -> DeltaCore.SaveState? {
+        guard let url = fileURL else {return nil}
+        let fileURL = saveStatesDir(for: game).appendingPathComponent(url.lastPathComponent, isDirectory: false)
         return DeltaCore.SaveState(fileURL: fileURL, gameType: gameType)
     }
 }

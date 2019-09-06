@@ -11,7 +11,10 @@ extension URLImage {
 
 extension URLImage {
   func gameGridImage() -> some View {
-    square().mask(RoundedRectangle(cornerRadius: 5))
+    square()
+    .mask(RoundedRectangle(cornerRadius: 4, style: .continuous))
+    .overlay(RoundedRectangle(cornerRadius: 4, style: .continuous).stroke(Color.secondary.opacity(0.5)))
+    .scaleEffect(0.99)
   }
 }
 
@@ -36,6 +39,7 @@ extension URLImage {
     self.square()
       .foregroundColor(.accentColor)
       .frame(width: 80, height: 80)
-      .mask(RoundedRectangle(cornerRadius: 3))
+      .mask(RoundedRectangle(cornerRadius: 3, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 3, style: .continuous).stroke(Color.secondary.opacity(0.5)))
   }
 }

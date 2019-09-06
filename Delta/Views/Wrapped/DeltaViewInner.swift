@@ -4,12 +4,16 @@ import DeltaCore
 struct DeltaViewInner: UIViewControllerRepresentable {
     @Binding var game: GameEntity?
     @Binding var pause: Bool
+    @Binding var saveState: Bool
+    @Binding var loadSaveState: SaveStateEntity?
 
     private var pressedMenu: () -> Void
     
-    init(_ game: Binding<GameEntity?>, pause: Binding<Bool>, pressedMenu: @escaping () -> Void) {
+    init(_ game: Binding<GameEntity?>, pause: Binding<Bool>, saveState: Binding<Bool>, loadSaveState: Binding<SaveStateEntity?>, pressedMenu: @escaping () -> Void) {
         _game = game
         _pause = pause
+        _saveState = saveState
+        _loadSaveState = loadSaveState
         self.pressedMenu = pressedMenu
     }
     
@@ -27,6 +31,17 @@ struct DeltaViewInner: UIViewControllerRepresentable {
         
         // fixes layout when rotating
         gameViewController.view.setNeedsUpdateConstraints()
+        
+        if saveState {
+            print("save it!")
+            gameViewController.persistSaveState()
+            saveState = false
+        }
+        
+        if loadSaveState != nil {
+            gameViewController.stateToLoad = loadSaveState
+            loadSaveState = nil
+        }
         
         if pause {
             gameViewController.pauseEmulation()
