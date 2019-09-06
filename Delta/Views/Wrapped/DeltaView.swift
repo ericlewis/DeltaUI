@@ -4,11 +4,13 @@ struct DeltaView: View {
   @EnvironmentObject var store: CurrentlyPlayingStore
   @ObservedObject var menu = MenuStore()
   
+  @State var saveState = false
+    
   let gesture = DragGesture()
   
   var body: some View {
     EmptyView().sheet(isPresented: $store.isShowingEmulator) {
-    DeltaViewInner(self.$store.game, pause: self.$menu.isShowing) {
+        DeltaViewInner(self.$store.game, pause: self.$menu.isShowing, saveState: self.$saveState) {
         self.menu.isShowing.toggle()
       }
       .edgesIgnoringSafeArea(.all)
@@ -21,7 +23,9 @@ struct DeltaView: View {
         }
       }
       .actionSheet(isPresented: self.$menu.isShowing) {
-        ActionSheet.EmulatorMenu(store: self.store, menu: self.menu)
+        ActionSheet.EmulatorMenu(store: self.store, menu: self.menu) {
+            self.saveState.toggle()
+        }
       }
       .highPriorityGesture(self.gesture) // i keep the modal open
     }

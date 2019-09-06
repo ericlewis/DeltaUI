@@ -2,7 +2,11 @@ import CoreData
 import DeltaCore
 
 @objc(SaveStateEntity)
-public class SaveStateEntity: NSManagedObject, StorageProtocol {}
+public class SaveStateEntity: NSManagedObject, StorageProtocol, Identifiable {
+    public var id: URL {
+        fileURL!
+    }
+}
 
 extension SaveStateEntity {
     static func SaveState(game: GameEntity, saveState: SaveStateProtocol) -> Self {

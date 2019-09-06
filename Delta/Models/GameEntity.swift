@@ -12,20 +12,6 @@ class GameEntity: NSManagedObject, Codable, Identifiable, StorageProtocol {
     enum CodingKeys: String, CodingKey {
         case id, title, image, downloadURL, productURL, romName, type, lastPlayed, downloadedAt, favorited
     }
-    
-    @NSManaged public var id: String?
-    @NSManaged public var title: String?
-    @NSManaged public var image: URL?
-    @NSManaged public var downloadURL: URL?
-    @NSManaged public var productURL: URL?
-    @NSManaged public var type: String?
-    @NSManaged public var romName: String?
-    @NSManaged public var lastPlayed: Date?
-    @NSManaged public var downloadedAt: Date?
-    @NSManaged public var favorited: Bool
-    @NSManaged public var saveState: SaveStateEntity?
-    @NSManaged public var gameURL: URL?
-    @NSManaged public var playlists: NSSet?
 
     @Published var task: DownloadTask?
     

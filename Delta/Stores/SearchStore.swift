@@ -22,7 +22,7 @@ class SearchStore: NSObject, ObservableObject, NSFetchedResultsControllerDelegat
     var console: Console
 
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<GameEntity> = {
-        let fetchRequest: NSFetchRequest<GameEntity> = GameEntity.fetchRequest() as! NSFetchRequest<GameEntity>
+        let fetchRequest: NSFetchRequest<GameEntity> = GameEntity.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         if scope == 0 {
             let predicate = NSPredicate(format: "type = %@ && romName != nil", console.rawValue)

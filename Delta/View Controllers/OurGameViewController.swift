@@ -19,7 +19,7 @@ class OurGameViewController: GameViewController, StorageProtocol {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        persistState()
+        persistAutoSaveState()
     }
     
     private func setupController() {
@@ -47,6 +47,10 @@ class OurGameViewController: GameViewController, StorageProtocol {
             }
             
             guard let save = gameEnt?.saveState?.loadable else {
+                if isRunning {
+                    resumeEmulation()
+                }
+                
                 return
             }
             
@@ -62,19 +66,21 @@ class OurGameViewController: GameViewController, StorageProtocol {
         }
     }
     
-    private func persistState() {
-        guard let gameEnt = self.gameEnt, let context = gameEnt.managedObjectContext else {
-            return
-        }
-        
-        let url = saveStatesDir(for: gameEnt).appendingPathComponent(UUID().uuidString, isDirectory: false)
-        guard let saveState = emulatorCore?.saveSaveState(to: url) else {
-            return
-        }
-        
-        let save = SaveStateEntity.SaveState(game: gameEnt, saveState: saveState)
-        gameEnt.saveState = save
-
+    private func persistAutoSaveState() {
+        guard let save = createSaveStateEntity(), let context = gameEnt?.managedObjectContext else {return}
+        createSaveImage(save)
+        gameEnt?.saveState = save
+        try? context.save()
+    }
+    
+    func persistSaveState() {
+        guard let save = createSaveStateEntity(), let context = gameEnt?.managedObjectContext else {return}
+        createSaveImage(save)
+        gameEnt?.addToSaveStates(save)
+        try? context.save()
+    }
+    
+    private func createSaveImage(_ save: SaveStateEntity) {
         if let outputImage = gameView.outputImage,
            let quartzImage = imageContext.createCGImage(outputImage, from: outputImage.extent),
            let data = UIImage(cgImage: quartzImage).pngData() {
@@ -84,11 +90,21 @@ class OurGameViewController: GameViewController, StorageProtocol {
                 save.imageFileURL = url
             }
             catch {
-                print(url)
                 print(error)
             }
         }
+    }
+    
+    private func createSaveStateEntity() -> SaveStateEntity? {
+        guard let gameEnt = self.gameEnt else {
+            return nil
+        }
         
-        try? context.save()
+        let url = saveStatesDir(for: gameEnt).appendingPathComponent(UUID().uuidString, isDirectory: false)
+        guard let saveState = emulatorCore?.saveSaveState(to: url) else {
+            return nil
+        }
+        
+        return SaveStateEntity.SaveState(game: gameEnt, saveState: saveState)
     }
 }

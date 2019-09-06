@@ -5,7 +5,7 @@ typealias FetchedGames = FetchedResults<GameEntity>
 
 struct FetchRequests {
     static func allFavorites() -> NSFetchRequest<GameEntity> {
-        let request: NSFetchRequest<GameEntity> = GameEntity.fetchRequest() as! NSFetchRequest<GameEntity>
+        let request: NSFetchRequest<GameEntity> = GameEntity.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         request.predicate = NSPredicate(format: "favorited = YES")
         return request
@@ -18,7 +18,7 @@ struct FetchRequests {
     }
 
     static func allGames(console: Console, inLibrary: Bool = false) -> NSFetchRequest<GameEntity> {
-        let request: NSFetchRequest<GameEntity> = GameEntity.fetchRequest() as! NSFetchRequest<GameEntity>
+        let request: NSFetchRequest<GameEntity> = GameEntity.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         
         if console != .all && inLibrary {
@@ -33,7 +33,7 @@ struct FetchRequests {
     }
     
     static func recentlyPlayed(console: Console, limit: Int = 6) -> NSFetchRequest<GameEntity> {
-        let request: NSFetchRequest<GameEntity> = GameEntity.fetchRequest() as! NSFetchRequest<GameEntity>
+        let request: NSFetchRequest<GameEntity> = GameEntity.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "lastPlayed", ascending: false)]
         
         if console != .all {
@@ -46,7 +46,7 @@ struct FetchRequests {
     }
     
     static func recentlyAdded() -> NSFetchRequest<GameEntity> {
-        let request: NSFetchRequest<GameEntity> = GameEntity.fetchRequest() as! NSFetchRequest<GameEntity>
+        let request: NSFetchRequest<GameEntity> = GameEntity.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "downloadedAt", ascending: false)]
         request.predicate = NSPredicate(format: "downloadedAt != nil")
         request.fetchLimit = 40
