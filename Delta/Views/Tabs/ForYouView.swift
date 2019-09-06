@@ -12,7 +12,7 @@ struct HeaderView: View {
             Text(console.title).font(.title).bold().foregroundColor(.primary)
             Spacer()
             if isSeeAllEnabled {
-                NavigationLink(destination: GameListView(fetchRequest: fetchRequest ?? FetchRequests.recentlyPlayed(console: console, limit: 100)).navigationBarTitle(console.title)) {
+                NavigationLink(destination: GameListView(fetchRequest: fetchRequest ?? FetchRequests.recentlyPlayedDetail(console: console)).navigationBarTitle(console.title)) {
                     Text("See All")
                     .font(.body)
                 }

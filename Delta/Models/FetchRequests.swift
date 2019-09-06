@@ -50,7 +50,9 @@ struct FetchRequests {
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         
         if console != .all {
-            request.predicate = NSPredicate(format: "type = %@", console.rawValue)
+            request.predicate = NSPredicate(format: "type = %@ & lastPlayed != nil", console.rawValue)
+        } else {
+            request.predicate = NSPredicate(format: "lastPlayed != nil")
         }
                   
         return request
