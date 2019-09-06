@@ -38,7 +38,6 @@ struct GameListCell: View {
                 .animation(.spring())
             }
         }
-        .onTapGesture(perform: store.selected(game))
         .contextMenu {
             GameContextMenu(game: game)
         }

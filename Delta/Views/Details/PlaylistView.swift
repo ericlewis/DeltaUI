@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct PlaylistView: View {
+  @EnvironmentObject var currentlyPlaying: CurrentlyPlayingStore
   @ObservedObject var playlist: PlaylistEntity
   @ObservedObject var store: PlaylistStore
   
@@ -13,6 +14,7 @@ struct PlaylistView: View {
     List {
       ForEach(store.games) {
         GameListCell($0)
+        .onTapGesture(perform: self.currentlyPlaying.selected($0))
       }
       .onDelete(perform: store.delete)
     }

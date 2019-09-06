@@ -19,7 +19,7 @@ extension ActionSheet {
             .default(Text("Save State")) {
                 saveState()
             },
-            .destructive(Text("Close \(store.game!.console.title)")) {
+            .destructive(Text("Close & Auto Save Game")) {
                 store.isShowingEmulator.toggle()
             },
             .cancel()
