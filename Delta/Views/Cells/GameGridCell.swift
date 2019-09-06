@@ -25,7 +25,7 @@ struct GameGridCell: View {
                     .background(Color.white)
                     .mask(Circle())
                     .shadow(radius: 5)
-                    .padding(10)
+                    .offset(x: -10, y: 10)
                 }
             }
             VStack(alignment: .leading, spacing: 0) {
