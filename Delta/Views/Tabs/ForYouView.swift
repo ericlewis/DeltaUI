@@ -74,9 +74,7 @@ struct ForYouView: View {
             FavoriteForYouView()
             Divider()
                 .padding(.leading)
-            HorizontalGameScroller(.all, text: "Recently Played") {
-                print("do shit")
-            }
+            HorizontalGameScroller(.all, text: "Recently Played")
             HorizontalGameScroller(.gba)
             HorizontalGameScroller(.gbc)
             HorizontalGameScroller(.gb)

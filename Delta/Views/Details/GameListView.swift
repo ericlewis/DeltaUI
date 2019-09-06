@@ -5,7 +5,7 @@ struct GameListView: View {
     @EnvironmentObject var currentlyPlaying: CurrentlyPlayingStore
     let fetchRequest: NSFetchRequest<GameEntity>
         
-    init(fetchRequest: NSFetchRequest<GameEntity> = FetchRequests.recentlyPlayed(console: .all)) {
+    init(fetchRequest: NSFetchRequest<GameEntity> = FetchRequests.recentlyPlayedDetail(console: .all)) {
         self.fetchRequest = fetchRequest
     }
     

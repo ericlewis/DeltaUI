@@ -45,6 +45,17 @@ struct FetchRequests {
         return request
     }
     
+    static func recentlyPlayedDetail(console: Console) -> NSFetchRequest<GameEntity> {
+        let request: NSFetchRequest<GameEntity> = GameEntity.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        
+        if console != .all {
+            request.predicate = NSPredicate(format: "type = %@", console.rawValue)
+        }
+                  
+        return request
+    }
+    
     static func recentlyAdded() -> NSFetchRequest<GameEntity> {
         let request: NSFetchRequest<GameEntity> = GameEntity.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "downloadedAt", ascending: false)]
