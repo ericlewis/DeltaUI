@@ -183,6 +183,8 @@ extension GameEntity {
         playlists = nil
         favorited = false
         downloadedAt = nil
+        saveState = nil
+        saveStates = nil
         objectWillChange.send()
         try? managedObjectContext?.save()
     }

@@ -11,13 +11,15 @@ public class SaveStateEntity: NSManagedObject, StorageProtocol, Identifiable {
 }
 
 extension SaveStateEntity {
-    static func SaveState(game: GameEntity, saveState: SaveStateProtocol) -> Self {
+    static func SaveState(game: GameEntity, saveState: SaveStateProtocol, connected: Bool = true) -> Self {
         let ctx = game.managedObjectContext!
         let save = self.init(context: ctx)
         
         save.fileURL = saveState.fileURL
         save.type = game.game?.type.rawValue
-        save.game = game
+        if connected {
+            save.game = game
+        }
         save.createdAt = Date()
         
         try? ctx.save()

@@ -31,6 +31,7 @@ class OurGameViewController: GameViewController, StorageProtocol {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        stateToLoad = nil
         persistAutoSaveState()
     }
     
@@ -90,7 +91,7 @@ class OurGameViewController: GameViewController, StorageProtocol {
     }
     
     func persistSaveState() {
-        guard let save = createSaveStateEntity(), let context = gameEnt?.managedObjectContext else {return}
+        guard let save = createSaveStateEntity(false), let context = gameEnt?.managedObjectContext else {return}
         createSaveImage(save)
         gameEnt?.addToSaveStates(save)
         try? context.save()
@@ -111,7 +112,7 @@ class OurGameViewController: GameViewController, StorageProtocol {
         }
     }
     
-    private func createSaveStateEntity() -> SaveStateEntity? {
+    private func createSaveStateEntity(_ connected: Bool = true) -> SaveStateEntity? {
         guard let gameEnt = self.gameEnt else {
             return nil
         }
@@ -121,6 +122,6 @@ class OurGameViewController: GameViewController, StorageProtocol {
             return nil
         }
         
-        return SaveStateEntity.SaveState(game: gameEnt, saveState: saveState)
+        return SaveStateEntity.SaveState(game: gameEnt, saveState: saveState, connected: connected)
     }
 }
