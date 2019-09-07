@@ -8,6 +8,7 @@ extension Notification.Name {
 class OurGameViewController: GameViewController, StorageProtocol {
     
     var gameEnt: GameEntity?
+    
     var stateToLoad: SaveStateEntity? {
         didSet {
             let state = self.stateToLoad
@@ -18,21 +19,22 @@ class OurGameViewController: GameViewController, StorageProtocol {
     }
     
     private let imageContext = CIContext(options: [.workingColorSpace: NSNull()])
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupGame()
+        self.setupGame()
+//         loadState()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        loadState()
+        resumeEmulation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         stateToLoad = nil
-        persistAutoSaveState()
+//        persistAutoSaveState()
     }
     
     private func setupController() {

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct RootView: View {    
-    @ObservedObject var navigation = NavigationStore()
+    @EnvironmentObject var navigation: NavigationStore
 
     var libraryTab: some View {
         NavigationView {
@@ -57,15 +57,16 @@ struct RootView: View {
     }
     
     var body: some View {
-        TabView(selection: $navigation.selectedTab) {
-            libraryTab
-            forYouTab
-            browseTab
-            searchTab
-            settingsTab
+        SheetPresenter {
+            TabView(selection: self.$navigation.selectedTab) {
+                self.libraryTab
+                self.forYouTab
+                self.browseTab
+                self.searchTab
+                self.settingsTab
+            }
+            .edgesIgnoringSafeArea(.top)
         }
-        .overlay(DeltaView())
-        .edgesIgnoringSafeArea(.top)
     }
 }
 

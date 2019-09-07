@@ -1,7 +1,6 @@
 import SwiftUI
 
-struct AddToPlaylist: View {
-  @Binding var isShowing: Bool
+struct AddToPlaylistView: View {
   @Environment(\.managedObjectContext) var context
   
   var game: GameEntity
@@ -9,12 +8,12 @@ struct AddToPlaylist: View {
   func addGame(_ playlist: PlaylistEntity) {
     playlist.addToGames(self.game)
     try? self.context.save()
-    self.isShowing.toggle()
+    ActionCreator().dismiss()
   }
   
   var DoneButton: some View {
     Button(action: {
-      self.isShowing.toggle()
+      ActionCreator().dismiss()
     }) {
       Text("Done").done()
     }

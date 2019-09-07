@@ -2,17 +2,8 @@ import SwiftUI
 
 struct GameContextMenu: View {
     @Environment(\.managedObjectContext) var context
-    @EnvironmentObject var currentlyPlaying: CurrentlyPlayingStore
     
     @ObservedObject var game: GameEntity
-    
-    @State private var isShowingAddToPlaylist = false
-    @State private var isShowingConfirmRemove = false
-    @State private var isShowingSaveStates = false
-
-    func play() {
-        currentlyPlaying.selectedGame(game)
-    }
     
     func toggleFave() {
         game.objectWillChange.send()
@@ -20,14 +11,12 @@ struct GameContextMenu: View {
         try? game.managedObjectContext?.save()
     }
     
-    func toggleConfirmRemove() {
-        isShowingConfirmRemove.toggle()
-    }
-    
     var body: some View {
         Group {
             if game.hasROM {
-                Button(action: play) {
+                Button(action: {
+                    ActionCreator().presentEmulator(self.game)
+                }) {
                     HStack {
                         Text("Play")
                         Spacer()
@@ -62,7 +51,7 @@ struct GameContextMenu: View {
                 }
             }
             Button(action: {
-                self.isShowingAddToPlaylist.toggle()
+                ActionCreator().presentAddToPlaylist(self.game)
             }) {
                 HStack {
                     Text("Add to Playlist")
@@ -70,13 +59,9 @@ struct GameContextMenu: View {
                     Image(systemSymbol: .textBadgePlus)
                 }
             }
-            .sheet(isPresented: $isShowingAddToPlaylist) {
-                AddToPlaylist(isShowing: self.$isShowingAddToPlaylist, game: self.game)
-                    .environment(\.managedObjectContext, self.context)
-            }
             if game.hasROM {
                 Button(action: {
-                    self.isShowingSaveStates.toggle()
+                    ActionCreator().presentSavedStates(self.game)
                 }) {
                     HStack {
                         Text("View Save States")
@@ -84,26 +69,14 @@ struct GameContextMenu: View {
                         Image(systemSymbol: .moon)
                     }
                 }
-                .sheet(isPresented: $isShowingSaveStates) {
-                    SaveStatesView(game: self.game) {
-                        self.isShowingSaveStates = false
-                        self.currentlyPlaying.selectedSave($0)
-                    }
-                }
-                Button(action: toggleConfirmRemove) {
+                Button(action: {
+                    ActionCreator().presentRemoveFromLibraryConfirmation(self.game)
+                }) {
                     HStack {
                         Text("Delete from Library")
                         Spacer()
                         Image(systemSymbol: .trash)
                     }
-                }
-                .actionSheet(isPresented: $isShowingConfirmRemove) {
-                    ActionSheet(title: Text("Are you sure you want to remove this game from your library?"), message: nil, buttons: [
-                        .destructive(Text("Delete Game")) {
-                            self.game.deleteFromLibrary()
-                        },
-                        .cancel()
-                        ])
                 }
             }
         }

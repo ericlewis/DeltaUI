@@ -11,7 +11,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
         context.automaticallyMergesChangesFromParent = true
                 
-        let contentView = RootView().accentColor(.purple).environment(\.managedObjectContext, context).environmentObject(CurrentlyPlayingStore())
+        let contentView = RootView()
+                            .accentColor(.purple)
+                            .environment(\.managedObjectContext, context)
+                            .environmentObject(NavigationStore.shared)
+        
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: contentView)

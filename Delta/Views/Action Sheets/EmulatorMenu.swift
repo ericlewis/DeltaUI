@@ -1,27 +1,24 @@
 import SwiftUI
 
 extension ActionSheet {
-    static func EmulatorMenu(store: CurrentlyPlayingStore, menu: MenuStore, saveState: @escaping () -> Void) -> ActionSheet {
-        ActionSheet(title: Text("Menu"), message: Text(store.game?.title ?? ""), buttons: [
-            store.game!.favorited ? .default(Text("Unfavorite")) {
-                store.game?.favorited.toggle()
-                } : .default(Text("Favorite")) {
-                    store.game?.favorited.toggle()
-            },
+    static func EmulatorMenu() -> ActionSheet {
+        ActionSheet(title: Text("Menu"), message: nil, buttons: [
             .default(Text("Add to Playlist")) {
-                menu.isShowingSavedStates = false
-                menu.isShowingAddToPlaylist.toggle()
+                guard let game = NavigationStore.shared.currentGame else {
+                    return
+                }
+                
+                ActionCreator().presentAddToPlaylist(game)
             },
             .default(Text("View Saved States")) {
-                menu.isShowingAddToPlaylist.toggle() // lazy af, we just reuse the same toggle and set another. this needs to be a proper enum
-                menu.isShowingSavedStates = true
-            },
-            .default(Text("Save State")) {
-                saveState()
+                guard let game = NavigationStore.shared.currentGame else {
+                    return
+                }
+                
+                ActionCreator().presentSavedStates(game)
             },
             .destructive(Text("Close & Auto Save Game")) {
-                store.game = nil
-                store.isShowingEmulator.toggle()
+                ActionCreator().dismiss()
             },
             .cancel()
         ])
