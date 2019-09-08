@@ -1,5 +1,6 @@
 import DeltaCore
 import Files
+import Combine
 
 extension Notification.Name {
     static let myExampleNotification = Notification.Name("an-example-notification")
@@ -20,9 +21,21 @@ class OurGameViewController: GameViewController, StorageProtocol {
     
     private let imageContext = CIContext(options: [.workingColorSpace: NSNull()])
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        EmulatorStore.shared.save = { [weak self] in
+            self?.persistSaveState()
+        }
+        
+        EmulatorStore.shared.load = { [weak self] state in
+            self?.stateToLoad = state
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setupGame()
+        setupGame()
     }
     
     override func viewDidAppear(_ animated: Bool) {

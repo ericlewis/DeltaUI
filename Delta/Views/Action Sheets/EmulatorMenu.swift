@@ -8,18 +8,17 @@ extension ActionSheet {
                     return
                 }
                 
-                ActionCreator().presentAddToPlaylist(game)
+                ActionCreator().presentAddToPlaylist(game)()
             },
             .default(Text("View Saved States")) {
                 guard let game = NavigationStore.shared.currentGame else {
                     return
                 }
                 
-                ActionCreator().presentSavedStates(game)
+                ActionCreator().presentSavedStates(game)()
             },
-            .destructive(Text("Close & Auto Save Game")) {
-                ActionCreator().dismiss()
-            },
+            .default(Text("Save State"), action: ActionCreator().saveState),
+            .destructive(Text("Close & Auto Save Game"), action: ActionCreator().dismiss),
             .cancel()
         ])
     }

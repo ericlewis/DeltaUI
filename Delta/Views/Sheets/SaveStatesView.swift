@@ -2,10 +2,16 @@ import SwiftUI
 
 struct SaveStatesView: View {
     @ObservedObject var game: GameEntity
-    var selected: (SaveStateEntity?) -> Void
 
     var saves: [SaveStateEntity] {
         (game.saveStates?.allObjects as? [SaveStateEntity])?.reversed() ?? []
+    }
+    
+    func selected(_ save: SaveStateEntity) {
+        ActionCreator().loadState(save)
+        ActionCreator().dismiss()
+        
+        // check if we already have the emulator displaying somewhere
     }
     
     var body: some View {
@@ -14,11 +20,7 @@ struct SaveStatesView: View {
               VStack(alignment: .leading) {
                 Divider()
                 if self.game.saveState != nil {
-                    SaveStateCell(self.game.saveState!, auto: true, selected: {
-                        let v = $0
-                        v.extraGame = self.game
-                        self.selected(v)
-                    })
+                    SaveStateCell(self.game.saveState!, auto: true, selected: self.selected)
                 }
                 Text("All Saves")
                   .font(.title)
@@ -26,17 +28,11 @@ struct SaveStatesView: View {
                   .padding(.top)
               }
             }) {
-                SaveStateCell($0, auto: false, selected: {
-                    let v = $0
-                    v.extraGame = self.game
-                    self.selected(v)
-                })
+                SaveStateCell($0, auto: false, selected: self.selected)
             }
             .padding(.horizontal)
             .navigationBarTitle("Save States")
-            .navigationBarItems(trailing: Button(action: {
-                self.selected(nil)
-            }) {
+            .navigationBarItems(trailing: Button(action: ActionCreator().dismiss) {
                 Text("Done").bold()
             })
         }

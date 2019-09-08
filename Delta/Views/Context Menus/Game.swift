@@ -14,9 +14,7 @@ struct GameContextMenu: View {
     var body: some View {
         Group {
             if game.hasROM {
-                Button(action: {
-                    ActionCreator().presentEmulator(self.game)
-                }) {
+                Button(action: ActionCreator().presentEmulator(self.game)) {
                     HStack {
                         Text("Play")
                         Spacer()
@@ -50,9 +48,7 @@ struct GameContextMenu: View {
                     }
                 }
             }
-            Button(action: {
-                ActionCreator().presentAddToPlaylist(self.game)
-            }) {
+            Button(action: ActionCreator().presentAddToPlaylist(self.game)) {
                 HStack {
                     Text("Add to Playlist")
                     Spacer()
@@ -60,9 +56,7 @@ struct GameContextMenu: View {
                 }
             }
             if game.hasROM {
-                Button(action: {
-                    ActionCreator().presentSavedStates(self.game)
-                }) {
+                Button(action: ActionCreator().presentSavedStates(self.game)) {
                     HStack {
                         Text("View Save States")
                         Spacer()
@@ -70,9 +64,7 @@ struct GameContextMenu: View {
                     }
                 }
             }
-            Button(action: {
-                ActionCreator().presentLookup(self.game)
-            }) {
+            Button(action: ActionCreator().presentLookup(self.game)) {
                 HStack {
                     Text("Search Web")
                     Spacer()
@@ -80,9 +72,7 @@ struct GameContextMenu: View {
                 }
             }
             if game.hasROM {
-                Button(action: {
-                    ActionCreator().presentRemoveFromLibraryConfirmation(self.game)
-                }) {
+                Button(action: ActionCreator().presentRemoveFromLibraryConfirmation(self.game)) {
                     HStack {
                         Text("Delete from Library")
                         Spacer()

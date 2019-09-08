@@ -11,9 +11,7 @@ struct SheetPresenter<Content>: View where Content: View {
     func sheet(_ sheet: Sheets) -> some View {
         switch sheet {
         case .saveStates(let game):
-            return SaveStatesView(game: game, selected: { _ in
-                // TODO: selected a cell
-            }).eraseToAny()
+            return SaveStatesView(game: game).eraseToAny()
         case .addToPlaylist(let game):
             return AddToPlaylistView(game: game).eraseToAny()
         case .emulator:

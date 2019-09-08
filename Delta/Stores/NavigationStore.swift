@@ -1,35 +1,5 @@
 import SwiftUI
 
-// Emulation Stack
-
-enum EmulatorActions {
-    case loadState(SaveStateEntity)
-    case saveState
-}
-
-extension ActionCreator where Actions == EmulatorActions {
-    func saveState() {
-        
-    }
-}
-
-class EmulatorStore: ObservableObject {
-    static let shared = EmulatorStore()
-            
-    init(dispatcher: Dispatcher<EmulatorActions> = .shared) {
-        dispatcher.register { [weak self] action in
-            guard let `self` = self else {return}
-            
-            switch action {
-            case .loadState(_): print("TODO: loadState")
-            case .saveState: print("TODO: save state")
-            }
-        }        
-    }
-}
-
-// Navigation Stack
-
 enum Tabs: Int {
     case library, forYou, browse, search, settings
 }
@@ -53,15 +23,29 @@ extension ActionCreator where Actions == NavigationActions {
     }
     
     func presentSavedStates(_ game: GameEntity) {
-        perform(.showSheet(.saveStates(game)))
+        self.perform(.showSheet(.saveStates(game)))
+    }
+    
+    func presentSavedStates(_ game: GameEntity) -> () -> Void {
+        {
+            self.presentSavedStates(game)
+        }
     }
     
     func presentAddToPlaylist(_ game: GameEntity) {
-        perform(.showSheet(.addToPlaylist(game)))
+        self.perform(.showSheet(.addToPlaylist(game)))
     }
     
-    func presentLookup(_ game: GameEntity) {
-        perform(.showSheet(.lookup(game)))
+    func presentAddToPlaylist(_ game: GameEntity) -> () -> Void {
+        {
+            self.presentAddToPlaylist(game)
+        }
+    }
+    
+    func presentLookup(_ game: GameEntity) -> () -> Void {
+        {
+            self.perform(.showSheet(.lookup(game)))
+        }
     }
     
     func dismiss() {
@@ -76,8 +60,10 @@ extension ActionCreator where Actions == NavigationActions {
         perform(.showActionSheet(.emulatorMenu))
     }
     
-    func presentRemoveFromLibraryConfirmation(_ game: GameEntity) {
-        perform(.showActionSheet(.removeFromLibraryConfirmation(game)))
+    func presentRemoveFromLibraryConfirmation(_ game: GameEntity) -> () -> Void {
+        {
+            self.perform(.showActionSheet(.removeFromLibraryConfirmation(game)))
+        }
     }
 }
 
