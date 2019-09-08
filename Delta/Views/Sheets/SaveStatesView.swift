@@ -8,10 +8,21 @@ struct SaveStatesView: View {
     }
     
     func selected(_ save: SaveStateEntity) {
-        ActionCreator().loadState(save)
+        // FIX THIS CRAP
+        
         ActionCreator().dismiss()
         
-        // check if we already have the emulator displaying somewhere
+        switch NavigationStore.shared.activeSheet {
+        case .emulator(_):
+            ActionCreator().loadState(save)
+        default:
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                ActionCreator().presentEmulator(self.game)()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    ActionCreator().loadState(save)
+                }
+            }
+        }
     }
     
     var body: some View {
