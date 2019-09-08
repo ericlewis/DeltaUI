@@ -21,6 +21,8 @@ struct SheetPresenter<Content>: View where Content: View {
                 ActionCreator().presentMenu()
             }
             .edgesIgnoringSafeArea(.all).eraseToAny()
+        case .lookup(let game):
+            return WebView(url: .constant(URL(string: "https://www.google.com/search?q=\(String(game.title! + " " + game.type!).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)"))).edgesIgnoringSafeArea(.bottom).eraseToAny()
         case .none:
             return EmptyView().eraseToAny()
         }

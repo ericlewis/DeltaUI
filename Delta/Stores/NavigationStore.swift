@@ -3,28 +3,24 @@ import SwiftUI
 // Emulation Stack
 
 enum EmulatorActions {
-    case loadGame(GameEntity)
     case loadState(SaveStateEntity)
     case saveState
 }
 
 extension ActionCreator where Actions == EmulatorActions {
-    func load(_ game: GameEntity) {
-        perform(.loadGame(game))
+    func saveState() {
+        
     }
 }
 
 class EmulatorStore: ObservableObject {
     static let shared = EmulatorStore()
-    
-    @Published var game: GameEntity?
-        
+            
     init(dispatcher: Dispatcher<EmulatorActions> = .shared) {
         dispatcher.register { [weak self] action in
             guard let `self` = self else {return}
             
             switch action {
-            case .loadGame(let game): self.game = game
             case .loadState(_): print("TODO: loadState")
             case .saveState: print("TODO: save state")
             }
@@ -50,12 +46,22 @@ extension ActionCreator where Actions == NavigationActions {
         perform(.showSheet(.emulator(game)))
     }
     
+    func presentEmulator(_ game: GameEntity) -> () -> Void {
+        {
+            self.presentEmulator(game)
+        }
+    }
+    
     func presentSavedStates(_ game: GameEntity) {
         perform(.showSheet(.saveStates(game)))
     }
     
     func presentAddToPlaylist(_ game: GameEntity) {
         perform(.showSheet(.addToPlaylist(game)))
+    }
+    
+    func presentLookup(_ game: GameEntity) {
+        perform(.showSheet(.lookup(game)))
     }
     
     func dismiss() {
@@ -80,6 +86,7 @@ enum Sheets: Identifiable {
     case saveStates(GameEntity)
     case addToPlaylist(GameEntity)
     case emulator(GameEntity)
+    case lookup(GameEntity)
 
     var id: String {
         switch self {
@@ -87,6 +94,7 @@ enum Sheets: Identifiable {
         case .saveStates: return "saveStates"
         case .addToPlaylist: return "addToPlaylist"
         case .emulator: return "emulator"
+        case .lookup: return "lookup"
         }
     }
 }

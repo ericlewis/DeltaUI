@@ -8,7 +8,7 @@ struct BrowseCell: View {
     }
     
     var body: some View {
-        NavigationLink(destination: GameListView(fetchRequest: FetchRequests.allGames(console: console, inLibrary: false)).navigationBarTitle(console.title)) {
+        NavigationLink(destination: Destination.games(console, inLibrary: false)) {
             ZStack() {
                 RoundedRectangle(cornerRadius: 10, style: .continuous).fill(Color.purple).aspectRatio(1.8, contentMode: .fit)
                 Text(console.title).font(.title).bold().foregroundColor(.white)

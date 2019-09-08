@@ -34,8 +34,6 @@ struct GameGridCell: View {
                     .gameGridSubtitle()
             }
         }
-        .onTapGesture {
-            ActionCreator().presentEmulator(self.game)
-        }
+        .onTapGesture(perform: ActionCreator().presentEmulator(self.game))
     }
 }

@@ -12,8 +12,8 @@ struct SearchViewContainer: View {
 }
 
 struct RecentSearches: View {
-    @ObservedObject var store: SearchStore
-    @ObservedObject var recent: RecentStore
+    @ObservedObject var recent = RecentsStore.shared
+    var tappedRecent: (String) -> Void
     
     var body: some View {
         Section(header: HStack {
@@ -21,30 +21,31 @@ struct RecentSearches: View {
                 .foregroundColor(.primary)
                 .font(.title).bold()
             Spacer()
-            Button(action: self.recent.clear) {
+            Button(action: ActionCreator().clearRecentSearches) {
                 Text("Clear")
                     .font(.body)
                     .foregroundColor(.accentColor)
             }
         }) {
-            ForEach(recent.entries, id: \.self) { num in
+            ForEach(recent.entries, id: \.self) { text in
                 Button(action: {
-                    self.store.searchTerm = String(num)
+                    self.tappedRecent(text)
                 }) {
-                    Text(String(num))
+                    Text(text)
                 }
             }
+        }
+        .onAppear {
+            ActionCreator().loadRecentSearches()
         }
     }
 }
 
 struct SearchView: View {
-    @ObservedObject var recent: RecentStore
     @ObservedObject var store: SearchStore
     
     init(_ store: SearchStore) {
         self.store = store
-        self.recent = RecentStore()
     }
     
     @State var last: CGFloat? = nil
@@ -52,7 +53,9 @@ struct SearchView: View {
     var body: some View {
         Form {
             if store.searchTerm.isEmpty {
-                RecentSearches(store: store, recent: recent)
+                RecentSearches {
+                    self.store.searchTerm = $0
+                }
             } else {
                 Section(header: Text("Gameboy Advance").foregroundColor(.primary).font(.title).bold().background(MovingView())) {
                     if store.gba.isEmpty {
@@ -60,9 +63,7 @@ struct SearchView: View {
                     }
                     ForEach(store.gba) { game in
                         GameListCell(game)
-                            .onTapGesture {
-                                ActionCreator().presentEmulator(game)
-                        }
+                            .onTapGesture(perform: ActionCreator().presentEmulator(game))
                     }
                 }
                 Section(header: Text("Gameboy Color").foregroundColor(.primary).font(.title).bold()) {
@@ -71,9 +72,7 @@ struct SearchView: View {
                     }
                     ForEach(store.gbc) { game in
                         GameListCell(game)
-                            .onTapGesture {
-                                ActionCreator().presentEmulator(game)
-                        }
+                            .onTapGesture(perform: ActionCreator().presentEmulator(game))
                     }
                 }
                 Section(header: Text("Gameboy").foregroundColor(.primary).font(.title).bold()) {
@@ -82,9 +81,7 @@ struct SearchView: View {
                     }
                     ForEach(store.gb) { game in
                         GameListCell(game)
-                            .onTapGesture {
-                                ActionCreator().presentEmulator(game)
-                        }
+                            .onTapGesture(perform: ActionCreator().presentEmulator(game))
                     }
                 }
                 Section(header: Text("Super Nintendo").foregroundColor(.primary).font(.title).bold()) {
@@ -93,9 +90,7 @@ struct SearchView: View {
                     }
                     ForEach(store.snes) { game in
                         GameListCell(game)
-                            .onTapGesture {
-                                ActionCreator().presentEmulator(game)
-                        }
+                            .onTapGesture(perform: ActionCreator().presentEmulator(game))
                     }
                 }
                 Section(header: Text("Nintendo").foregroundColor(.primary).font(.title).bold()) {
@@ -104,9 +99,7 @@ struct SearchView: View {
                     }
                     ForEach(store.nes) { game in
                         GameListCell(game)
-                            .onTapGesture {
-                                ActionCreator().presentEmulator(game)
-                        }
+                            .onTapGesture(perform: ActionCreator().presentEmulator(game))
                     }
                 }
             }
@@ -123,8 +116,7 @@ struct SearchView: View {
                 
                 keyWindow?.endEditing(true)
                 
-                // save to the array
-                self.recent.save(self.store.searchTerm)
+                ActionCreator().save(searchTerm: self.store.searchTerm)
             }
             
             self.last = values.first?.bounds.minY

@@ -8,12 +8,8 @@ class ActionCreator<Actions> {
     }
     
     func perform(_ action: Actions) {
-        dispatcher.dispatch(action)
-    }
-    
-    func perform(_ actions: [Actions]) {
-        actions.forEach {
-            self.dispatcher.dispatch($0)
+        DispatchQueue.main.async {
+            self.dispatcher.dispatch(action)
         }
     }
 }

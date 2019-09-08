@@ -69,6 +69,17 @@ struct GameContextMenu: View {
                         Image(systemSymbol: .moon)
                     }
                 }
+            }
+            Button(action: {
+                ActionCreator().presentLookup(self.game)
+            }) {
+                HStack {
+                    Text("Search Web")
+                    Spacer()
+                    Image(systemSymbol: .globe)
+                }
+            }
+            if game.hasROM {
                 Button(action: {
                     ActionCreator().presentRemoveFromLibraryConfirmation(self.game)
                 }) {

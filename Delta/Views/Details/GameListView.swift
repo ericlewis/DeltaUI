@@ -13,9 +13,7 @@ struct GameListView: View {
             ActionCreator().presentEmulator($0)
         }) { game in
             GameListCell(game)
-            .onTapGesture {
-                ActionCreator().presentEmulator(game)
-            }
+                .onTapGesture(perform: ActionCreator().presentEmulator(game))
         }
         .edgesIgnoringSafeArea(.all)
     }

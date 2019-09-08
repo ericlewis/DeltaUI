@@ -42,7 +42,7 @@ struct PlaylistsView: View {
         HStack {
           TextField("New Playlist Title", text: $playlistTitleInput, onCommit: save)
           Button(action: save) {
-            Text(playlistTitleInput.isEmpty ? "Cancel" : "Done")
+            Text(playlistTitleInput.isEmpty ? "Cancel" : "Create")
               .done()
           }
         }
