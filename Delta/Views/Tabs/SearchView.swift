@@ -26,8 +26,7 @@ struct RecentSearches: View {
                     .font(.body)
                     .foregroundColor(.accentColor)
             }
-        }
-        .padding(.top)) {
+        }) {
             ForEach(recent.entries, id: \.self) { num in
                 Button(action: {
                     self.store.searchTerm = String(num)
@@ -57,42 +56,57 @@ struct SearchView: View {
             } else {
                 Section(header: Text("Gameboy Advance").foregroundColor(.primary).font(.title).bold().background(MovingView())) {
                     if store.gba.isEmpty {
-                        Text("No Results")
+                        Text("No Results").foregroundColor(.secondary)
                     }
-                    ForEach(store.gba) {
-                        GameListCell($0)
+                    ForEach(store.gba) { game in
+                        GameListCell(game)
+                            .onTapGesture {
+                                ActionCreator().presentEmulator(game)
+                        }
                     }
                 }
                 Section(header: Text("Gameboy Color").foregroundColor(.primary).font(.title).bold()) {
                     if store.gbc.isEmpty {
-                        Text("No Results")
+                        Text("No Results").foregroundColor(.secondary)
                     }
-                    ForEach(store.gbc) {
-                        GameListCell($0)
+                    ForEach(store.gbc) { game in
+                        GameListCell(game)
+                            .onTapGesture {
+                                ActionCreator().presentEmulator(game)
+                        }
                     }
                 }
                 Section(header: Text("Gameboy").foregroundColor(.primary).font(.title).bold()) {
                     if store.gb.isEmpty {
-                        Text("No Results")
+                        Text("No Results").foregroundColor(.secondary)
                     }
-                    ForEach(store.gb) {
-                        GameListCell($0)
-                    }
-                }
-                Section(header: Text("Nintendo").foregroundColor(.primary).font(.title).bold()) {
-                    if store.nes.isEmpty {
-                        Text("No Results")
-                    }
-                    ForEach(store.nes) {
-                        GameListCell($0)
+                    ForEach(store.gb) { game in
+                        GameListCell(game)
+                            .onTapGesture {
+                                ActionCreator().presentEmulator(game)
+                        }
                     }
                 }
                 Section(header: Text("Super Nintendo").foregroundColor(.primary).font(.title).bold()) {
                     if store.snes.isEmpty {
-                        Text("No Results")
+                        Text("No Results").foregroundColor(.secondary)
                     }
-                    ForEach(store.snes) {
-                        GameListCell($0)
+                    ForEach(store.snes) { game in
+                        GameListCell(game)
+                            .onTapGesture {
+                                ActionCreator().presentEmulator(game)
+                        }
+                    }
+                }
+                Section(header: Text("Nintendo").foregroundColor(.primary).font(.title).bold()) {
+                    if store.nes.isEmpty {
+                        Text("No Results").foregroundColor(.secondary)
+                    }
+                    ForEach(store.nes) { game in
+                        GameListCell(game)
+                            .onTapGesture {
+                                ActionCreator().presentEmulator(game)
+                        }
                     }
                 }
             }

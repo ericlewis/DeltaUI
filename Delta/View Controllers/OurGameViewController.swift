@@ -23,18 +23,20 @@ class OurGameViewController: GameViewController, StorageProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupGame()
-//         loadState()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         resumeEmulation()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.loadState()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         stateToLoad = nil
-//        persistAutoSaveState()
+        persistAutoSaveState()
     }
     
     private func setupController() {

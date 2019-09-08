@@ -97,7 +97,12 @@ class SearchStore: NSObject, ObservableObject, NSFetchedResultsControllerDelegat
 
         cancellable = AnyCancellable($searchTerm
              .removeDuplicates()
-             .debounce(for: 0.2, scheduler: DispatchQueue.main)
+             .debounce(for: 0.1, scheduler: DispatchQueue.main)
             .sink { _ in self.search() })
+        
+        let _ = AnyCancellable($scope
+         .removeDuplicates()
+         .debounce(for: 0.1, scheduler: DispatchQueue.main)
+        .sink { _ in self.search() })
     }
 }
