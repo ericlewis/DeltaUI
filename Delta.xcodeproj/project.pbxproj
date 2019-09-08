@@ -37,6 +37,12 @@
 		681C7A572318636B00DFC744 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A562318636B00DFC744 /* SettingsView.swift */; };
 		681C7A59231871A500DFC744 /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A58231871A500DFC744 /* BrowseView.swift */; };
 		681C7A5B2318725000DFC744 /* ConsoleLibraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A5A2318725000DFC744 /* ConsoleLibraryCell.swift */; };
+		682640A12324AB81003B86A3 /* SaveStateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682640A02324AB81003B86A3 /* SaveStateCell.swift */; };
+		682640A32324ABE3003B86A3 /* BrowseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682640A22324ABE3003B86A3 /* BrowseCell.swift */; };
+		682640A52324AC3D003B86A3 /* HorizontalGameScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682640A42324AC3D003B86A3 /* HorizontalGameScroller.swift */; };
+		682640A72324AC5D003B86A3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682640A62324AC5D003B86A3 /* HeaderView.swift */; };
+		682640A92324AC88003B86A3 /* FavoriteForYouView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682640A82324AC88003B86A3 /* FavoriteForYouView.swift */; };
+		682640AA2324B368003B86A3 /* all.json in Resources */ = {isa = PBXBuildFile; fileRef = 6818AACE231F339D00C67FDA /* all.json */; };
 		6832F4642316E219002B3FD9 /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6832F4632316E219002B3FD9 /* GameListView.swift */; };
 		6856F878231617D30060CC7A /* Games.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6856F876231617D30060CC7A /* Games.xcdatamodeld */; };
 		6856F87C2316B82A0060CC7A /* SearchNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6856F87B2316B82A0060CC7A /* SearchNavigationView.swift */; };
@@ -162,7 +168,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6818AACE231F339D00C67FDA /* all.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = all.json; path = "../../../Downloads/rom-api-5/all.json"; sourceTree = "<group>"; };
+		6818AACE231F339D00C67FDA /* all.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = all.json; path = ../../../Downloads/all.json; sourceTree = "<group>"; };
 		6818AAF1232005F700C67FDA /* PlaylistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsView.swift; sourceTree = "<group>"; };
 		6818AAF32320097100C67FDA /* LibraryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCell.swift; sourceTree = "<group>"; };
 		6818AAF52320180700C67FDA /* PlatformsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformsView.swift; sourceTree = "<group>"; };
@@ -182,6 +188,11 @@
 		681C7A562318636B00DFC744 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		681C7A58231871A500DFC744 /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
 		681C7A5A2318725000DFC744 /* ConsoleLibraryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLibraryCell.swift; sourceTree = "<group>"; };
+		682640A02324AB81003B86A3 /* SaveStateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveStateCell.swift; sourceTree = "<group>"; };
+		682640A22324ABE3003B86A3 /* BrowseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseCell.swift; sourceTree = "<group>"; };
+		682640A42324AC3D003B86A3 /* HorizontalGameScroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalGameScroller.swift; sourceTree = "<group>"; };
+		682640A62324AC5D003B86A3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		682640A82324AC88003B86A3 /* FavoriteForYouView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteForYouView.swift; sourceTree = "<group>"; };
 		6832F4632316E219002B3FD9 /* GameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListView.swift; sourceTree = "<group>"; };
 		684AC25523198C3D00D30DA1 /* DeltaCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DeltaCore.xcodeproj; path = DeltaCore/DeltaCore.xcodeproj; sourceTree = "<group>"; };
 		684AC25C23198C4200D30DA1 /* GBADeltaCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GBADeltaCore.xcodeproj; path = GBADeltaCore/GBADeltaCore.xcodeproj; sourceTree = "<group>"; };
@@ -308,12 +319,16 @@
 		681C7A54231861F900DFC744 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				6882E2EA2320C3430003AA02 /* AddPlaylistCell.swift */,
+				682640A22324ABE3003B86A3 /* BrowseCell.swift */,
 				681C7A5A2318725000DFC744 /* ConsoleLibraryCell.swift */,
 				681C7A442318477000DFC744 /* GameGridCell.swift */,
 				681C7A50231861B400DFC744 /* GameListCell.swift */,
 				6818AAF32320097100C67FDA /* LibraryCell.swift */,
-				6882E2EA2320C3430003AA02 /* AddPlaylistCell.swift */,
 				6882E2EC2320C3820003AA02 /* PlaylistCell.swift */,
+				682640A02324AB81003B86A3 /* SaveStateCell.swift */,
+				682640A42324AC3D003B86A3 /* HorizontalGameScroller.swift */,
+				682640A82324AC88003B86A3 /* FavoriteForYouView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -433,6 +448,7 @@
 			isa = PBXGroup;
 			children = (
 				6882E2F72320C87F0003AA02 /* PlaceholderView.swift */,
+				682640A62324AC5D003B86A3 /* HeaderView.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -687,6 +703,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				682640AA2324B368003B86A3 /* all.json in Resources */,
 				688D50D22315888B00B9127F /* LaunchScreen.storyboard in Resources */,
 				688D50CF2315888B00B9127F /* Preview Assets.xcassets in Resources */,
 				688D50CC2315888B00B9127F /* Assets.xcassets in Resources */,
@@ -714,6 +731,7 @@
 				6882E3092320DAD30003AA02 /* SaveStateEntity.swift in Sources */,
 				687B519823235D270028B711 /* View.swift in Sources */,
 				6818AAF8232019E500C67FDA /* PlaylistView.swift in Sources */,
+				682640A92324AC88003B86A3 /* FavoriteForYouView.swift in Sources */,
 				688D50C62315888900B9127F /* AppDelegate.swift in Sources */,
 				681C7A4F231860A000DFC744 /* GameEntity.swift in Sources */,
 				687DDCF42321C9E30087DDC7 /* SaveStatesView.swift in Sources */,
@@ -734,17 +752,21 @@
 				687B519623235CA90028B711 /* SheetPresenter.swift in Sources */,
 				687B518A232356990028B711 /* Dispatcher.swift in Sources */,
 				6856F87C2316B82A0060CC7A /* SearchNavigationView.swift in Sources */,
+				682640A12324AB81003B86A3 /* SaveStateCell.swift in Sources */,
 				681C7A452318477000DFC744 /* GameGridCell.swift in Sources */,
 				681C7A59231871A500DFC744 /* BrowseView.swift in Sources */,
 				6882E3052320D4480003AA02 /* DeltaView.swift in Sources */,
 				687B519A2323667A0028B711 /* ActionCreator.swift in Sources */,
 				687DDD3B23230AB00087DDC7 /* NavigationStore.swift in Sources */,
+				682640A72324AC5D003B86A3 /* HeaderView.swift in Sources */,
 				681C7A302318350A00DFC744 /* LibraryView.swift in Sources */,
 				688D50CA2315888900B9127F /* RootView.swift in Sources */,
 				681C7A43231838C800DFC744 /* GridView.swift in Sources */,
 				6832F4642316E219002B3FD9 /* GameListView.swift in Sources */,
+				682640A32324ABE3003B86A3 /* BrowseCell.swift in Sources */,
 				6818ABB623218E8D00C67FDA /* OurGameViewController.swift in Sources */,
 				681C7A51231861B400DFC744 /* GameListCell.swift in Sources */,
+				682640A52324AC3D003B86A3 /* HorizontalGameScroller.swift in Sources */,
 				6882E2F52320C65D0003AA02 /* Game.swift in Sources */,
 				6882E3072320D6400003AA02 /* PlaylistStore.swift in Sources */,
 			);

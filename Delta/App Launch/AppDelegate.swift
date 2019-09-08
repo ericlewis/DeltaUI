@@ -12,6 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         registerDeltaCores()
+        // sync()
         return true
     }
     
@@ -66,7 +67,7 @@ extension AppDelegate {
         
         guard let filePath = Bundle.main.url(forResource: "all", withExtension: "json") else {return}
         guard let data = try? Data(contentsOf: filePath) else {return}
-        let _ = try? decoder.decode([GameEntity].self, from: data)
+        let _ = try? decoder.decode(SearchResults.self, from: data)
 
         self.saveContext()
     }

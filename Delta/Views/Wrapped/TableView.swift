@@ -53,6 +53,7 @@ class FetchedTableViewController<T: NSManagedObject, Content: View>: UITableView
     var context: NSManagedObjectContext
     var sectionNameKeyPath: String?
     var rootView: (T) -> Content
+    var hideAlpha: Bool
     
     var initialized = false
     
@@ -72,10 +73,11 @@ class FetchedTableViewController<T: NSManagedObject, Content: View>: UITableView
         return controller
     }()
     
-    init(_ fetchRequest: NSFetchRequest<T>, context: NSManagedObjectContext, style: UITableView.Style = .plain, sectionNameKeyPath: String? = nil, rootView: @escaping (T) -> Content) {
+    init(_ fetchRequest: NSFetchRequest<T>, context: NSManagedObjectContext, style: UITableView.Style = .plain, sectionNameKeyPath: String? = nil, hideAlpha: Bool = false, rootView: @escaping (T) -> Content) {
         self.context = context
         self.fetchRequest = fetchRequest
         self.rootView = rootView
+        self.hideAlpha = hideAlpha
         
         super.init(frame: .zero, style: style)
     }
@@ -105,7 +107,7 @@ class FetchedTableViewController<T: NSManagedObject, Content: View>: UITableView
     typealias DataSource = UICollectionViewDiffableDataSourceReference
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
-        diffDataSource.sectionTitles = sectionNameKeyPath == nil ? nil : snapshot.sectionIdentifiers as? [String]
+        diffDataSource.sectionTitles = sectionNameKeyPath == nil || hideAlpha ? nil : snapshot.sectionIdentifiers as? [String]
         diffDataSource.apply(snapshot as NSDiffableDataSourceSnapshot<String, NSManagedObjectID>,
                              animatingDifferences: true)
     }
