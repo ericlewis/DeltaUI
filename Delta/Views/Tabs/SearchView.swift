@@ -63,7 +63,6 @@ struct SearchView: View {
                     }
                     ForEach(store.gba) { game in
                         GameListCell(game)
-                            .onTapGesture(perform: ActionCreator().presentEmulator(game))
                     }
                 }
                 Section(header: Text("Gameboy Color").foregroundColor(.primary).font(.title).bold()) {
@@ -72,7 +71,6 @@ struct SearchView: View {
                     }
                     ForEach(store.gbc) { game in
                         GameListCell(game)
-                            .onTapGesture(perform: ActionCreator().presentEmulator(game))
                     }
                 }
                 Section(header: Text("Gameboy").foregroundColor(.primary).font(.title).bold()) {
@@ -81,7 +79,6 @@ struct SearchView: View {
                     }
                     ForEach(store.gb) { game in
                         GameListCell(game)
-                            .onTapGesture(perform: ActionCreator().presentEmulator(game))
                     }
                 }
                 Section(header: Text("Super Nintendo").foregroundColor(.primary).font(.title).bold()) {
@@ -90,7 +87,6 @@ struct SearchView: View {
                     }
                     ForEach(store.snes) { game in
                         GameListCell(game)
-                            .onTapGesture(perform: ActionCreator().presentEmulator(game))
                     }
                 }
                 Section(header: Text("Nintendo").foregroundColor(.primary).font(.title).bold()) {
@@ -99,7 +95,6 @@ struct SearchView: View {
                     }
                     ForEach(store.nes) { game in
                         GameListCell(game)
-                            .onTapGesture(perform: ActionCreator().presentEmulator(game))
                     }
                 }
             }

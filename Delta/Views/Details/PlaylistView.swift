@@ -12,7 +12,6 @@ struct PlaylistView: View {
         List {
             ForEach(store.games) { game in
                 GameListCell(game)
-                    .onTapGesture(perform: ActionCreator().presentEmulator(game))
             }
             .onDelete {
                 ActionCreator().deleteGame(self.playlist, self.store.games[$0.first!])
