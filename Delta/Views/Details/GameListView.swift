@@ -2,7 +2,6 @@ import SwiftUI
 import CoreData
 
 struct GameListView: View {
-    @EnvironmentObject var currentlyPlaying: CurrentlyPlayingStore
     let fetchRequest: NSFetchRequest<GameEntity>
         
     init(fetchRequest: NSFetchRequest<GameEntity> = FetchRequests.recentlyPlayedDetail(console: .all)) {
@@ -11,9 +10,9 @@ struct GameListView: View {
     
     var body: some View {
         TableView(fetchRequest, sectionNameKeyPath: "titleInitial", tapped: {
-            self.currentlyPlaying.selected($0)()
-        }) {
-            GameListCell($0)
+            ActionCreator().presentEmulator($0)
+        }) { game in
+            GameListCell(game)
         }
         .edgesIgnoringSafeArea(.all)
     }

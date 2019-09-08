@@ -10,7 +10,7 @@ struct ConsoleCell: View {
     }
     
     var body: some View {
-        NavigationLink(destination: GameListView(fetchRequest: FetchRequests.allGames(console: console, inLibrary: libraryOnly)).navigationBarTitle(console.title)) {
+        NavigationLink(destination: Destination.games(console, inLibrary: libraryOnly)) {
             LibraryCell(title: console.title, showChevron: false)
         }
     }

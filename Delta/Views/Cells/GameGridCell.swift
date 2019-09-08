@@ -2,7 +2,6 @@ import SwiftUI
 import URLImage
 
 struct GameGridCell: View {
-    @EnvironmentObject var store: CurrentlyPlayingStore
     @ObservedObject var game: GameEntity
     
     init(_ game: GameEntity) {
@@ -19,7 +18,7 @@ struct GameGridCell: View {
                     .contextMenu {
                         GameContextMenu(game: game)
                 }
-                if game.task != nil || game == store.game {
+                if game.task != nil {
                     ActivityView()
                     .padding(5)
                     .background(Color.white)
@@ -35,6 +34,6 @@ struct GameGridCell: View {
                     .gameGridSubtitle()
             }
         }
-        .onTapGesture(perform: store.selected(game))
+        .onTapGesture(perform: ActionCreator().presentEmulator(self.game))
     }
 }

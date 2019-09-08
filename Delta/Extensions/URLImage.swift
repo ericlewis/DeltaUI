@@ -20,12 +20,14 @@ extension URLImage {
 
 extension Text {
   func gameGridTitle() -> some View {
-    self.foregroundColor(.primary)
+    self.font(.callout)
+      .foregroundColor(.primary)
       .lineLimit(1)
   }
   
   func gameGridSubtitle() -> some View {
-    self.foregroundColor(.secondary)
+    self .font(.callout)
+      .foregroundColor(.secondary)
       .lineLimit(1)
   }
   

@@ -1,37 +1,57 @@
 import SwiftUI
+import DeltaCore
 
-struct DeltaView: View {
-  @EnvironmentObject var store: CurrentlyPlayingStore
-  @ObservedObject var menu = MenuStore()
-  
-  @State var saveState = false
+struct DeltaView: UIViewControllerRepresentable {
+    @EnvironmentObject var navigation: NavigationStore
     
-  let gesture = DragGesture()
-  
-  var body: some View {
-    EmptyView().sheet(isPresented: $store.isShowingEmulator) {
-        DeltaViewInner(self.$store.game, pause: self.$menu.isShowing, saveState: self.$saveState, loadSaveState: self.$store.loadSaveState) {
-        self.menu.isShowing.toggle()
-      }
-      .edgesIgnoringSafeArea(.all)
-      .sheet(isPresented: self.$menu.isShowingAddToPlaylist) {
-        if self.menu.isShowingSavedStates {
-            SaveStatesView(game: self.store.game!) {
-                self.menu.isShowingAddToPlaylist = false
-                self.menu.isShowingSavedStates = false
-                self.store.selectedSave($0)
-            }
-        } else {
-            AddToPlaylist(isShowing: self.$menu.isShowingAddToPlaylist, game: self.store.game!)
-            .environment(\.managedObjectContext, self.store.game!.managedObjectContext!)
-        }
-      }
-      .actionSheet(isPresented: self.$menu.isShowing) {
-        ActionSheet.EmulatorMenu(store: self.store, menu: self.menu) {
-            self.saveState.toggle()
-        }
-      }
-      .highPriorityGesture(self.gesture) // i keep the modal open
+    var pressedMenu: () -> Void
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
     }
-}
+    
+    func makeUIViewController(context: Context) -> OurGameViewController {
+        let vc = OurGameViewController()
+        vc.delegate = context.coordinator
+        vc.gameEnt = navigation.currentGame
+        return vc
+    }
+    
+    func updateUIViewController(_ gameViewController: OurGameViewController, context: Context) {
+        
+        // fixes layout when rotating
+        gameViewController.view.setNeedsUpdateConstraints()
+        
+//        if saveState {
+//            print("save it!")
+//            gameViewController.persistSaveState()
+//            saveState = false
+//        }
+//
+//        if loadSaveState != nil {
+//            gameViewController.stateToLoad = loadSaveState
+//            loadSaveState = nil
+//        }
+//
+//        if pause {
+//            gameViewController.pauseEmulation()
+//        } else {
+//            gameViewController.resumeEmulation()
+//        }
+//
+
+        gameViewController.gameEnt = navigation.currentGame
+    }
+    
+    class Coordinator: NSObject, GameViewControllerDelegate {
+        var parent: DeltaView
+        
+        init(_ parent: DeltaView) {
+            self.parent = parent
+        }
+        
+        func gameViewController(_ gameViewController: GameViewController, handleMenuInputFrom gameController: GameController) {
+            parent.pressedMenu()
+        }
+    }
 }

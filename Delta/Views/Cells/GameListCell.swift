@@ -4,7 +4,6 @@ import URLImage
 import ProgressView
 
 struct GameListCell: View {
-    @EnvironmentObject var store: CurrentlyPlayingStore
     @ObservedObject var game: GameEntity
     
     init(_ game: GameEntity) {
@@ -21,6 +20,7 @@ struct GameListCell: View {
             VStack(alignment: .leading) {
                 Text(game.splitTitle.0 ?? "No Title")
                     .gameGridTitle()
+                    .font(.body)
                 if game.splitTitle.1 != nil {
                     Text(game.splitTitle.1 ?? "")
                         .gameGridSubtitle()
@@ -37,10 +37,8 @@ struct GameListCell: View {
                 .foregroundColor(.accentColor)
                 .animation(.spring())
             }
-            if game == store.game {
-                ActivityView()
-            }
         }
+        .onTapGesture(perform: ActionCreator().presentEmulator(game))
         .contextMenu {
             GameContextMenu(game: game)
         }

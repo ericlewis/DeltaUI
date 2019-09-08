@@ -1,23 +1,25 @@
 import SwiftUI
 
 struct PlaylistView: View {
-  @EnvironmentObject var currentlyPlaying: CurrentlyPlayingStore
-  @ObservedObject var playlist: PlaylistEntity
-  @ObservedObject var store: PlaylistStore
-  
-  init(playlist: PlaylistEntity) {
-    self.playlist = playlist
-    self.store = PlaylistStore(playlist)
-  }
-  
-  var body: some View {
-    List {
-      ForEach(store.games) {
-        GameListCell($0)
-        .onTapGesture(perform: self.currentlyPlaying.selected($0))
-      }
-      .onDelete(perform: store.delete)
+    @ObservedObject var playlist: PlaylistEntity
+    @ObservedObject var store = CollectionStore()
+    
+    init(playlist: PlaylistEntity) {
+        self.playlist = playlist
     }
-    .navigationBarTitle(playlist.title ?? "No Title")
-  }
+    
+    var body: some View {
+        List {
+            ForEach(store.games) { game in
+                GameListCell(game)
+            }
+            .onDelete {
+                ActionCreator().deleteGame(self.playlist, self.store.games[$0.first!])
+            }
+        }
+        .onAppear {
+            ActionCreator().loadGames(self.playlist)
+        }
+        .navigationBarTitle(playlist.title ?? "No Title")
+    }
 }

@@ -3,32 +3,33 @@ import DeltaCore
 import Combine
 import CoreData
 
-class SearchStore: NSObject, ObservableObject, NSFetchedResultsControllerDelegate {
-    @Published var searchTerm = "" {
-        didSet {
-            search()
-        }
+extension Collection {
+    func asArray() -> Array<Element> {
+        Array(self)
     }
-    
-    @Published var scope: Int = 0 {
-        didSet {
-            search()
-        }
-    }
-    
-    @Published var fetchRequest: NSFetchRequest<GameEntity>? = nil
+}
 
-    @Published var games: [GameEntity] = []
-    var console: Console
+class SearchStore: NSObject, ObservableObject, NSFetchedResultsControllerDelegate {
+    @Published var searchTerm = ""
+    @Published var scope: Int = 0
+    
+    @Published var fetchRequest: NSFetchRequest<GameEntity>? = nil    
+    
+    @Published var gba: [GameEntity] = []
+    @Published var gbc: [GameEntity] = []
+    @Published var gb: [GameEntity] = []
+    @Published var snes: [GameEntity] = []
+    @Published var nes: [GameEntity] = []
 
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<GameEntity> = {
         let fetchRequest: NSFetchRequest<GameEntity> = GameEntity.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "type", ascending: true), NSSortDescriptor(key: "title", ascending: true)]
+        
         if scope == 0 {
-            let predicate = NSPredicate(format: "type = %@ && romName != nil", console.rawValue)
+            let predicate = NSPredicate(format: "gameURL != nil")
             fetchRequest.predicate = predicate
         } else {
-            let predicate = NSPredicate(format: "type = %@", console.rawValue)
+            let predicate = NSPredicate(format: "gameURL == nil")
             fetchRequest.predicate = predicate
         }
                 
@@ -44,36 +45,64 @@ class SearchStore: NSObject, ObservableObject, NSFetchedResultsControllerDelegat
     func search() {
         if !searchTerm.isEmpty {
             if scope == 0 {
-                let predicate = NSPredicate(format: "title contains[cd] %@ && type = %@ && romName != nil", "\(searchTerm)", console.rawValue)
+                let predicate = NSPredicate(format: "title contains[cd] %@ && gameURL != nil", "\(searchTerm)")
                 self.fetchedResultsController.fetchRequest.predicate = predicate
             } else {
-                let predicate = NSPredicate(format: "title contains[cd] %@ && type = %@", "\(searchTerm)", console.rawValue)
+                let predicate = NSPredicate(format: "title contains[cd] %@ && gameURL == nil", "\(searchTerm)")
                 self.fetchedResultsController.fetchRequest.predicate = predicate
             }
         } else {
             if scope == 0 {
-                let predicate = NSPredicate(format: "type = %@ && romName != nil", console.rawValue)
+                let predicate = NSPredicate(format: "gameURL != nil")
                 self.fetchedResultsController.fetchRequest.predicate = predicate
             } else {
-                let predicate = NSPredicate(format: "type = %@", console.rawValue)
+                let predicate = NSPredicate(format: "gameURL == nil")
                 self.fetchedResultsController.fetchRequest.predicate = predicate
             }
         }
         
         try? self.fetchedResultsController.performFetch()
-        self.games = self.fetchedResultsController.fetchedObjects ?? []
         self.fetchRequest = self.fetchedResultsController.fetchRequest
+        
+        let limit = 6
+        
+        self.gb = []
+        self.gbc = []
+        self.gba = []
+        self.nes = []
+        self.snes = []
+                
+        self.fetchedResultsController.sections?.forEach { section in
+            switch section.name {
+            case "gameboy":
+            self.gb = (section.objects as? [GameEntity])?.prefix(limit).asArray() ?? []
+            case "gameboy-color":
+            self.gbc = (section.objects as? [GameEntity])?.prefix(limit).asArray() ?? []
+            case "gameboy-advance":
+            self.gba = (section.objects as? [GameEntity])?.prefix(limit).asArray() ?? []
+            case "nintendo":
+            self.nes = (section.objects as? [GameEntity])?.prefix(limit).asArray() ?? []
+            case "super-nintendo":
+            self.snes = (section.objects as? [GameEntity])?.prefix(limit).asArray() ?? []
+            default:
+                break
+            }
+        }
     }
     
     private var cancellable: AnyCancellable? = nil
     
-    init(console: Console) {
-        self.console = console
+    override init() {
         super.init()
 
         cancellable = AnyCancellable($searchTerm
              .removeDuplicates()
-             .debounce(for: 0.2, scheduler: DispatchQueue.main)
+             .debounce(for: 0.1, scheduler: DispatchQueue.main)
             .sink { _ in self.search() })
+        
+        let _ = AnyCancellable($scope
+         .removeDuplicates()
+         .debounce(for: 0.1, scheduler: DispatchQueue.main)
+        .sink { _ in self.search() })
     }
 }
