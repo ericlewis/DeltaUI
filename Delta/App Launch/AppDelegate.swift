@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         registerDeltaCores()
         registerLocalNotifications()
-        
+
         return true
     }
     
@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Delta.register(SNES.core)
         Delta.register(NES.core)
     }
-
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -47,6 +47,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data Saving support
 
     func saveContext () {
+        QuickActionsStore.shared.fetch()
+        UIApplication.shared.shortcutItems = QuickActionsStore.shared.games.map { game in
+            return UIApplicationShortcutItem(type: "FavoriteAction",
+                                             localizedTitle: game.splitTitle.0 ?? game.title!,
+                                             localizedSubtitle: game.splitTitle.1,
+                                             icon: .init(systemImageName: "play.fill"),
+                                             userInfo: ["id": game.id! as NSSecureCoding])
+        }
+        
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
@@ -77,6 +86,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         // todo: migrate to actions
+        // TODO: DRY
         if let id = response.notification.request.content.userInfo["id"] as? String {
             let request: NSFetchRequest<GameEntity> = GameEntity.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]

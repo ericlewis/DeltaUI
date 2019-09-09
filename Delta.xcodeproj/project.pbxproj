@@ -63,6 +63,7 @@
 		687DDD722326D4E70087DDC7 /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 687DDD712326D4E70087DDC7 /* ActivityIndicatorView */; };
 		687DDD742326E85A0087DDC7 /* SaveStatesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDD732326E85A0087DDC7 /* SaveStatesStore.swift */; };
 		687DDD772326ECBF0087DDC7 /* PublishedSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDD762326ECBF0087DDC7 /* PublishedSetting.swift */; };
+		687DDD792326FA4B0087DDC7 /* QuickActionsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDD782326FA4B0087DDC7 /* QuickActionsStore.swift */; };
 		6882E2D42320C1350003AA02 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 6882E2D32320C1350003AA02 /* SwiftSoup */; };
 		6882E2DE2320C1C00003AA02 /* ZIPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6856F86A2315E5C80060CC7A /* ZIPFoundation.framework */; platformFilter = ios; };
 		6882E2DF2320C1C00003AA02 /* ZIPFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6856F86A2315E5C80060CC7A /* ZIPFoundation.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -226,6 +227,7 @@
 		687DDD6E2326D1A80087DDC7 /* DoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneButton.swift; sourceTree = "<group>"; };
 		687DDD732326E85A0087DDC7 /* SaveStatesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveStatesStore.swift; sourceTree = "<group>"; };
 		687DDD762326ECBF0087DDC7 /* PublishedSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishedSetting.swift; sourceTree = "<group>"; };
+		687DDD782326FA4B0087DDC7 /* QuickActionsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionsStore.swift; sourceTree = "<group>"; };
 		6882E2EA2320C3430003AA02 /* AddPlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaylistCell.swift; sourceTree = "<group>"; };
 		6882E2EC2320C3820003AA02 /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
 		6882E2EF2320C4070003AA02 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 				68707E722325B38000C30C9D /* EmulatorStore.swift */,
 				68707E912325F45E00C30C9D /* NotificationStore.swift */,
 				687DDD732326E85A0087DDC7 /* SaveStatesStore.swift */,
+				687DDD782326FA4B0087DDC7 /* QuickActionsStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -777,6 +780,7 @@
 				687DDD0023229F6C0087DDC7 /* TableView.swift in Sources */,
 				6882E3092320DAD30003AA02 /* SaveStateEntity.swift in Sources */,
 				687DDD742326E85A0087DDC7 /* SaveStatesStore.swift in Sources */,
+				687DDD792326FA4B0087DDC7 /* QuickActionsStore.swift in Sources */,
 				687B519823235D270028B711 /* View.swift in Sources */,
 				6818AAF8232019E500C67FDA /* PlaylistView.swift in Sources */,
 				682640A92324AC88003B86A3 /* FavoriteForYouView.swift in Sources */,

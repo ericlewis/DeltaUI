@@ -27,5 +27,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidEnterBackground(_ scene: UIScene) {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
+    
+    func windowScene(_ windowScene: UIWindowScene, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        guard let gameInfo = shortcutItem.userInfo as? [String: String], let id = gameInfo["id"] else {
+            return completionHandler(true)
+        }
+        
+        // TODO: DRY
+        let request: NSFetchRequest<GameEntity> = GameEntity.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        request.predicate = NSPredicate(format: "id = %@", id)
+        request.fetchLimit = 1
+        guard let games = try? (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext.fetch(request), let game = games.first else {
+            return
+        }
+        ActionCreator().presentEmulator(game)()
+        completionHandler(false)
+    }
 }
 
