@@ -91,11 +91,13 @@ extension NotificationStore {
     }
     
     private func showNotification(_ notification: LocalNotification) {
-        switch notification {
-        case .downloadComplete(let game):
-            notificationCenter.add(.downloadComplete(game))
-        case .saveCompelete(let game, let imageURL):
-            notificationCenter.add(.saveComplete(game, imageURL))
+        if SettingsStore.shared.notificationsEnabled {
+            switch notification {
+            case .downloadComplete(let game):
+                notificationCenter.add(.downloadComplete(game))
+            case .saveCompelete(let game, let imageURL):
+                notificationCenter.add(.saveComplete(game, imageURL))
+            }
         }
     }
 }

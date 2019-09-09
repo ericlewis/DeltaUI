@@ -41,6 +41,7 @@ class OurGameViewController: GameViewController, StorageProtocol {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         resumeEmulation()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.loadState()
         }
@@ -86,7 +87,7 @@ class OurGameViewController: GameViewController, StorageProtocol {
             
             if self.stateToLoad != nil {
                 try emulatorCore?.load(self.stateToLoad!.loadableWithGame(gameEnt!)!)
-            } else {
+            } else if SettingsStore.shared.resumeFromAutoSave {
                 try emulatorCore?.load(save)
             }
             
@@ -101,10 +102,12 @@ class OurGameViewController: GameViewController, StorageProtocol {
     }
     
     private func persistAutoSaveState() {
-        guard let save = createSaveStateEntity(), let context = gameEnt?.managedObjectContext else {return}
-        createSaveImage(save)
-        gameEnt?.saveState = save
-        try? context.save()
+        if SettingsStore.shared.autoSaveOnClose {
+            guard let save = createSaveStateEntity(), let context = gameEnt?.managedObjectContext else {return}
+            createSaveImage(save)
+            gameEnt?.saveState = save
+            try? context.save()
+        }
     }
     
     func persistSaveState() {

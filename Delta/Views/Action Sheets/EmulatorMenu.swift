@@ -25,7 +25,7 @@ extension ActionSheet {
                 ActionCreator().presentSavedStates(game)()
             },
             .default(Text("Save State"), action: ActionCreator().saveState),
-            .destructive(Text("Close & Auto Save Game"), action: ActionCreator().dismiss),
+            SettingsStore.shared.autoSaveOnClose ? .destructive(Text("Close & Auto Save Game"), action: ActionCreator().dismiss) : .destructive(Text("Close Game"), action: ActionCreator().dismiss),
             .cancel()
         ])
     }
