@@ -38,14 +38,6 @@
 		6856F878231617D30060CC7A /* Games.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6856F876231617D30060CC7A /* Games.xcdatamodeld */; };
 		6856F87C2316B82A0060CC7A /* SearchNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6856F87B2316B82A0060CC7A /* SearchNavigationView.swift */; };
 		68707E5F2324D57400C30C9D /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68707E5E2324D57400C30C9D /* WebView.swift */; };
-		68707E6A2325A05400C30C9D /* GBADeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26223198C4200D30DA1 /* GBADeltaCore.framework */; platformFilter = ios; };
-		68707E6B2325A05400C30C9D /* GBADeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26223198C4200D30DA1 /* GBADeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		68707E6C2325A05400C30C9D /* GBCDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26B23198C4800D30DA1 /* GBCDeltaCore.framework */; platformFilter = ios; };
-		68707E6D2325A05400C30C9D /* GBCDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26B23198C4800D30DA1 /* GBCDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		68707E6E2325A05400C30C9D /* NESDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28423198C5600D30DA1 /* NESDeltaCore.framework */; platformFilter = ios; };
-		68707E6F2325A05400C30C9D /* NESDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28423198C5600D30DA1 /* NESDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		68707E702325A05400C30C9D /* SNESDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28D23198C5E00D30DA1 /* SNESDeltaCore.framework */; platformFilter = ios; };
-		68707E712325A05400C30C9D /* SNESDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28D23198C5E00D30DA1 /* SNESDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		68707E732325B38000C30C9D /* EmulatorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68707E722325B38000C30C9D /* EmulatorStore.swift */; };
 		68707E8C2325BDB000C30C9D /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68707E8B2325BDB000C30C9D /* Text.swift */; };
 		68707E8E2325BF5200C30C9D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68707E8D2325BF5200C30C9D /* Image.swift */; };
@@ -60,7 +52,7 @@
 		687DDD39232309BF0087DDC7 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDD38232309BF0087DDC7 /* Destination.swift */; };
 		687DDD3B23230AB00087DDC7 /* NavigationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDD3A23230AB00087DDC7 /* NavigationStore.swift */; };
 		687DDD6F2326D1A80087DDC7 /* DoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDD6E2326D1A80087DDC7 /* DoneButton.swift */; };
-		687DDD722326D4E70087DDC7 /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 687DDD712326D4E70087DDC7 /* ActivityIndicatorView */; };
+		687DDD722326D4E70087DDC7 /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 687DDD712326D4E70087DDC7 /* ActivityIndicatorView */; };
 		687DDD742326E85A0087DDC7 /* SaveStatesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDD732326E85A0087DDC7 /* SaveStatesStore.swift */; };
 		687DDD772326ECBF0087DDC7 /* PublishedSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDD762326ECBF0087DDC7 /* PublishedSetting.swift */; };
 		687DDD792326FA4B0087DDC7 /* QuickActionsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDD782326FA4B0087DDC7 /* QuickActionsStore.swift */; };
@@ -88,6 +80,14 @@
 		688D50CC2315888B00B9127F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 688D50CB2315888B00B9127F /* Assets.xcassets */; };
 		688D50CF2315888B00B9127F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 688D50CE2315888B00B9127F /* Preview Assets.xcassets */; };
 		688D50D22315888B00B9127F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 688D50D02315888B00B9127F /* LaunchScreen.storyboard */; };
+		68D84E9023270CA8006987E4 /* GBADeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26223198C4200D30DA1 /* GBADeltaCore.framework */; platformFilter = ios; };
+		68D84E9123270CA8006987E4 /* GBADeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26223198C4200D30DA1 /* GBADeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		68D84E9223270CA8006987E4 /* GBCDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26B23198C4800D30DA1 /* GBCDeltaCore.framework */; platformFilter = ios; };
+		68D84E9323270CA8006987E4 /* GBCDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26B23198C4800D30DA1 /* GBCDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		68D84E9623270CA8006987E4 /* NESDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28423198C5600D30DA1 /* NESDeltaCore.framework */; platformFilter = ios; };
+		68D84E9723270CA8006987E4 /* NESDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28423198C5600D30DA1 /* NESDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		68D84E9823270CA8006987E4 /* SNESDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28D23198C5E00D30DA1 /* SNESDeltaCore.framework */; platformFilter = ios; };
+		68D84E9923270CA8006987E4 /* SNESDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28D23198C5E00D30DA1 /* SNESDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,11 +164,11 @@
 			dstSubfolderSpec = 10;
 			files = (
 				6882E2E12320C1C20003AA02 /* DeltaCore.framework in Embed Frameworks */,
-				68707E6D2325A05400C30C9D /* GBCDeltaCore.framework in Embed Frameworks */,
+				68D84E9323270CA8006987E4 /* GBCDeltaCore.framework in Embed Frameworks */,
 				6882E2DF2320C1C00003AA02 /* ZIPFoundation.framework in Embed Frameworks */,
-				68707E712325A05400C30C9D /* SNESDeltaCore.framework in Embed Frameworks */,
-				68707E6B2325A05400C30C9D /* GBADeltaCore.framework in Embed Frameworks */,
-				68707E6F2325A05400C30C9D /* NESDeltaCore.framework in Embed Frameworks */,
+				68D84E9123270CA8006987E4 /* GBADeltaCore.framework in Embed Frameworks */,
+				68D84E9723270CA8006987E4 /* NESDeltaCore.framework in Embed Frameworks */,
+				68D84E9923270CA8006987E4 /* SNESDeltaCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,17 +258,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				6882E2E02320C1C20003AA02 /* DeltaCore.framework in Frameworks */,
+				68D84E9223270CA8006987E4 /* GBCDeltaCore.framework in Frameworks */,
 				687DDCDA2321B97C0087DDC7 /* ProgressView in Frameworks */,
 				68149F862315C5A000421038 /* Files in Frameworks */,
 				6818AABA231F061D00C67FDA /* URLImage in Frameworks */,
 				68149F7E2315C0DB00421038 /* SFSafeSymbols in Frameworks */,
-				68707E702325A05400C30C9D /* SNESDeltaCore.framework in Frameworks */,
+				68D84E9023270CA8006987E4 /* GBADeltaCore.framework in Frameworks */,
 				6882E2D42320C1350003AA02 /* SwiftSoup in Frameworks */,
 				6882E2DE2320C1C00003AA02 /* ZIPFoundation.framework in Frameworks */,
-				68707E6C2325A05400C30C9D /* GBCDeltaCore.framework in Frameworks */,
-				68707E6A2325A05400C30C9D /* GBADeltaCore.framework in Frameworks */,
+				68D84E9823270CA8006987E4 /* SNESDeltaCore.framework in Frameworks */,
 				687DDD722326D4E70087DDC7 /* ActivityIndicatorView in Frameworks */,
-				68707E6E2325A05400C30C9D /* NESDeltaCore.framework in Frameworks */,
+				68D84E9623270CA8006987E4 /* NESDeltaCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,11 +582,11 @@
 		68F25B472318108400D7A64A /* Cores */ = {
 			isa = PBXGroup;
 			children = (
-				684AC28723198C5D00D30DA1 /* SNESDeltaCore.xcodeproj */,
-				684AC27D23198C5600D30DA1 /* NESDeltaCore.xcodeproj */,
-				684AC26523198C4800D30DA1 /* GBCDeltaCore.xcodeproj */,
-				684AC25C23198C4200D30DA1 /* GBADeltaCore.xcodeproj */,
 				684AC25523198C3D00D30DA1 /* DeltaCore.xcodeproj */,
+				684AC25C23198C4200D30DA1 /* GBADeltaCore.xcodeproj */,
+				684AC26523198C4800D30DA1 /* GBCDeltaCore.xcodeproj */,
+				684AC27D23198C5600D30DA1 /* NESDeltaCore.xcodeproj */,
+				684AC28723198C5D00D30DA1 /* SNESDeltaCore.xcodeproj */,
 			);
 			name = Cores;
 			sourceTree = "<group>";

@@ -7,9 +7,6 @@
 [submodule "NESDeltaCore"]
 	path = NESDeltaCore
 	url = https://github.com/rileytestut/NESDeltaCore
-[submodule "N64DeltaCore"]
-	path = N64DeltaCore
-	url = https://github.com/rileytestut/N64DeltaCore
 [submodule "GBCDeltaCore"]
 	path = GBCDeltaCore
 	url = https://github.com/rileytestut/GBCDeltaCore
