@@ -14,24 +14,26 @@ extension UserDefaults {
     }
 }
 
-class SettingsStore: ObservableObject {
-    static let shared = SettingsStore()
-    
-    let defaults = UserDefaults.standard
-    
-    @Published var swipeToDismiss = true {
+@propertyWrapper
+class PersistPublished {
+    @Published
+    var wrappedValue: Bool {
         didSet {
-            defaults.set(self.swipeToDismiss, forKey: .swipeToDismiss)
+            UserDefaults.standard.set(self.wrappedValue, forKey: key)
         }
     }
     
-    init() {
-        hydrate()
+    private var key: SettingsKey
+
+    init(wrappedValue value: Bool, key: SettingsKey) {
+        self.wrappedValue = UserDefaults.standard.bool(forKey: key, defaultValue: value)
+        self.key = key
     }
-    
-    private func hydrate() {
-        swipeToDismiss = defaults.bool(forKey: .swipeToDismiss, defaultValue: true)
-    }
+}
+
+class SettingsStore: ObservableObject {
+    static let shared = SettingsStore()    
+    @PersistPublished(key: .swipeToDismiss) var swipeToDismiss = true
 }
 
 struct SettingsView: View {
