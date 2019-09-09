@@ -1,5 +1,6 @@
 import UIKit
 import CoreData
+import UserNotifications
 
 import DeltaCore
 import GBADeltaCore
@@ -11,8 +12,10 @@ import NESDeltaCore
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         registerDeltaCores()
-        // sync()
+        registerLocalNotifications()
+        
         return true
     }
     
@@ -54,6 +57,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func registerLocalNotifications() {
+        let current = NotificationStore.shared.notificationCenter
+        current.delegate = self
+        current.requestAuthorization(options: [.alert, .sound, .badge]) {
+            (didAllow, error) in
+            if !didAllow {
+                print("User has declined notifications")
+            }
+        }
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert]) // we don't want sounds n shit
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        // todo: migrate to actions
+        if let id = response.notification.request.content.userInfo["id"] as? String {
+            let request: NSFetchRequest<GameEntity> = GameEntity.fetchRequest()
+            request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+            request.predicate = NSPredicate(format: "id = %@", id)
+            request.fetchLimit = 1
+            guard let games = try? persistentContainer.viewContext.fetch(request), let game = games.first else {
+                return
+            }
+            ActionCreator().presentEmulator(game)()
+        }
+    }
 }
 
 extension AppDelegate {

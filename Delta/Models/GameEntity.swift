@@ -137,6 +137,7 @@ extension GameEntity {
                     self.gameURL = dest.appendingPathComponent(url.lastPathComponent, isDirectory: false)
                     self.downloadedAt = Date()
                     try? self.managedObjectContext?.save()
+                    ActionCreator().downloadComplete(self)
                     self.task = nil
                 }
             }

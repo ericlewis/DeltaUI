@@ -9,9 +9,7 @@ struct GameListView: View {
     }
     
     var body: some View {
-        TableView(fetchRequest, sectionNameKeyPath: "titleInitial", tapped: {
-            ActionCreator().presentEmulator($0)
-        }) { game in
+        TableView(fetchRequest, sectionNameKeyPath: "titleInitial", tapped: ActionCreator().presentEmulator) { game in
             GameListCell(game)
         }
         .edgesIgnoringSafeArea(.all)

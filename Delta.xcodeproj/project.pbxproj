@@ -49,6 +49,9 @@
 		68707E702325A05400C30C9D /* SNESDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28D23198C5E00D30DA1 /* SNESDeltaCore.framework */; platformFilter = ios; };
 		68707E712325A05400C30C9D /* SNESDeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC28D23198C5E00D30DA1 /* SNESDeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		68707E732325B38000C30C9D /* EmulatorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68707E722325B38000C30C9D /* EmulatorStore.swift */; };
+		68707E8C2325BDB000C30C9D /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68707E8B2325BDB000C30C9D /* Text.swift */; };
+		68707E8E2325BF5200C30C9D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68707E8D2325BF5200C30C9D /* Image.swift */; };
+		68707E922325F45E00C30C9D /* NotificationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68707E912325F45E00C30C9D /* NotificationStore.swift */; };
 		687B518A232356990028B711 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687B5189232356990028B711 /* Dispatcher.swift */; };
 		687B519623235CA90028B711 /* SheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687B519523235CA90028B711 /* SheetPresenter.swift */; };
 		687B519823235D270028B711 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687B519723235D270028B711 /* View.swift */; };
@@ -208,6 +211,9 @@
 		6856F8852316BA1F0060CC7A /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		68707E5E2324D57400C30C9D /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		68707E722325B38000C30C9D /* EmulatorStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmulatorStore.swift; sourceTree = "<group>"; };
+		68707E8B2325BDB000C30C9D /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		68707E8D2325BF5200C30C9D /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		68707E912325F45E00C30C9D /* NotificationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationStore.swift; sourceTree = "<group>"; };
 		687B5189232356990028B711 /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		687B519523235CA90028B711 /* SheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPresenter.swift; sourceTree = "<group>"; };
 		687B519723235D270028B711 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -431,6 +437,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		68707E802325BD7500C30C9D /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				68707E8B2325BDB000C30C9D /* Text.swift */,
+				68707E8D2325BF5200C30C9D /* Image.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		6882E2EE2320C3DE0003AA02 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,6 +484,7 @@
 				687B5189232356990028B711 /* Dispatcher.swift */,
 				687B51992323667A0028B711 /* ActionCreator.swift */,
 				68707E722325B38000C30C9D /* EmulatorStore.swift */,
+				68707E912325F45E00C30C9D /* NotificationStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -513,6 +529,7 @@
 				688D50CD2315888B00B9127F /* Preview Content */,
 				6818ABB3232188F900C67FDA /* Protocols */,
 				6882E2FB2320CC7B0003AA02 /* Stores */,
+				68707E802325BD7500C30C9D /* Styles */,
 				6818ABB423218E6C00C67FDA /* View Controllers */,
 				6856F87F2316B91F0060CC7A /* Views */,
 			);
@@ -723,6 +740,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68707E922325F45E00C30C9D /* NotificationStore.swift in Sources */,
 				6856F8862316BA1F0060CC7A /* ActivityView.swift in Sources */,
 				687DDD39232309BF0087DDC7 /* Destination.swift in Sources */,
 				681C7A572318636B00DFC744 /* SettingsView.swift in Sources */,
@@ -754,6 +772,7 @@
 				6882E2FA2320CC710003AA02 /* PlaylistEntity.swift in Sources */,
 				681C7A49231858CD00DFC744 /* SearchView.swift in Sources */,
 				68707E732325B38000C30C9D /* EmulatorStore.swift in Sources */,
+				68707E8C2325BDB000C30C9D /* Text.swift in Sources */,
 				6818ABB82321979200C67FDA /* DownloadStore.swift in Sources */,
 				6882E3002320D0F70003AA02 /* RecentsStore.swift in Sources */,
 				687B519623235CA90028B711 /* SheetPresenter.swift in Sources */,
@@ -771,6 +790,7 @@
 				688D50CA2315888900B9127F /* RootView.swift in Sources */,
 				681C7A43231838C800DFC744 /* GridView.swift in Sources */,
 				6832F4642316E219002B3FD9 /* GameListView.swift in Sources */,
+				68707E8E2325BF5200C30C9D /* Image.swift in Sources */,
 				682640A32324ABE3003B86A3 /* BrowseCell.swift in Sources */,
 				6818ABB623218E8D00C67FDA /* OurGameViewController.swift in Sources */,
 				681C7A51231861B400DFC744 /* GameListCell.swift in Sources */,

@@ -112,6 +112,7 @@ class OurGameViewController: GameViewController, StorageProtocol {
         createSaveImage(save)
         gameEnt?.addToSaveStates(save)
         try? context.save()
+        ActionCreator().saveComplete(gameEnt!, save.imageFileURL!) // bad spot for it
     }
     
     private func createSaveImage(_ save: SaveStateEntity) {
