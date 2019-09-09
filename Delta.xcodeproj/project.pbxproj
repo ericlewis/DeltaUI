@@ -37,7 +37,6 @@
 		6832F4642316E219002B3FD9 /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6832F4632316E219002B3FD9 /* GameListView.swift */; };
 		6856F878231617D30060CC7A /* Games.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6856F876231617D30060CC7A /* Games.xcdatamodeld */; };
 		6856F87C2316B82A0060CC7A /* SearchNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6856F87B2316B82A0060CC7A /* SearchNavigationView.swift */; };
-		6856F8862316BA1F0060CC7A /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6856F8852316BA1F0060CC7A /* ActivityView.swift */; };
 		68707E5F2324D57400C30C9D /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68707E5E2324D57400C30C9D /* WebView.swift */; };
 		68707E6A2325A05400C30C9D /* GBADeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26223198C4200D30DA1 /* GBADeltaCore.framework */; platformFilter = ios; };
 		68707E6B2325A05400C30C9D /* GBADeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26223198C4200D30DA1 /* GBADeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -60,6 +59,8 @@
 		687DDD0023229F6C0087DDC7 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDCFF23229F6C0087DDC7 /* TableView.swift */; };
 		687DDD39232309BF0087DDC7 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDD38232309BF0087DDC7 /* Destination.swift */; };
 		687DDD3B23230AB00087DDC7 /* NavigationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDD3A23230AB00087DDC7 /* NavigationStore.swift */; };
+		687DDD6F2326D1A80087DDC7 /* DoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDD6E2326D1A80087DDC7 /* DoneButton.swift */; };
+		687DDD722326D4E70087DDC7 /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 687DDD712326D4E70087DDC7 /* ActivityIndicatorView */; };
 		6882E2D42320C1350003AA02 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 6882E2D32320C1350003AA02 /* SwiftSoup */; };
 		6882E2DE2320C1C00003AA02 /* ZIPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6856F86A2315E5C80060CC7A /* ZIPFoundation.framework */; platformFilter = ios; };
 		6882E2DF2320C1C00003AA02 /* ZIPFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6856F86A2315E5C80060CC7A /* ZIPFoundation.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -207,7 +208,6 @@
 		6856F86A2315E5C80060CC7A /* ZIPFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ZIPFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6856F877231617D30060CC7A /* GamesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GamesModel.xcdatamodel; sourceTree = "<group>"; };
 		6856F87B2316B82A0060CC7A /* SearchNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigationView.swift; sourceTree = "<group>"; };
-		6856F8852316BA1F0060CC7A /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		68707E5E2324D57400C30C9D /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		68707E722325B38000C30C9D /* EmulatorStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmulatorStore.swift; sourceTree = "<group>"; };
 		68707E8B2325BDB000C30C9D /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
@@ -221,6 +221,7 @@
 		687DDCFF23229F6C0087DDC7 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		687DDD38232309BF0087DDC7 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		687DDD3A23230AB00087DDC7 /* NavigationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStore.swift; sourceTree = "<group>"; };
+		687DDD6E2326D1A80087DDC7 /* DoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneButton.swift; sourceTree = "<group>"; };
 		6882E2EA2320C3430003AA02 /* AddPlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaylistCell.swift; sourceTree = "<group>"; };
 		6882E2EC2320C3820003AA02 /* PlaylistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCell.swift; sourceTree = "<group>"; };
 		6882E2EF2320C4070003AA02 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
@@ -260,6 +261,7 @@
 				6882E2DE2320C1C00003AA02 /* ZIPFoundation.framework in Frameworks */,
 				68707E6C2325A05400C30C9D /* GBCDeltaCore.framework in Frameworks */,
 				68707E6A2325A05400C30C9D /* GBADeltaCore.framework in Frameworks */,
+				687DDD722326D4E70087DDC7 /* ActivityIndicatorView in Frameworks */,
 				68707E6E2325A05400C30C9D /* NESDeltaCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,7 +347,6 @@
 		681C7A552318622200DFC744 /* Wrapped */ = {
 			isa = PBXGroup;
 			children = (
-				6856F8852316BA1F0060CC7A /* ActivityView.swift */,
 				6882E3042320D4480003AA02 /* DeltaView.swift */,
 				687DDCFF23229F6C0087DDC7 /* TableView.swift */,
 				68707E5E2324D57400C30C9D /* WebView.swift */,
@@ -400,6 +401,7 @@
 		6856F87F2316B91F0060CC7A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				687DDD6D2326D1980087DDC7 /* Buttons */,
 				6882E3012320D3860003AA02 /* Action Sheets */,
 				681C7A54231861F900DFC744 /* Cells */,
 				681C7A53231861EF00DFC744 /* Containers */,
@@ -443,6 +445,14 @@
 				68707E8D2325BF5200C30C9D /* Image.swift */,
 			);
 			path = Styles;
+			sourceTree = "<group>";
+		};
+		687DDD6D2326D1980087DDC7 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				687DDD6E2326D1A80087DDC7 /* DoneButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		6882E2EE2320C3DE0003AA02 /* Extensions */ = {
@@ -587,6 +597,7 @@
 				6818AAB9231F061D00C67FDA /* URLImage */,
 				6882E2D32320C1350003AA02 /* SwiftSoup */,
 				687DDCD92321B97C0087DDC7 /* ProgressView */,
+				687DDD712326D4E70087DDC7 /* ActivityIndicatorView */,
 			);
 			productName = Delta;
 			productReference = 688D50C22315888900B9127F /* Delta.app */;
@@ -622,6 +633,7 @@
 				6818AAB8231F061D00C67FDA /* XCRemoteSwiftPackageReference "url-image" */,
 				6882E2D22320C1350003AA02 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				687DDCD82321B97C0087DDC7 /* XCRemoteSwiftPackageReference "ProgressView" */,
+				687DDD702326D4E70087DDC7 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */,
 			);
 			productRefGroup = 688D50C32315888900B9127F /* Products */;
 			projectDirPath = "";
@@ -739,7 +751,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				68707E922325F45E00C30C9D /* NotificationStore.swift in Sources */,
-				6856F8862316BA1F0060CC7A /* ActivityView.swift in Sources */,
 				687DDD39232309BF0087DDC7 /* Destination.swift in Sources */,
 				681C7A572318636B00DFC744 /* SettingsView.swift in Sources */,
 				6882E2EB2320C3430003AA02 /* AddPlaylistCell.swift in Sources */,
@@ -779,6 +790,7 @@
 				6856F87C2316B82A0060CC7A /* SearchNavigationView.swift in Sources */,
 				682640A12324AB81003B86A3 /* SaveStateCell.swift in Sources */,
 				681C7A452318477000DFC744 /* GameGridCell.swift in Sources */,
+				687DDD6F2326D1A80087DDC7 /* DoneButton.swift in Sources */,
 				681C7A59231871A500DFC744 /* BrowseView.swift in Sources */,
 				6882E3052320D4480003AA02 /* DeltaView.swift in Sources */,
 				687B519A2323667A0028B711 /* ActionCreator.swift in Sources */,
@@ -1028,6 +1040,14 @@
 				kind = branch;
 			};
 		};
+		687DDD702326D4E70087DDC7 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ericlewis/ActivityIndicatorView";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		6882E2D22320C1350003AA02 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scinfu/SwiftSoup";
@@ -1058,6 +1078,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 687DDCD82321B97C0087DDC7 /* XCRemoteSwiftPackageReference "ProgressView" */;
 			productName = ProgressView;
+		};
+		687DDD712326D4E70087DDC7 /* ActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 687DDD702326D4E70087DDC7 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */;
+			productName = ActivityIndicatorView;
 		};
 		6882E2D32320C1350003AA02 /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;

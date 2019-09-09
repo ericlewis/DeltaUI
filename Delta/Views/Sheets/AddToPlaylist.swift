@@ -6,24 +6,14 @@ struct AddToPlaylistView: View {
   var game: GameEntity
   
   func addGame(_ playlist: PlaylistEntity) {
-    playlist.addToGames(self.game)
-    try? self.context.save()
-    ActionCreator().dismiss()
-  }
-  
-  var DoneButton: some View {
-    Button(action: {
-      ActionCreator().dismiss()
-    }) {
-      Text("Done").done()
-    }
+    ActionCreator().addGameToPlaylist(playlist, game)
   }
   
   var body: some View {
     NavigationView {
-      PlaylistsView(action: addGame)
+    PlaylistsView(action: addGame)
       .navigationBarTitle("Add to Playlist")
-      .navigationBarItems(trailing: DoneButton)
+      .navigationBarItems(trailing: DoneButton())
     }
     .accentColor(.purple)
   }

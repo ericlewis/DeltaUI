@@ -1,4 +1,5 @@
 import SwiftUI
+import ActivityIndicatorView
 
 struct PlaceholderView: View {
     var cornerRadius: CGFloat = 5.0
@@ -8,7 +9,7 @@ struct PlaceholderView: View {
             RoundedRectangle(cornerRadius: cornerRadius)
                 .fill(Color.secondary)
                 .aspectRatio(1, contentMode: .fit)
-            ActivityView(color: .white)
+            ActivityIndicatorView(color: .white)
         }
     }
 }

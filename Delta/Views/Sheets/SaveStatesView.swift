@@ -8,7 +8,7 @@ struct SaveStatesView: View {
     }
     
     func selected(_ save: SaveStateEntity) {
-        // FIX THIS CRAP
+        // FIX THIS CRAP, and by fix, i mean put in an ActionCreator
         
         ActionCreator().dismiss()
         

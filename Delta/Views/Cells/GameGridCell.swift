@@ -1,5 +1,6 @@
 import SwiftUI
 import URLImage
+import ActivityIndicatorView
 
 struct GameGridCell: View {
     @ObservedObject var game: GameEntity
@@ -19,7 +20,7 @@ struct GameGridCell: View {
                         GameContextMenu(game: game)
                 }
                 if game.task != nil {
-                    ActivityView()
+                    ActivityIndicatorView()
                     .padding(5)
                     .background(Color.white)
                     .mask(Circle())

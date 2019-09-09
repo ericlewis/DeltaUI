@@ -2,7 +2,7 @@ import SwiftUI
 
 struct PlaylistView: View {
     @ObservedObject var playlist: PlaylistEntity
-    @ObservedObject var store = CollectionStore()
+    @ObservedObject var store = CollectionStore.shared
     
     init(playlist: PlaylistEntity) {
         self.playlist = playlist

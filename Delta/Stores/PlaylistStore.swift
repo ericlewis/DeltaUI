@@ -2,6 +2,7 @@ import SwiftUI
 
 enum CollectionActions {
     case loadGames(PlaylistEntity)
+    case addGame(PlaylistEntity, GameEntity)
     case deleteGame(PlaylistEntity, GameEntity)
     case deletePlaylist(PlaylistEntity)
 }
@@ -18,6 +19,10 @@ extension ActionCreator where Actions == CollectionActions {
     func deletePlaylist(_ playlist: PlaylistEntity) {
         perform(.deletePlaylist(playlist))
     }
+    
+    func addGameToPlaylist(_ playlist: PlaylistEntity, _ game: GameEntity) {
+        perform(.addGame(playlist, game))
+    }
 }
 
 class CollectionStore: ObservableObject {
@@ -32,6 +37,8 @@ class CollectionStore: ObservableObject {
             switch action {
             case .loadGames(let playlist):
                 self.games = playlist.games?.allObjects as? [GameEntity] ?? []
+            case .addGame(let playlist, let game):
+                self.addGame(playlist, game)
             case .deleteGame(let playlist, let game):
                 self.deleteGame(playlist, game)
             case .deletePlaylist(let playlist):
@@ -43,6 +50,14 @@ class CollectionStore: ObservableObject {
 }
 
 extension CollectionStore {
+    private func addGame(_ playlist: PlaylistEntity, _ game: GameEntity) {
+        playlist.addToGames(game)
+        try? playlist.managedObjectContext?.save()
+        
+        // boo
+        ActionCreator().dismiss()
+    }
+    
     private func deletePlaylist(_ playlist: PlaylistEntity) {
         guard let context = playlist.managedObjectContext else {
             return
