@@ -2,9 +2,12 @@ import SwiftUI
 
 struct LibraryView: View {    
     @FetchRequest(fetchRequest: FetchRequests.recentlyAdded()) var results: FetchedGames
+    @FetchRequest(fetchRequest: FetchRequests.recentlyAddedExtended()) var resultsExtended: FetchedGames
     
+    @State var useExtended = false
+
     var body: some View {
-        GridView(self.results, columns: 2, columnsInLandscape: 3, vSpacing: 15, hPadding: 0, header: {
+        GridView(useExtended ? self.resultsExtended : self.results, columns: 2, columnsInLandscape: 3, vSpacing: 15, hPadding: 0, header: {
             VStack(alignment: .leading) {
                 Divider()
                 LibraryButtons()
@@ -15,6 +18,11 @@ struct LibraryView: View {
             }
         }) {
             GameGridCell($0)
+        }.onAppear {
+            self.useExtended = true
+        }
+        .onDisappear {
+            self.useExtended = false
         }
         .padding(.horizontal)
         .navigationBarTitle("Library")
