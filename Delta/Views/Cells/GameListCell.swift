@@ -13,9 +13,9 @@ struct GameListCell: View {
     var body: some View {
         HStack {
             URLImage(game.image!, placeholder: {
-                PlaceholderView()
+                PlaceholderView(cornerRadius: 3)
                     .frame(width: 80, height: 80)
-            })
+            }, configuration: ImageLoaderConfiguration(useInMemoryCache: true))
                 .gameListImage()
             VStack(alignment: .leading) {
                 Text(game.splitTitle.0 ?? "No Title")

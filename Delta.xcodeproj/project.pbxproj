@@ -34,7 +34,6 @@
 		682640A52324AC3D003B86A3 /* HorizontalGameScroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682640A42324AC3D003B86A3 /* HorizontalGameScroller.swift */; };
 		682640A72324AC5D003B86A3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682640A62324AC5D003B86A3 /* HeaderView.swift */; };
 		682640A92324AC88003B86A3 /* FavoriteForYouView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682640A82324AC88003B86A3 /* FavoriteForYouView.swift */; };
-		682640AA2324B368003B86A3 /* all.json in Resources */ = {isa = PBXBuildFile; fileRef = 6818AACE231F339D00C67FDA /* all.json */; };
 		6832F4642316E219002B3FD9 /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6832F4632316E219002B3FD9 /* GameListView.swift */; };
 		6856F878231617D30060CC7A /* Games.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6856F876231617D30060CC7A /* Games.xcdatamodeld */; };
 		6856F87C2316B82A0060CC7A /* SearchNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6856F87B2316B82A0060CC7A /* SearchNavigationView.swift */; };
@@ -56,7 +55,7 @@
 		687B519623235CA90028B711 /* SheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687B519523235CA90028B711 /* SheetPresenter.swift */; };
 		687B519823235D270028B711 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687B519723235D270028B711 /* View.swift */; };
 		687B519A2323667A0028B711 /* ActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687B51992323667A0028B711 /* ActionCreator.swift */; };
-		687DDCDA2321B97C0087DDC7 /* ProgressView in Frameworks */ = {isa = PBXBuildFile; productRef = 687DDCD92321B97C0087DDC7 /* ProgressView */; };
+		687DDCDA2321B97C0087DDC7 /* ProgressView in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 687DDCD92321B97C0087DDC7 /* ProgressView */; };
 		687DDCF42321C9E30087DDC7 /* SaveStatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDCF32321C9E30087DDC7 /* SaveStatesView.swift */; };
 		687DDD0023229F6C0087DDC7 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDCFF23229F6C0087DDC7 /* TableView.swift */; };
 		687DDD39232309BF0087DDC7 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDD38232309BF0087DDC7 /* Destination.swift */; };
@@ -726,7 +725,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				682640AA2324B368003B86A3 /* all.json in Resources */,
 				688D50D22315888B00B9127F /* LaunchScreen.storyboard in Resources */,
 				688D50CF2315888B00B9127F /* Preview Assets.xcassets in Resources */,
 				688D50CC2315888B00B9127F /* Assets.xcassets in Resources */,

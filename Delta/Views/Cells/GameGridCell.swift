@@ -13,7 +13,7 @@ struct GameGridCell: View {
             ZStack(alignment: .topTrailing) {
                 URLImage(game.image!, placeholder: {
                     PlaceholderView()
-                })
+                }, configuration: ImageLoaderConfiguration(useInMemoryCache: true))
                     .gameGridImage()
                     .contextMenu {
                         GameContextMenu(game: game)
