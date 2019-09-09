@@ -8,6 +8,7 @@ enum NavigationActions {
     case updateSelectedTab(Int)
     case showSheet(Sheets)
     case showActionSheet(ActionSheets)
+    case showEmulatorMenu
     case dismissSheet
 }
 
@@ -57,7 +58,7 @@ extension ActionCreator where Actions == NavigationActions {
     }
     
     func presentMenu() {
-        perform(.showActionSheet(.emulatorMenu))
+        perform(.showEmulatorMenu)
     }
     
     func presentRemoveFromLibraryConfirmation(_ game: GameEntity) -> () -> Void {
@@ -88,13 +89,11 @@ enum Sheets: Identifiable {
 enum ActionSheets: Identifiable {
     case none
     case removeFromLibraryConfirmation(GameEntity)
-    case emulatorMenu
     
     var id: String {
         switch self {
         case .none: return "none"
         case .removeFromLibraryConfirmation: return "removeFromLibraryConfirmation"
-        case .emulatorMenu: return "emulatorMenu"
         }
     }
 }
@@ -112,6 +111,7 @@ class NavigationStore: ObservableObject {
     @Published var activeSheetLayer2: Sheets?
     @Published var activeActionSheet: ActionSheets?
     @Published var currentGame: GameEntity?
+    @Published var isShowingEmulatorMenu = false
 
     init(dispatcher: Dispatcher<NavigationActions> = .shared) {
         dispatcher.register { [weak self] action in
@@ -137,6 +137,8 @@ class NavigationStore: ObservableObject {
                     }
                 }
             case .showActionSheet(let sheet): self.activeActionSheet = sheet
+            case .showEmulatorMenu:
+                self.isShowingEmulatorMenu = true
             case .dismissSheet:
                 if self.activeSheetLayer2 == nil {
                     self.activeSheet = nil

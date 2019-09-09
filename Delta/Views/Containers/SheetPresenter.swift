@@ -18,7 +18,11 @@ struct SheetPresenter<Content>: View where Content: View {
             return DeltaView() {
                 ActionCreator().presentMenu()
             }
-            .edgesIgnoringSafeArea(.all).eraseToAny()
+            .edgesIgnoringSafeArea(.all)
+            .actionSheet(isPresented: $navigation.isShowingEmulatorMenu) {
+                ActionSheet.EmulatorMenu()
+            }
+            .eraseToAny()
         case .lookup(let game):
             return WebView(url: .constant(URL(string: "https://www.google.com/search?q=\(String(game.title! + " " + game.type!).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)"))).edgesIgnoringSafeArea(.bottom).eraseToAny()
         case .none:
@@ -28,8 +32,6 @@ struct SheetPresenter<Content>: View where Content: View {
     
     func actionSheet(_ actionSheet: ActionSheets) -> ActionSheet {
         switch actionSheet {
-        case .emulatorMenu:
-            return ActionSheet.EmulatorMenu()
         case .removeFromLibraryConfirmation(let game):
             return ActionSheet(title: Text("Are you sure you want to remove this game from your library?"), message: nil, buttons: [
                 .destructive(Text("Delete Game")) {
@@ -55,17 +57,10 @@ struct SheetPresenter<Content>: View where Content: View {
             self.sheet($0)
                 .environmentObject(NavigationStore.shared)
                 .environment(\.managedObjectContext, self.context)
-                .actionSheet(item: self.$navigation.activeActionSheet) {
-                    self.actionSheet($0)
-            }
             .sheet(item: self.$navigation.activeSheetLayer2) {
                 self.sheet($0)
                     .environmentObject(NavigationStore.shared)
                     .environment(\.managedObjectContext, self.context)
-                    .actionSheet(item: self.$navigation.activeActionSheet) {
-                        self.actionSheet($0)
-                }
-                
             }
         }
     }
