@@ -1,22 +1,26 @@
 import SwiftUI
+import SFSafeSymbols
 
-struct AddCell: View {
-  
+struct ColorfulSquare: View {
+    var symbol: SFSymbol
+    
+    
     struct circle: View {
-      var color: Color
-      
-      init(_ color: Color) {
-        self.color = color
-      }
-      
-      var body: some View {
-        Circle()
-        .foregroundColor(color)
-        .aspectRatio(1, contentMode: .fit)
-      }
+        var color: Color
+        
+        init(_ color: Color) {
+            self.color = color
+        }
+        
+        var body: some View {
+            Circle()
+                .foregroundColor(color)
+                .aspectRatio(1, contentMode: .fit)
+        }
     }
-  
-    var Placeholder: some View {
+    
+    
+    var body: some View {
         ZStack {
             VStack(spacing: 0) {
                 HStack(spacing: 0) {
@@ -30,7 +34,7 @@ struct AddCell: View {
             }
             .blur(radius: 25)
             .saturation(1.5)
-            Image(systemSymbol: .plus)
+            Image(systemSymbol: symbol)
                 .resizable()
                 .imageScale(.large)
                 .foregroundColor(.secondary)
@@ -38,14 +42,16 @@ struct AddCell: View {
                 .blendMode(.hardLight)
         }
         .mask(RoundedRectangle(cornerRadius: 3))
-        .frame(width: 80, height: 80)
     }
-    
+}
+
+struct AddCell: View {
     var body: some View {
         HStack {
-            Placeholder
+            ColorfulSquare(symbol: .plus)
+                .frame(width: 80, height: 80)
             Text("New Playlist...")
-            .foregroundColor(.accentColor)
+                .foregroundColor(.accentColor)
         }
     }
 }

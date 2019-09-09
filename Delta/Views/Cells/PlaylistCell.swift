@@ -33,19 +33,6 @@ struct PlaylistCell: View {
         .frame(width: 80, height: 80)
     }
     
-    var Placeholder: some View {
-        ZStack {
-            Rectangle()
-            .fill(Color.accentColor)
-            .aspectRatio(1, contentMode: .fit)
-            Image(systemSymbol: .gamecontrollerFill)
-            .imageScale(.large)
-            .foregroundColor(.white)
-        }
-        .mask(RoundedRectangle(cornerRadius: 3))
-        .frame(width: 80, height: 80)
-    }
-    
     var body: some View {
         HStack {
             if playlist.games?.count ?? 0 > 3 {
@@ -56,7 +43,8 @@ struct PlaylistCell: View {
                 .mask(RoundedRectangle(cornerRadius: 3))
                 .frame(width: 80, height: 80)
             } else {
-                Placeholder
+                ColorfulSquare(symbol: .playCircle)
+                .frame(width: 80, height: 80)
             }
             Text(playlist.title ?? "No Title")
         }
