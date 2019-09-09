@@ -49,6 +49,13 @@ struct SheetPresenter<Content>: View where Content: View {
                 },
                 .cancel()
             ])
+        case .removeSaveFromLibraryConfirmation(let save):
+            return ActionSheet(title: Text("Are you sure you want to remove this save from your library?"), message: nil, buttons: [
+                .destructive(Text("Delete Save State")) {
+                    save.deleteFromLibrary()
+                },
+                .cancel()
+            ])
         case .none:
             return ActionSheet(title: Text("Don't look, I'm naked!"))
         }
@@ -65,12 +72,18 @@ struct SheetPresenter<Content>: View where Content: View {
         }
         .sheet(item: $navigation.activeSheet) {
             self.sheet($0)
-                .environmentObject(NavigationStore.shared)
-                .environment(\.managedObjectContext, self.context)
+                .actionSheet(item: self.$navigation.activeActionSheet) {
+                    self.actionSheet($0)
+            }
+            .environmentObject(NavigationStore.shared)
+            .environment(\.managedObjectContext, self.context)
             .sheet(item: self.$navigation.activeSheetLayer2) {
                 self.sheet($0)
-                    .environmentObject(NavigationStore.shared)
-                    .environment(\.managedObjectContext, self.context)
+                    .actionSheet(item: self.$navigation.activeActionSheet) {
+                        self.actionSheet($0)
+                }
+                .environmentObject(NavigationStore.shared)
+                .environment(\.managedObjectContext, self.context)
             }
         }
     }

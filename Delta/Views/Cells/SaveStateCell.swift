@@ -49,7 +49,7 @@ struct SaveStateCell: View, StorageProtocol {
                 }
             }
             if !auto {
-                Button(action: {}) {
+                Button(action: ActionCreator().presentRemoveSaveFromLibraryConfirmation(state)) {
                     HStack {
                         Text("Delete Save")
                         Spacer()

@@ -66,6 +66,12 @@ extension ActionCreator where Actions == NavigationActions {
             self.perform(.showActionSheet(.removeFromLibraryConfirmation(game)))
         }
     }
+    
+    func presentRemoveSaveFromLibraryConfirmation(_ save: SaveStateEntity) -> () -> Void {
+        {
+            self.perform(.showActionSheet(.removeSaveFromLibraryConfirmation(save)))
+        }
+    }
 }
 
 enum Sheets: Identifiable {
@@ -89,11 +95,13 @@ enum Sheets: Identifiable {
 enum ActionSheets: Identifiable {
     case none
     case removeFromLibraryConfirmation(GameEntity)
-    
+    case removeSaveFromLibraryConfirmation(SaveStateEntity)
+
     var id: String {
         switch self {
         case .none: return "none"
         case .removeFromLibraryConfirmation: return "removeFromLibraryConfirmation"
+        case .removeSaveFromLibraryConfirmation: return "removeSaveFromLibraryConfirmation"
         }
     }
 }

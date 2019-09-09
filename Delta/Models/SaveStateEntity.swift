@@ -42,4 +42,9 @@ extension SaveStateEntity {
         let fileURL = saveStatesDir(for: game).appendingPathComponent(url.lastPathComponent, isDirectory: false)
         return DeltaCore.SaveState(fileURL: fileURL, gameType: gameType)
     }
+    
+    func deleteFromLibrary() {
+        // TODO: cleanup save state data
+        ActionCreator().deleteSaveState(self)
+    }
 }
