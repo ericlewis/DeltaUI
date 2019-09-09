@@ -8,6 +8,8 @@ struct SheetPresenter<Content>: View where Content: View {
     
     // TODO: remove  bunch of these weird functions and put them in their components
     
+    let dragBlocker = DragGesture()
+    
     func sheet(_ sheet: Sheets) -> some View {
         switch sheet {
         case .saveStates(let game):
@@ -15,14 +17,22 @@ struct SheetPresenter<Content>: View where Content: View {
         case .addToPlaylist(let game):
             return AddToPlaylistView(game: game).eraseToAny()
         case .emulator:
-            return DeltaView() {
+            return SettingsStore.shared.swipeToDismiss ? (DeltaView {
                 ActionCreator().presentMenu()
             }
             .edgesIgnoringSafeArea(.all)
             .actionSheet(isPresented: $navigation.isShowingEmulatorMenu) {
                 ActionSheet.EmulatorMenu()
             }
-            .eraseToAny()
+            .eraseToAny()) : (DeltaView {
+                ActionCreator().presentMenu()
+            }
+            .gesture(dragBlocker)
+            .edgesIgnoringSafeArea(.all)
+            .actionSheet(isPresented: $navigation.isShowingEmulatorMenu) {
+                ActionSheet.EmulatorMenu()
+            }
+            .eraseToAny())
         case .lookup(let game):
             return WebView(url: .constant(URL(string: "https://www.google.com/search?q=\(String(game.title! + " " + game.type!).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)"))).edgesIgnoringSafeArea(.bottom).eraseToAny()
         case .none:

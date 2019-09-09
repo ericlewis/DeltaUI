@@ -21,25 +21,6 @@ struct DeltaView: UIViewControllerRepresentable {
         
         // fixes layout when rotating
         gameViewController.view.setNeedsUpdateConstraints()
-        
-//        if saveState {
-//            print("save it!")
-//            gameViewController.persistSaveState()
-//            saveState = false
-//        }
-//
-//        if loadSaveState != nil {
-//            gameViewController.stateToLoad = loadSaveState
-//            loadSaveState = nil
-//        }
-//
-//        if pause {
-//            gameViewController.pauseEmulation()
-//        } else {
-//            gameViewController.resumeEmulation()
-//        }
-//
-
         gameViewController.gameEnt = navigation.currentGame
     }
     
