@@ -6,9 +6,7 @@ struct GameContextMenu: View {
     @ObservedObject var game: GameEntity
     
     func toggleFave() {
-        game.objectWillChange.send()
-        game.favorited.toggle()
-        try? game.managedObjectContext?.save()
+        ActionCreator().toggleFavorite(game)
     }
     
     var body: some View {

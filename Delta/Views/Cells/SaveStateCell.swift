@@ -15,27 +15,47 @@ struct SaveStateCell: View, StorageProtocol {
     }
     
     var body: some View {
-        Button(action: {
+        ZStack(alignment: .bottomLeading) {
+            URLImage(imagesDir.appendingPathComponent(state.imageFileURL!.lastPathComponent, isDirectory: false), placeholder: {
+                Rectangle()
+            })
+            .renderingMode(.original)
+            .resizable()
+            .scaledToFit()
+            .mask(RoundedRectangle(cornerRadius: 10, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(Color.secondary.opacity(0.6)))
+            .scaleEffect(0.99)
+                .overlay(LinearGradient(gradient: Gradient(colors: [.clear, .secondary]), startPoint: .top, endPoint: .bottom).opacity(0.5)
+            .mask(RoundedRectangle(cornerRadius: 10, style: .continuous)))
+            Text((auto ? "Auto Save • " : "") + formatter.localizedString(for: state.createdAt!, relativeTo: Date()))
+            .foregroundColor(.white)
+            .font(.headline)
+            .bold()
+            .padding()
+            .shadow(radius: 2)
+        }
+        .onTapGesture {
             self.selected(self.state)
-        }) {
-            ZStack(alignment: .bottomLeading) {
-                URLImage(imagesDir.appendingPathComponent(state.imageFileURL!.lastPathComponent, isDirectory: false), placeholder: {
-                    Rectangle()
-                })
-                .renderingMode(.original)
-                .resizable()
-                .scaledToFit()
-                .mask(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(Color.secondary.opacity(0.6)))
-                .scaleEffect(0.99)
-                    .overlay(LinearGradient(gradient: Gradient(colors: [.clear, .secondary]), startPoint: .top, endPoint: .bottom).opacity(0.5)
-                .mask(RoundedRectangle(cornerRadius: 10, style: .continuous)))
-                Text((auto ? "Auto Save • " : "") + formatter.localizedString(for: state.createdAt!, relativeTo: Date()))
-                .foregroundColor(.white)
-                .font(.headline)
-                .bold()
-                .padding()
-                .shadow(radius: 2)
+        }
+        .contextMenu {
+            // TODO: move me
+            Button(action: {
+                 self.selected(self.state)
+            }) {
+                HStack {
+                    Text("Load & Play")
+                    Spacer()
+                    Image(systemSymbol: .gamecontroller)
+                }
+            }
+            if !auto {
+                Button(action: {}) {
+                    HStack {
+                        Text("Delete Save")
+                        Spacer()
+                        Image(systemSymbol: .trash)
+                    }
+                }
             }
         }
     }
