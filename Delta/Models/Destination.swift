@@ -1,6 +1,14 @@
 import SwiftUI
 
 struct Destination {
+    static func allPlatforms() -> some View {
+        PlatformsView()
+    }
+    
+    static func allPlaylists() -> some View {
+        PlaylistsView()
+    }
+    
     static func allFavorites() -> some View {
         GameListView(fetchRequest: FetchRequests.allFavorites()).navigationBarTitle("Favorites")
     }

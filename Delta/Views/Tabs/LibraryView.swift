@@ -30,10 +30,10 @@ struct LibraryButtons: View {
             NavigationLink(destination: Destination.allLibraryGames()) {
                 LibraryCell(title: "Games", showChevron: true)
             }
-            NavigationLink(destination: PlatformsView()) {
+            NavigationLink(destination: Destination.allPlatforms()) {
                 LibraryCell(title: "Platforms", showChevron: true)
             }
-            NavigationLink(destination: PlaylistsView()) {
+            NavigationLink(destination: Destination.allPlaylists()) {
                 LibraryCell(title: "Playlists", showChevron: true)
             }
         }
