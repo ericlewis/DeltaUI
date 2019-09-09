@@ -7,8 +7,8 @@ struct FavoriteForYouView: View {
                 RoundedRectangle(cornerRadius: 10, style: .continuous).fill(Color.purple).aspectRatio(1.8, contentMode: .fit)
                 Text("Favorites").font(.title).bold().foregroundColor(.white)
             }
-            .padding()
-            .shadow(radius: 10)
+            .padding([.horizontal, .bottom])
+            .shadow(radius: 5)
         }
     }
 }

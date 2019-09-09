@@ -3,9 +3,10 @@ import SwiftUI
 struct ForYouView: View {
     var body: some View {
         ScrollView {
+            Divider()
+                .padding([.leading, .bottom])
             FavoriteForYouView()
             Divider()
-                .padding(.leading)
             HorizontalGameScroller(.all, text: "Recently Played")
             HorizontalGameScroller(.gba)
             HorizontalGameScroller(.gbc)
