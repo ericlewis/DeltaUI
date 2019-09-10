@@ -13,3 +13,6 @@
 [submodule "GBADeltaCore"]
 	path = GBADeltaCore
 	url = https://github.com/rileytestut/GBADeltaCore
+[submodule "N64DeltaCore"]
+	path = N64DeltaCore
+	url = https://github.com/rileytestut/N64DeltaCore

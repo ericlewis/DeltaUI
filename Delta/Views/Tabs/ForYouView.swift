@@ -4,6 +4,7 @@ import ActivityIndicatorView
 struct ForYouView: View {
     
     @State var showScrollers = false
+    @ObservedObject var t = VGDBStore.shared
     
     var body: some View {
         ScrollView {
