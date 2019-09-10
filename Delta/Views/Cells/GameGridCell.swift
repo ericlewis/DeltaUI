@@ -3,21 +3,25 @@ import URLImage
 import ActivityIndicatorView
 
 struct GameGridCell: View {
-    @ObservedObject var game: GameEntity
+    @ObservedObject var game: ItemEntity
     
-    init(_ game: GameEntity) {
+    init(_ game: ItemEntity) {
         self.game = game
     }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             ZStack(alignment: .topTrailing) {
-                URLImage(game.image!, placeholder: {
+                if game.imageURL == nil {
                     PlaceholderView()
-                }, configuration: ImageLoaderConfiguration(useInMemoryCache: true))
-                    .gameGridImage()
-                    .contextMenu {
-                        GameContextMenu(game: game)
+                } else {
+                    URLImage(game.imageURL!, placeholder: {
+                        PlaceholderView()
+                    }, configuration: ImageLoaderConfiguration(useInMemoryCache: true))
+                        .gameGridImage()
+                        .contextMenu {
+                            GameContextMenu(game: game)
+                    }
                 }
                 if game.task != nil {
                     ActivityIndicatorView()
@@ -29,10 +33,7 @@ struct GameGridCell: View {
                 }
             }
             VStack(alignment: .leading, spacing: 0) {
-                Text(game.splitTitle.0 ?? "No Title")
-                    .gameGridTitle()
-                Text(game.splitTitle.1 ?? " ")
-                    .gameGridSubtitle()
+                Text(game.title ?? "No Title")
             }
         }
         .onTapGesture(perform: ActionCreator().presentEmulator(self.game))

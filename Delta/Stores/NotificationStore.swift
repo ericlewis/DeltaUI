@@ -9,19 +9,19 @@ extension UNUserNotificationCenter {
 }
 
 extension UNNotificationRequest {
-    static func downloadComplete(_ game: GameEntity) -> UNNotificationRequest {
+    static func downloadComplete(_ game: ItemEntity) -> UNNotificationRequest {
         let content = UNMutableNotificationContent()
-        let id = game.id! + "-download"
+        let id = String(game.id) + "-download"
         
         content.title = "Download Finished"
         content.body = "\(game.title ?? "No Title") is ready to play"
-        content.userInfo = ["id": game.id!]
+        content.userInfo = ["id": game.id]
         
         let nakedRequest = UNNotificationRequest(identifier: id,
                                                 content: content,
                                                 trigger: nil)
         
-        guard let url = game.image else { return nakedRequest }
+        guard let url = game.imageURL else { return nakedRequest }
         guard let imageData = NSData(contentsOf: url) else { return nakedRequest }
         guard let attachment = UNNotificationAttachment.create("image.png", data: imageData) else { return nakedRequest }
         
@@ -34,13 +34,13 @@ extension UNNotificationRequest {
         return request
     }
     
-    static func saveComplete(_ game: GameEntity, _ imageURL: URL) -> UNNotificationRequest {
+    static func saveComplete(_ game: ItemEntity, _ imageURL: URL) -> UNNotificationRequest {
         let content = UNMutableNotificationContent()
         
-        let id = game.id! + "-save"
+        let id = String(game.id) + "-save"
         
         content.title = "Save Successful"
-        content.body = "\(game.title ?? "No Title") - \(game.console.title)"
+        content.body = "\(game.title ?? "No Title") - \(game.type.title)"
         content.attachments = [try! UNNotificationAttachment(identifier: "image.png", url: imageURL, options: [UNNotificationAttachmentOptionsTypeHintKey: kUTTypePNG])]
         let request = UNNotificationRequest(identifier: id, content: content, trigger: nil)
         
@@ -72,8 +72,8 @@ extension UNNotificationAttachment {
 }
 
 enum LocalNotification {
-    case downloadComplete(GameEntity)
-    case saveCompelete(GameEntity, URL)
+    case downloadComplete(ItemEntity)
+    case saveCompelete(ItemEntity, URL)
 }
 
 enum NotificationActions {
@@ -86,11 +86,11 @@ extension ActionCreator where Actions == NotificationActions {
         perform(.requestPermissions)
     }
     
-    func downloadComplete(_ game: GameEntity) {
+    func downloadComplete(_ game: ItemEntity) {
         perform(.showNotification(.downloadComplete(game)))
     }
     
-    func saveComplete(_ game: GameEntity, _ imageURL: URL) {
+    func saveComplete(_ game: ItemEntity, _ imageURL: URL) {
         perform(.showNotification(.saveCompelete(game, imageURL)))
     }
 }

@@ -2,9 +2,9 @@ import SwiftUI
 import CoreData
 
 struct GameListView: View {
-    let fetchRequest: NSFetchRequest<GameEntity>
+    let fetchRequest: NSFetchRequest<ItemEntity>
         
-    init(fetchRequest: NSFetchRequest<GameEntity> = FetchRequests.recentlyPlayedDetail(console: .all)) {
+    init(fetchRequest: NSFetchRequest<ItemEntity> = FetchRequests.recentlyPlayedDetail(console: .all)) {
         self.fetchRequest = fetchRequest
     }
     

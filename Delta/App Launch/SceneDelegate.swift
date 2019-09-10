@@ -34,14 +34,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         // TODO: DRY
-        let request: NSFetchRequest<GameEntity> = GameEntity.fetchRequest()
+        let request: NSFetchRequest<ItemEntity> = ItemEntity.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         request.predicate = NSPredicate(format: "id = %@", id)
         request.fetchLimit = 1
         guard let games = try? (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext.fetch(request), let game = games.first else {
             return
         }
-        ActionCreator().presentEmulator(game)()
+        // TODO
+//        ActionCreator().presentEmulator(game)()
         completionHandler(false)
     }
 }

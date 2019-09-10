@@ -38,7 +38,7 @@ struct SheetPresenter<Content>: View where Content: View {
             }
             .eraseToAny())
         case .lookup(let game):
-            return WebView(url: .constant(URL(string: "https://www.google.com/search?q=\(String(game.title! + " " + game.type!).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)"))).edgesIgnoringSafeArea(.bottom).eraseToAny()
+            return WebView(url: .constant(URL(string: "https://www.google.com/search?q=\(String(game.title! + " " + game.type.title).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)"))).edgesIgnoringSafeArea(.bottom).eraseToAny()
         case .none:
             return EmptyView().eraseToAny()
         }

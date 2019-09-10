@@ -1,16 +1,16 @@
 import SwiftUI
 
 enum SaveStateActions {
-    case load(GameEntity)
-    case delete(SaveStateEntity)
+    case load(ItemEntity)
+    case delete(SaveEntity)
 }
 
 extension ActionCreator where Actions == SaveStateActions {
-    func loadSaveStates(_ game: GameEntity) {
+    func loadSaveStates(_ game: ItemEntity) {
         perform(.load(game))
     }
     
-    func deleteSaveState(_ save: SaveStateEntity) {
+    func deleteSaveState(_ save: SaveEntity) {
         perform(.delete(save))
     }
 }
@@ -18,8 +18,8 @@ extension ActionCreator where Actions == SaveStateActions {
 class SaveStatesStore: ObservableObject {
     static let shared = SaveStatesStore()
     
-    @Published var autoSave: SaveStateEntity?
-    @Published var saves: [SaveStateEntity] = []
+    @Published var autoSave: SaveEntity?
+    @Published var saves: [SaveEntity] = []
 
     init(dispatcher: Dispatcher<SaveStateActions> = .shared) {
         dispatcher.register { [weak self] action in
@@ -27,8 +27,9 @@ class SaveStatesStore: ObservableObject {
             
             switch action {
             case .load(let game):
-                self.autoSave = game.saveState
-                self.saves = game.saveStates?.allObjects as? [SaveStateEntity] ?? []
+                // TODO:
+//                self.autoSave = game.saves?.first
+                self.saves = game.saves?.allObjects as? [SaveEntity] ?? []
             case .delete(let save):
                 let idx = self.saves.firstIndex {
                     $0 == save

@@ -2,13 +2,13 @@ import SwiftUI
 import URLImage
 
 struct SaveStateCell: View, StorageProtocol {
-    var state: SaveStateEntity
+    var state: SaveEntity
     var auto = false
-    var selected: (SaveStateEntity) -> Void
+    var selected: (SaveEntity) -> Void
     
     let formatter = RelativeDateTimeFormatter()
     
-    init(_ state: SaveStateEntity, auto: Bool = false, selected: @escaping (SaveStateEntity) -> Void) {
+    init(_ state: SaveEntity, auto: Bool = false, selected: @escaping (SaveEntity) -> Void) {
         self.state = state
         self.auto = auto
         self.selected = selected
@@ -16,7 +16,7 @@ struct SaveStateCell: View, StorageProtocol {
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            URLImage(imagesDir.appendingPathComponent(state.imageFileURL!.lastPathComponent, isDirectory: false), placeholder: {
+            URLImage(imagesDir.appendingPathComponent(state.image!.url!.lastPathComponent, isDirectory: false), placeholder: {
                 Rectangle()
             })
             .renderingMode(.original)

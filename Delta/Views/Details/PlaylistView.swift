@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct PlaylistView: View {
-    @ObservedObject var playlist: PlaylistEntity
+    @ObservedObject var playlist: CollectionEntity
     @ObservedObject var store = CollectionStore.shared
     
-    init(playlist: PlaylistEntity) {
+    init(playlist: CollectionEntity) {
         self.playlist = playlist
     }
     

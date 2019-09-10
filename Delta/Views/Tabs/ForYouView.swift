@@ -4,7 +4,6 @@ import ActivityIndicatorView
 struct ForYouView: View {
     
     @State var showScrollers = false
-    @ObservedObject var t = VGDBStore.shared
     
     var body: some View {
         ScrollView {
@@ -25,10 +24,10 @@ struct ForYouView: View {
             }
         }
         .onAppear {
-            self.showScrollers = true
+            // self.showScrollers = true
         }
         .onDisappear {
-            self.showScrollers = false
+            // self.showScrollers = false
         }
         .navigationBarTitle("For You")
     }

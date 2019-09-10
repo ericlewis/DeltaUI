@@ -1,26 +1,26 @@
 import SwiftUI
 
 enum CollectionActions {
-    case loadGames(PlaylistEntity)
-    case addGame(PlaylistEntity, GameEntity)
-    case deleteGame(PlaylistEntity, GameEntity)
-    case deletePlaylist(PlaylistEntity)
+    case loadGames(CollectionEntity)
+    case addGame(CollectionEntity, ItemEntity)
+    case deleteGame(CollectionEntity, ItemEntity)
+    case deletePlaylist(CollectionEntity)
 }
 
 extension ActionCreator where Actions == CollectionActions {
-    func loadGames(_ playlist: PlaylistEntity) {
+    func loadGames(_ playlist: CollectionEntity) {
         perform(.loadGames(playlist))
     }
     
-    func deleteGame(_ playlist: PlaylistEntity, _ game: GameEntity) {
+    func deleteGame(_ playlist: CollectionEntity, _ game: ItemEntity) {
         perform(.deleteGame(playlist, game))
     }
     
-    func deletePlaylist(_ playlist: PlaylistEntity) {
+    func deletePlaylist(_ playlist: CollectionEntity) {
         perform(.deletePlaylist(playlist))
     }
     
-    func addGameToPlaylist(_ playlist: PlaylistEntity, _ game: GameEntity) {
+    func addGameToPlaylist(_ playlist: CollectionEntity, _ game: ItemEntity) {
         perform(.addGame(playlist, game))
     }
 }
@@ -28,7 +28,7 @@ extension ActionCreator where Actions == CollectionActions {
 class CollectionStore: ObservableObject {
     static let shared = CollectionStore()
 
-    @Published var games: [GameEntity] = []
+    @Published var games: [ItemEntity] = []
 
     init(dispatcher: Dispatcher<CollectionActions> = .shared) {
         dispatcher.register { [weak self] action in
@@ -36,7 +36,7 @@ class CollectionStore: ObservableObject {
             
             switch action {
             case .loadGames(let playlist):
-                self.games = playlist.games?.allObjects as? [GameEntity] ?? []
+                self.games = playlist.games?.allObjects as? [ItemEntity] ?? []
             case .addGame(let playlist, let game):
                 self.addGame(playlist, game)
             case .deleteGame(let playlist, let game):
@@ -50,7 +50,7 @@ class CollectionStore: ObservableObject {
 }
 
 extension CollectionStore {
-    private func addGame(_ playlist: PlaylistEntity, _ game: GameEntity) {
+    private func addGame(_ playlist: CollectionEntity, _ game: ItemEntity) {
         playlist.addToGames(game)
         try? playlist.managedObjectContext?.save()
         
@@ -58,7 +58,7 @@ extension CollectionStore {
         ActionCreator().dismiss()
     }
     
-    private func deletePlaylist(_ playlist: PlaylistEntity) {
+    private func deletePlaylist(_ playlist: CollectionEntity) {
         guard let context = playlist.managedObjectContext else {
             return
         }
@@ -66,7 +66,7 @@ extension CollectionStore {
         context.delete(playlist)
     }
     
-    private func deleteGame(_ playlist: PlaylistEntity, _ game: GameEntity) {
+    private func deleteGame(_ playlist: CollectionEntity, _ game: ItemEntity) {
         guard let idx = self.games.firstIndex(where: {
             $0.id == game.id
         }) else {
