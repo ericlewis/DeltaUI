@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         registerDeltaCores()
         registerLocalNotifications()
+        //sync()
         
         return true
     }

@@ -15,7 +15,7 @@ struct SaveStateCell: View, StorageProtocol {
     }
     
     var body: some View {
-        ZStack(alignment: .bottomLeading) {
+        VStack {
             URLImage(imagesDir.appendingPathComponent(state.image!.url!.lastPathComponent, isDirectory: false), placeholder: {
                 Rectangle()
             })
@@ -27,12 +27,6 @@ struct SaveStateCell: View, StorageProtocol {
             .scaleEffect(0.99)
                 .overlay(LinearGradient(gradient: Gradient(colors: [.clear, .secondary]), startPoint: .top, endPoint: .bottom).opacity(0.5)
             .mask(RoundedRectangle(cornerRadius: 10, style: .continuous)))
-            Text((auto ? "Auto Save • " : "") + formatter.localizedString(for: state.createdAt!, relativeTo: Date()))
-            .foregroundColor(.white)
-            .font(.headline)
-            .bold()
-            .padding()
-            .shadow(radius: 2)
         }
         .onTapGesture {
             self.selected(self.state)

@@ -45,15 +45,15 @@
     <entity name="SaveEntity" representedClassName="SaveEntity" parentEntity="FileEntity" syncable="YES" codeGenerationType="category">
         <attribute name="type" optional="YES" attributeType="String"/>
         <relationship name="collections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CollectionEntity" inverseName="saves" inverseEntity="CollectionEntity"/>
-        <relationship name="game" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ItemEntity" inverseName="saves" inverseEntity="ItemEntity"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ItemEntity" inverseName="saves" inverseEntity="ItemEntity"/>
         <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageEntity" inverseName="save" inverseEntity="ImageEntity"/>
     </entity>
     <elements>
+        <element name="CollectionEntity" positionX="-233.8671875" positionY="142.99609375" width="128" height="118"/>
+        <element name="FileEntity" positionX="-511.28125" positionY="131.76171875" width="128" height="103"/>
+        <element name="ImageEntity" positionX="-411.17578125" positionY="412.84765625" width="128" height="73"/>
         <element name="ItemEntity" positionX="-63.0078125" positionY="226.69140625" width="128" height="343"/>
         <element name="ROMEntity" positionX="-316.74609375" positionY="287.75" width="128" height="58"/>
-        <element name="FileEntity" positionX="-511.28125" positionY="131.76171875" width="128" height="103"/>
         <element name="SaveEntity" positionX="-599.09765625" positionY="308.0390625" width="128" height="103"/>
-        <element name="CollectionEntity" positionX="-233.8671875" positionY="142.99609375" width="128" height="118"/>
-        <element name="ImageEntity" positionX="-411.17578125" positionY="412.84765625" width="128" height="73"/>
     </elements>
 </model>

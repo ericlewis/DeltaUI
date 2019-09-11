@@ -53,14 +53,6 @@ class OurGameViewController: GameViewController, StorageProtocol {
         persistAutoSaveState()
     }
     
-    private func setupController() {
-        guard let type = gameEnt?.rom?.type else {
-            return
-        }
-        
-        self.controllerView.controllerSkin = ControllerSkin.standardControllerSkin(for: type)
-    }
-    
     private func setupGame() {
         guard let game = gameEnt?.rom else {
             return
@@ -102,20 +94,19 @@ class OurGameViewController: GameViewController, StorageProtocol {
     }
     
     private func persistAutoSaveState() {
-        if SettingsStore.shared.autoSaveOnClose {
-            guard let save = createSaveStateEntity(), let context = gameEnt?.managedObjectContext else {return}
-            // createSaveImage(save)
-            // gameEnt?.saveState = save
-            try? context.save()
-        }
+//        if SettingsStore.shared.autoSaveOnClose {
+//            guard let save = createSaveStateEntity(), let context = gameEnt?.managedObjectContext else {return}
+//            // createSaveImage(save)
+//            // gameEnt?.saveState = save
+//            try? context.save()
+//        }
     }
     
     func persistSaveState() {
         guard let save = createSaveStateEntity(false), let context = gameEnt?.managedObjectContext else {return}
         createSaveImage(save)
-        // gameEnt?.addToSaveStates(save)
         try? context.save()
-        // ActionCreator().saveComplete(gameEnt!, save.imageFileURL!) // bad spot for it
+        ActionCreator().saveComplete(gameEnt!, save.image!.url!) // bad spot for it
     }
     
     private func createSaveImage(_ save: SaveEntity) {
@@ -125,7 +116,11 @@ class OurGameViewController: GameViewController, StorageProtocol {
             do {
                 let url = newImageFile()
                 try data.write(to: url, options: [.atomicWrite])
-//                save.imageFileURL = url
+                let imageEnt = ImageEntity(context: gameEnt!.managedObjectContext!)
+                imageEnt.id = UUID()
+                imageEnt.save = save
+                imageEnt.url = url
+                save.image = imageEnt
             }
             catch {
                 print(error)
@@ -134,16 +129,21 @@ class OurGameViewController: GameViewController, StorageProtocol {
     }
     
     private func createSaveStateEntity(_ connected: Bool = true) -> SaveEntity? {
-        return nil
-//        guard let gameEnt = self.gameEnt else {
-//            return nil
-//        }
-//
-//        let url = saveStatesDir(for: gameEnt).appendingPathComponent(UUID().uuidString, isDirectory: false)
-//        guard let saveState = emulatorCore?.saveSaveState(to: url) else {
-//            return nil
-//        }
-//
-//        return SaveStateEntity.SaveState(game: gameEnt, saveState: saveState, connected: connected)
+        guard let gameEnt = self.gameEnt else {
+            return nil
+        }
+
+        let url = saveStatesDir(for: gameEnt).appendingPathComponent(UUID().uuidString, isDirectory: false)
+        guard let saveState = emulatorCore?.saveSaveState(to: url) else {
+            return nil
+        }
+        
+        let save = SaveEntity(context: gameEnt.managedObjectContext!)
+        save.id = UUID()
+        save.fileURL = saveState.fileURL
+        save.type = saveState.gameType.rawValue
+        save.game = gameEnt
+
+        return save
     }
 }

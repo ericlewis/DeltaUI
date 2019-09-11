@@ -7,7 +7,12 @@ public class FileEntity: NSManagedObject, Identifiable {}
 @objc(SaveEntity)
 public class SaveEntity: FileEntity, SaveStateProtocol {
     public var fileURL: URL {
-        url!
+        get {
+            url!
+        }
+        set {
+            url = newValue
+        }
     }
     
     public var gameType: GameType {
@@ -23,9 +28,16 @@ extension SaveEntity {
 
 
 @objc(ROMEntity)
-public class ROMEntity: FileEntity, GameProtocol {
+public class ROMEntity: FileEntity, GameProtocol, StorageProtocol {
     public var fileURL: URL {
-        url!
+        get {
+            var dir = gamesDir
+            dir.appendPathComponent(url!.lastPathComponent)
+            return dir
+        }
+        set {
+            url = newValue
+        }
     }
     
     public var type: GameType {
@@ -135,7 +147,7 @@ public extension ItemEntity {
     }
     
     var isDownloaded: Bool {
-        false
+        rom != nil
     }
     
     var imageURL: URL? {
@@ -151,10 +163,6 @@ extension ItemEntity {
     func deleteFromLibrary() {
         
     }
-    
-    func download() {
-        
-    }
 }
 
 extension CodingUserInfoKey {
@@ -167,7 +175,18 @@ extension GameType {
     }
     
     var title: String {
-        "Game Type"
+        switch self {
+        case .gba:
+            return "Gameboy Advance"
+        case .gbc:
+            return "Gameboy Color"
+        case .nes:
+            return "Nintendo"
+        case .snes:
+            return "Nintendo"
+        default:
+            return "Unknown"
+        }
     }
 }
 

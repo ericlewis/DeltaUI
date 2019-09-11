@@ -1,6 +1,7 @@
 import SwiftUI
 
-struct AddToPlaylistView: View {  
+struct AddToPlaylistView: View {
+  var collections = CollectionStore.shared
   var game: ItemEntity
   
   func addGame(_ playlist: CollectionEntity) {

@@ -135,8 +135,6 @@ class NavigationStore: ObservableObject {
                       game.updateLastPlayed()
                       self.currentGame = game
                       self.activeSheet = sheet
-                    } else {
-                      game.download()
                     }
                 default:
                     if self.activeSheet == nil {

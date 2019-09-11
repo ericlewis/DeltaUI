@@ -21,15 +21,6 @@ struct GameContextMenu: View {
                         }
                     }
                 }
-//                if !game.isDownloaded {
-//                    Button(action: game.download) {
-//                        HStack {
-//                            Text("Download")
-//                            Spacer()
-//                            Image(systemSymbol: .icloudAndArrowDown)
-//                        }
-//                    }
-//                }
             }
             if SettingsStore.shared.gameContextMenu.showFavorite {
                 if !game.favorited {

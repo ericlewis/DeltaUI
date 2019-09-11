@@ -34,6 +34,7 @@ struct GameGridCell: View {
             }
             VStack(alignment: .leading, spacing: 0) {
                 Text(game.title ?? "No Title")
+                .gameGridTitle()
             }
         }
         .onTapGesture(perform: ActionCreator().presentEmulator(self.game))

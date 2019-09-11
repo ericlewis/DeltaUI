@@ -24,10 +24,10 @@ struct ForYouView: View {
             }
         }
         .onAppear {
-            // self.showScrollers = true
+             self.showScrollers = true
         }
         .onDisappear {
-            // self.showScrollers = false
+             self.showScrollers = false
         }
         .navigationBarTitle("For You")
     }
