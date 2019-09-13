@@ -5,7 +5,7 @@ on:
     branches:
     - master
 
-# idk
+# idk, trigger
 
 jobs:
   danger:
