@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Deps
-        run: yarn add @babel/plugin-transform-flow-strip-types --dev
+        run: yarn global add @babel/plugin-transform-flow-strip-types
       - name: Checkout the Git repository
         uses: actions/checkout@v1
       - name: Danger JS Action
