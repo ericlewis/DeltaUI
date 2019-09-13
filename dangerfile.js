@@ -27,9 +27,9 @@ if (linesAdded + linesRemoved > bigPRThreshold || filesChanged > 15) {
 //   return true;
 // });
 
-for (path in swiftFilesWithCopyright) {
-  fail("Please remove copyright header", file, "0");
-}
+// for (path in swiftFilesWithCopyright) {
+//   fail("Please remove copyright header", file, "0");
+// }
 
 // PRs must have an assignee
 if (!danger.github.pr.assignee) {
