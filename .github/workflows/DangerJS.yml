@@ -1,18 +1,20 @@
-name: Danger	
+name: Danger
 
 on:
   pull_request:
     branches:
-    - master
+      - master
 
 jobs:
   danger:
     name: Danger
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout the Git repository
-      uses: actions/checkout@v1
-    - name: Danger JS Action
-      uses: danger/danger-js@9.1.8
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Download Deps
+        run: yarn add @babel/plugin-transform-flow-strip-types --dev
+      - name: Checkout the Git repository
+        uses: actions/checkout@v1
+      - name: Danger JS Action
+        uses: danger/danger-js@9.1.8
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
