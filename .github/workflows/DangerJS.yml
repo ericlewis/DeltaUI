@@ -15,6 +15,6 @@ jobs:
       - name: Check
         run: |
           yarn global add danger
-          danger ci --failOnErrors
+          yarn danger ci --failOnErrors
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
