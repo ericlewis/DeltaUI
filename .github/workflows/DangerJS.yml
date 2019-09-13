@@ -10,11 +10,11 @@ jobs:
     name: Danger
     runs-on: ubuntu-latest
     steps:
-      - name: Download Deps
-        run: yarn global add @babel/plugin-transform-flow-strip-types
+      - name: Install
+        run: yarn add danger --dev
       - name: Checkout the Git repository
         uses: actions/checkout@v1
-      - name: Danger JS Action
-        uses: danger/danger-js@9.1.8
+      - name: Check
+        run: yarn danger ci --failOnErrors
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
