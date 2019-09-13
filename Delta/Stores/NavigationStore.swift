@@ -168,3 +168,49 @@ class NavigationStore: ObservableObject {
         UserDefaults.standard.set(self.selectedTab, forKey: "tab")
     }
 }
+
+extension NavigationStore {
+    func handleDeeplink(_ deeplink: Deeplink) {
+        switch deeplink {
+        case .url(_):
+            print("TODO")
+        case .shortcut(let shortcut):
+            print(shortcut)
+        }
+    }
+}
+
+enum Deeplink {
+    case url(URL), shortcut(UIApplicationShortcutItem)
+    
+    enum Action {
+        case launchGame(String)
+        
+        var type: String {
+            switch self {
+            case .launchGame(_):
+                return "launchGame"
+            }
+        }
+        
+        var key: String {
+            switch self {
+            case .launchGame(_):
+                return "launchGame"
+            }
+        }
+    }
+}
+
+extension UIApplicationShortcutItem {
+    convenience init(_ localizedTitle: String, action: Deeplink.Action) {
+        var userInfo: [String: NSSecureCoding]?
+
+        switch action {
+        case .launchGame(let identifier):
+            userInfo = [action.type: identifier as NSString]
+        }
+        
+        self.init(type: action.type, localizedTitle: localizedTitle, localizedSubtitle: nil, icon: nil, userInfo: userInfo)
+    }
+}
