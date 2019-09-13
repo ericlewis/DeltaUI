@@ -18,3 +18,5 @@ jobs:
       uses: danger/swift@2.0.1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: t
+    - runs: echo "test"
