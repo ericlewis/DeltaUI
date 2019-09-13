@@ -1,5 +1,5 @@
 import { danger, fail, message, warn } from "danger";
-import fs from "fs";
+const fs = require("fs");
 
 const linesAdded = danger.github.pr.additions || 0;
 const linesRemoved = danger.github.pr.deletions || 0;
