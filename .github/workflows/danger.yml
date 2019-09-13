@@ -5,7 +5,7 @@ on:
     branches:
     - master
 
-# idk, hm
+# idk, hmm
 
 jobs:
   danger:
