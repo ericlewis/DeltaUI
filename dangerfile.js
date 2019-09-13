@@ -29,7 +29,7 @@ const swiftFilesWithCopyright = files.filter(path => {
 });
 
 for (path in swiftFilesWithCopyright) {
-  fail("Please remove copyright header", path, "0");
+  fail("Please remove copyright header", swiftFilesWithCopyright[path], "0");
 }
 
 // PRs must have an assignee
