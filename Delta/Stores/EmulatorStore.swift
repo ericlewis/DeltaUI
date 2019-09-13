@@ -1,13 +1,13 @@
 import SwiftUI
 
 enum EmulatorActions {
-    case toggleFavorite(GameEntity)
-    case loadState(SaveStateEntity)
+    case toggleFavorite(ItemEntity)
+    case loadState(SaveEntity)
     case saveState
 }
 
 extension ActionCreator where Actions == EmulatorActions {
-    func loadState(_ save: SaveStateEntity) {
+    func loadState(_ save: SaveEntity) {
         perform(.loadState(save))
     }
     
@@ -15,7 +15,7 @@ extension ActionCreator where Actions == EmulatorActions {
         perform(.saveState)
     }
     
-    func toggleFavorite(_ game: GameEntity) {
+    func toggleFavorite(_ game: ItemEntity) {
         perform(.toggleFavorite(game))
     }
 }
@@ -24,7 +24,7 @@ class EmulatorStore: ObservableObject {
     static let shared = EmulatorStore()
     
     var save: (() -> Void)?
-    var load: ((SaveStateEntity) -> Void)?
+    var load: ((SaveEntity) -> Void)?
                 
     init(dispatcher: Dispatcher<EmulatorActions> = .shared) {
         dispatcher.register { [weak self] action in

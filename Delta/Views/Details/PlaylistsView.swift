@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct PlaylistsView: View {
-  typealias Action = ((PlaylistEntity) -> Void)?
+  typealias Action = ((CollectionEntity) -> Void)?
   
   @Environment(\.managedObjectContext) var context
-  @FetchRequest(fetchRequest: FetchRequests.allPlaylists()) var results: FetchedResults<PlaylistEntity>
+  @FetchRequest(fetchRequest: FetchRequests.allPlaylists()) var results: FetchedResults<CollectionEntity>
   
   @State var isShowingNewPlaylist = false
   @State var playlistTitleInput = ""
@@ -16,7 +16,7 @@ struct PlaylistsView: View {
   }
   
   func save() {
-    PlaylistEntity.create(title: playlistTitleInput, context: context) {
+    CollectionEntity.create(title: playlistTitleInput, context: context) {
       self.isShowingNewPlaylist.toggle()
       self.playlistTitleInput = ""
     }

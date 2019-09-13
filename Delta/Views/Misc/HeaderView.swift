@@ -5,7 +5,7 @@ struct HeaderView: View {
     var console: Console
     var isSeeAllEnabled: Bool
     
-    @Binding var fetchRequest: NSFetchRequest<GameEntity>?
+    @Binding var fetchRequest: NSFetchRequest<ItemEntity>?
     
     var body: some View {
         HStack {

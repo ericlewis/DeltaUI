@@ -1,11 +1,10 @@
 import SwiftUI
 
 struct AddToPlaylistView: View {
-  @Environment(\.managedObjectContext) var context
+  var collections = CollectionStore.shared
+  var game: ItemEntity
   
-  var game: GameEntity
-  
-  func addGame(_ playlist: PlaylistEntity) {
+  func addGame(_ playlist: CollectionEntity) {
     ActionCreator().addGameToPlaylist(playlist, game)
   }
   

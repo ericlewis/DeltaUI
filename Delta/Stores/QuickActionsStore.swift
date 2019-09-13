@@ -4,7 +4,7 @@ import CoreData
 class QuickActionsStore {
     static let shared = QuickActionsStore()
     
-    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<GameEntity> = {
+    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<ItemEntity> = {
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: FetchRequests.recentlyPlayed(console: .all, limit: 3),
                                                                   managedObjectContext: (UIApplication.shared.delegate as? AppDelegate)!.persistentContainer.viewContext,
                                                                   sectionNameKeyPath: nil,
@@ -12,7 +12,7 @@ class QuickActionsStore {
         return fetchedResultsController
     }()
     
-    var games: [GameEntity] {
+    var games: [ItemEntity] {
         fetchedResultsController.fetchedObjects ?? []
     }
     

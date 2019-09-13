@@ -6,9 +6,9 @@ protocol StorageProtocol {
     var saveStatesDir: URL {get}
     var imagesDir: URL {get}
     
-    func saveStatesDir(for: GameEntity) -> URL
-    func gameDir(for: GameEntity) -> URL
-    func newSaveStatesFile(for: GameEntity) -> URL
+    func saveStatesDir(for: ItemEntity) -> URL
+    func gameDir(for: ItemEntity) -> URL
+    func newSaveStatesFile(for: ItemEntity) -> URL
     func newImageFile() -> URL
     func createDir(url: URL) -> URL
 }
@@ -30,16 +30,16 @@ extension StorageProtocol {
         createDir(url: defaultDir.appendingPathComponent("Images"))
     }
     
-    func saveStatesDir(for game: GameEntity) -> URL {
+    func saveStatesDir(for game: ItemEntity) -> URL {
         // bug, this should be the game id, but it doesn't work correctly.
         saveStatesDir
     }
     
-    func gameDir(for game: GameEntity) -> URL {
-        gamesDir.appendingPathComponent(game.id!, isDirectory: true)
+    func gameDir(for game: ItemEntity) -> URL {
+        gamesDir.appendingPathComponent(String(game.id), isDirectory: true)
     }
 
-    func newSaveStatesFile(for game: GameEntity) -> URL {
+    func newSaveStatesFile(for game: ItemEntity) -> URL {
         saveStatesDir(for: game).appendingPathComponent(UUID().uuidString, isDirectory: false)
     }
     

@@ -8,13 +8,13 @@ extension Notification.Name {
 
 class OurGameViewController: GameViewController, StorageProtocol {
     
-    var gameEnt: GameEntity?
+    var gameEnt: ItemEntity?
     
-    var stateToLoad: SaveStateEntity? {
+    var stateToLoad: SaveEntity? {
         didSet {
             let state = self.stateToLoad
             if gameEnt != nil && state != nil {
-                try? emulatorCore?.load(state!.loadableWithGame(gameEnt!)!)
+                try? emulatorCore?.load(state!)
             }
         }
     }
@@ -53,16 +53,8 @@ class OurGameViewController: GameViewController, StorageProtocol {
         persistAutoSaveState()
     }
     
-    private func setupController() {
-        guard let type = gameEnt?.game?.type else {
-            return
-        }
-        
-        self.controllerView.controllerSkin = ControllerSkin.standardControllerSkin(for: type)
-    }
-    
     private func setupGame() {
-        guard let game = gameEnt?.game else {
+        guard let game = gameEnt?.rom else {
             return
         }
         
@@ -70,62 +62,65 @@ class OurGameViewController: GameViewController, StorageProtocol {
     }
 
     private func loadState() {
-        do {
-            let isRunning = (emulatorCore?.state == .running)
-            
-            if isRunning {
-                pauseEmulation()
-            }
-            
-            guard let save = gameEnt?.saveState?.loadable else {
-                if isRunning {
-                    resumeEmulation()
-                }
-                
-                return
-            }
-            
-            if self.stateToLoad != nil {
-                try emulatorCore?.load(self.stateToLoad!.loadableWithGame(gameEnt!)!)
-            } else if SettingsStore.shared.resumeFromAutoSave {
-                try emulatorCore?.load(save)
-            }
-            
-            if isRunning {
-                resumeEmulation()
-            }
-            
-        } catch {
-            print(error)
-            resumeEmulation()
-        }
+//        do {
+//            let isRunning = (emulatorCore?.state == .running)
+//
+//            if isRunning {
+//                pauseEmulation()
+//            }
+//
+//            guard let save = gameEnt?.saveState?.loadable else {
+//                if isRunning {
+//                    resumeEmulation()
+//                }
+//
+//                return
+//            }
+//
+//            if self.stateToLoad != nil {
+//                try emulatorCore?.load(self.stateToLoad!.loadableWithGame(gameEnt!)!)
+//            } else if SettingsStore.shared.resumeFromAutoSave {
+//                try emulatorCore?.load(save)
+//            }
+//
+//            if isRunning {
+//                resumeEmulation()
+//            }
+//
+//        } catch {
+//            print(error)
+//            resumeEmulation()
+//        }
     }
     
     private func persistAutoSaveState() {
-        if SettingsStore.shared.autoSaveOnClose {
-            guard let save = createSaveStateEntity(), let context = gameEnt?.managedObjectContext else {return}
-            createSaveImage(save)
-            gameEnt?.saveState = save
-            try? context.save()
-        }
+//        if SettingsStore.shared.autoSaveOnClose {
+//            guard let save = createSaveStateEntity(), let context = gameEnt?.managedObjectContext else {return}
+//            // createSaveImage(save)
+//            // gameEnt?.saveState = save
+//            try? context.save()
+//        }
     }
     
     func persistSaveState() {
         guard let save = createSaveStateEntity(false), let context = gameEnt?.managedObjectContext else {return}
         createSaveImage(save)
-        gameEnt?.addToSaveStates(save)
         try? context.save()
-        ActionCreator().saveComplete(gameEnt!, save.imageFileURL!) // bad spot for it
+        ActionCreator().saveComplete(gameEnt!, save.image!.url!) // bad spot for it
     }
     
-    private func createSaveImage(_ save: SaveStateEntity) {
+    private func createSaveImage(_ save: SaveEntity) {
         if let outputImage = gameView.outputImage,
            let quartzImage = imageContext.createCGImage(outputImage, from: outputImage.extent),
            let data = UIImage(cgImage: quartzImage).pngData() {
             do {
                 let url = newImageFile()
                 try data.write(to: url, options: [.atomicWrite])
-                save.imageFileURL = url
+                let imageEnt = ImageEntity(context: gameEnt!.managedObjectContext!)
+                imageEnt.id = UUID()
+                imageEnt.save = save
+                imageEnt.url = url
+                save.image = imageEnt
             }
             catch {
                 print(error)
@@ -133,16 +128,22 @@ class OurGameViewController: GameViewController, StorageProtocol {
         }
     }
     
-    private func createSaveStateEntity(_ connected: Bool = true) -> SaveStateEntity? {
+    private func createSaveStateEntity(_ connected: Bool = true) -> SaveEntity? {
         guard let gameEnt = self.gameEnt else {
             return nil
         }
-        
+
         let url = saveStatesDir(for: gameEnt).appendingPathComponent(UUID().uuidString, isDirectory: false)
         guard let saveState = emulatorCore?.saveSaveState(to: url) else {
             return nil
         }
         
-        return SaveStateEntity.SaveState(game: gameEnt, saveState: saveState, connected: connected)
+        let save = SaveEntity(context: gameEnt.managedObjectContext!)
+        save.id = UUID()
+        save.fileURL = saveState.fileURL
+        save.type = saveState.gameType.rawValue
+        save.game = gameEnt
+
+        return save
     }
 }

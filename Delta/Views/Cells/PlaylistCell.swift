@@ -2,29 +2,29 @@ import SwiftUI
 import URLImage
 
 struct PlaylistCell: View {
-    @ObservedObject var playlist: PlaylistEntity
+    @ObservedObject var playlist: CollectionEntity
     
-    init(_ playlist: PlaylistEntity) {
+    init(_ playlist: CollectionEntity) {
         self.playlist = playlist
     }
     
-    var allGames: [GameEntity] {
-        playlist.games?.allObjects as! [GameEntity]
+    var allGames: [ItemEntity] {
+        playlist.games?.allObjects as! [ItemEntity]
     }
     
     var Images: some View {
         ZStack {
             VStack(spacing: 0) {
                 HStack(spacing: 0) {
-                    URLImage(allGames[0].image!)
+                    URLImage(allGames[0].imageURL!)
                     .square()
-                    URLImage(allGames[1].image!)
+                    URLImage(allGames[1].imageURL!)
                     .square()
                 }
                 HStack(spacing: 0) {
-                    URLImage(allGames[2].image!)
+                    URLImage(allGames[2].imageURL!)
                     .square()
-                    URLImage(allGames[3].image!)
+                    URLImage(allGames[3].imageURL!)
                     .square()
                 }
             }
@@ -38,7 +38,7 @@ struct PlaylistCell: View {
             if playlist.games?.count ?? 0 > 3 {
                 Images
             } else if playlist.games?.count ?? 0 > 0 {
-                URLImage(allGames[0].image!)
+                URLImage(allGames[0].imageURL!)
                 .square()
                 .mask(RoundedRectangle(cornerRadius: 3))
                 .frame(width: 80, height: 80)

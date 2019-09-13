@@ -3,7 +3,7 @@ import SwiftUI
 struct GameContextMenu: View {
     @Environment(\.managedObjectContext) var context
     
-    @ObservedObject var game: GameEntity
+    @ObservedObject var game: ItemEntity
     
     func toggleFave() {
         ActionCreator().toggleFavorite(game)
@@ -12,21 +12,12 @@ struct GameContextMenu: View {
     var body: some View {
         Group {
             if SettingsStore.shared.gameContextMenu.showPlay {
-                if game.hasROM {
+                if game.isDownloaded {
                     Button(action: ActionCreator().presentEmulator(self.game)) {
                         HStack {
                             Text("Play")
                             Spacer()
                             Image(systemSymbol: .gamecontroller)
-                        }
-                    }
-                }
-                if !game.hasROM {
-                    Button(action: game.download) {
-                        HStack {
-                            Text("Download")
-                            Spacer()
-                            Image(systemSymbol: .icloudAndArrowDown)
                         }
                     }
                 }
@@ -59,7 +50,7 @@ struct GameContextMenu: View {
                     }
                 }
             }
-            if game.hasROM && SettingsStore.shared.gameContextMenu.showSaveStates {
+            if game.isDownloaded && SettingsStore.shared.gameContextMenu.showSaveStates {
                 Button(action: ActionCreator().presentSavedStates(self.game)) {
                     HStack {
                         Text("View Save States")
@@ -77,7 +68,7 @@ struct GameContextMenu: View {
                     }
                 }
             }
-            if game.hasROM && SettingsStore.shared.gameContextMenu.showDeleteFromLibrary {
+            if game.isDownloaded && SettingsStore.shared.gameContextMenu.showDeleteFromLibrary {
                 Button(action: ActionCreator().presentRemoveFromLibraryConfirmation(self.game)) {
                     HStack {
                         Text("Delete from Library")
