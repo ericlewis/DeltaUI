@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install
-        run: yarn add danger --dev
+        run: yarn global add danger
       - name: Checkout the Git repository
         uses: actions/checkout@v1
       - name: Check
-        run: yarn danger ci --failOnErrors
+        run: danger ci --failOnErrors
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
