@@ -22,7 +22,7 @@ if (linesAdded + linesRemoved > bigPRThreshold || filesChanged > 15) {
 const swiftFilesWithCopyright = files.filter(path => {
   if (path.endsWith(".swift")) {
     content = fs.readFileSync(path);
-    return !content.includes("Copyright");
+    return content.includes("Copyright");
   }
 
   return false;
