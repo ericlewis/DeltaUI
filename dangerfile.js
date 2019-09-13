@@ -3,7 +3,7 @@ import { danger, fail, message, warn } from "danger";
 const linesAdded = danger.github.pr.additions || 0;
 const linesRemoved = danger.github.pr.deletions || 0;
 const filesChanged = danger.github.pr.changed_files || 0;
-const files = danger.git.modified_files + danger.git.created_files;
+const files = [...danger.git.modified_files, ...danger.git.created_files];
 
 if (linesRemoved > linesAdded) {
   message("Nice work removing more code than you added!");
