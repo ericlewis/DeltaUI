@@ -31,6 +31,8 @@ if (linesAdded + linesRemoved > bigPRThreshold || filesChanged > 15) {
 //   fail("Please remove copyright header", file, "0");
 // }
 
+warn(JSON.stringify(files));
+
 // PRs must have an assignee
 if (!danger.github.pr.assignee) {
   warn("Please assign yourself to the PR.");
