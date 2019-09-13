@@ -18,20 +18,18 @@ if (linesAdded + linesRemoved > bigPRThreshold || filesChanged > 15) {
 }
 
 // We do not include copyright headers in source
-// const swiftFilesWithCopyright = files.filter(path => {
-//   if (path.endsWith(".swift")) {
-//     content = fs.readFileSync(path);
-//     return !content.includes("Copyright");
-//   }
+const swiftFilesWithCopyright = files.filter(path => {
+  if (path.endsWith(".swift")) {
+    content = fs.readFileSync(path);
+    return !content.includes("Copyright");
+  }
 
-//   return true;
-// });
+  return true;
+});
 
-// for (path in swiftFilesWithCopyright) {
-//   fail("Please remove copyright header", file, "0");
-// }
-
-warn(JSON.stringify(files));
+for (path in swiftFilesWithCopyright) {
+  fail("Please remove copyright header", file, "0");
+}
 
 // PRs must have an assignee
 if (!danger.github.pr.assignee) {
