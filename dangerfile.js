@@ -25,7 +25,7 @@ const swiftFilesWithCopyright = files.filter(path => {
     return !content.includes("Copyright");
   }
 
-  return true;
+  return false;
 });
 
 for (path in swiftFilesWithCopyright) {
