@@ -1,4 +1,5 @@
 import SwiftUI
+import DeltaCore
 
 enum Tabs: Int {
     case library, forYou, browse, search, settings
@@ -13,37 +14,37 @@ enum NavigationActions {
 }
 
 extension ActionCreator where Actions == NavigationActions {
-    func presentEmulator(_ game: GameEntity) {
+    func presentEmulator(_ game: ItemEntity) {
         perform(.showSheet(.emulator(game)))
     }
     
-    func presentEmulator(_ game: GameEntity) -> () -> Void {
+    func presentEmulator(_ game: ItemEntity) -> () -> Void {
         {
             self.presentEmulator(game)
         }
     }
     
-    func presentSavedStates(_ game: GameEntity) {
+    func presentSavedStates(_ game: ItemEntity) {
         self.perform(.showSheet(.saveStates(game)))
     }
     
-    func presentSavedStates(_ game: GameEntity) -> () -> Void {
+    func presentSavedStates(_ game: ItemEntity) -> () -> Void {
         {
             self.presentSavedStates(game)
         }
     }
     
-    func presentAddToPlaylist(_ game: GameEntity) {
+    func presentAddToPlaylist(_ game: ItemEntity) {
         self.perform(.showSheet(.addToPlaylist(game)))
     }
     
-    func presentAddToPlaylist(_ game: GameEntity) -> () -> Void {
+    func presentAddToPlaylist(_ game: ItemEntity) -> () -> Void {
         {
             self.presentAddToPlaylist(game)
         }
     }
     
-    func presentLookup(_ game: GameEntity) -> () -> Void {
+    func presentLookup(_ game: ItemEntity) -> () -> Void {
         {
             self.perform(.showSheet(.lookup(game)))
         }
@@ -61,13 +62,13 @@ extension ActionCreator where Actions == NavigationActions {
         perform(.showEmulatorMenu)
     }
     
-    func presentRemoveFromLibraryConfirmation(_ game: GameEntity) -> () -> Void {
+    func presentRemoveFromLibraryConfirmation(_ game: ItemEntity) -> () -> Void {
         {
             self.perform(.showActionSheet(.removeFromLibraryConfirmation(game)))
         }
     }
     
-    func presentRemoveSaveFromLibraryConfirmation(_ save: SaveStateEntity) -> () -> Void {
+    func presentRemoveSaveFromLibraryConfirmation(_ save: SaveEntity) -> () -> Void {
         {
             self.perform(.showActionSheet(.removeSaveFromLibraryConfirmation(save)))
         }
@@ -76,10 +77,10 @@ extension ActionCreator where Actions == NavigationActions {
 
 enum Sheets: Identifiable {
     case none
-    case saveStates(GameEntity)
-    case addToPlaylist(GameEntity)
-    case emulator(GameEntity)
-    case lookup(GameEntity)
+    case saveStates(ItemEntity)
+    case addToPlaylist(ItemEntity)
+    case emulator(ItemEntity)
+    case lookup(ItemEntity)
 
     var id: String {
         switch self {
@@ -94,8 +95,8 @@ enum Sheets: Identifiable {
 
 enum ActionSheets: Identifiable {
     case none
-    case removeFromLibraryConfirmation(GameEntity)
-    case removeSaveFromLibraryConfirmation(SaveStateEntity)
+    case removeFromLibraryConfirmation(ItemEntity)
+    case removeSaveFromLibraryConfirmation(SaveEntity)
 
     var id: String {
         switch self {
@@ -118,7 +119,7 @@ class NavigationStore: ObservableObject {
     @Published var activeSheet: Sheets?
     @Published var activeSheetLayer2: Sheets?
     @Published var activeActionSheet: ActionSheets?
-    @Published var currentGame: GameEntity?
+    @Published var currentGame: ItemEntity?
     @Published var isShowingEmulatorMenu = false
 
     init(dispatcher: Dispatcher<NavigationActions> = .shared) {
@@ -130,12 +131,10 @@ class NavigationStore: ObservableObject {
             case .showSheet(let sheet):
                 switch sheet {
                 case .emulator(let game):
-                    if game.hasROM {
+                    if game.isDownloaded == true {
                       game.updateLastPlayed()
                       self.currentGame = game
                       self.activeSheet = sheet
-                    } else {
-                      game.download()
                     }
                 default:
                     if self.activeSheet == nil {
@@ -167,5 +166,51 @@ class NavigationStore: ObservableObject {
     
     private func persist() {
         UserDefaults.standard.set(self.selectedTab, forKey: "tab")
+    }
+}
+
+extension NavigationStore {
+    func handleDeeplink(_ deeplink: Deeplink) {
+        switch deeplink {
+        case .url(_):
+            print("TODO")
+        case .shortcut(let shortcut):
+            print(shortcut)
+        }
+    }
+}
+
+enum Deeplink {
+    case url(URL), shortcut(UIApplicationShortcutItem)
+    
+    enum Action {
+        case launchGame(String)
+        
+        var type: String {
+            switch self {
+            case .launchGame(_):
+                return "launchGame"
+            }
+        }
+        
+        var key: String {
+            switch self {
+            case .launchGame(_):
+                return "launchGame"
+            }
+        }
+    }
+}
+
+extension UIApplicationShortcutItem {
+    convenience init(_ localizedTitle: String, action: Deeplink.Action) {
+        var userInfo: [String: NSSecureCoding]?
+
+        switch action {
+        case .launchGame(let identifier):
+            userInfo = [action.type: identifier as NSString]
+        }
+        
+        self.init(type: action.type, localizedTitle: localizedTitle, localizedSubtitle: nil, icon: nil, userInfo: userInfo)
     }
 }

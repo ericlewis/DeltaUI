@@ -2,21 +2,21 @@ import SwiftUI
 import URLImage
 
 struct SaveStateCell: View, StorageProtocol {
-    var state: SaveStateEntity
+    var state: SaveEntity
     var auto = false
-    var selected: (SaveStateEntity) -> Void
+    var selected: (SaveEntity) -> Void
     
     let formatter = RelativeDateTimeFormatter()
     
-    init(_ state: SaveStateEntity, auto: Bool = false, selected: @escaping (SaveStateEntity) -> Void) {
+    init(_ state: SaveEntity, auto: Bool = false, selected: @escaping (SaveEntity) -> Void) {
         self.state = state
         self.auto = auto
         self.selected = selected
     }
     
     var body: some View {
-        ZStack(alignment: .bottomLeading) {
-            URLImage(imagesDir.appendingPathComponent(state.imageFileURL!.lastPathComponent, isDirectory: false), placeholder: {
+        VStack {
+            URLImage(imagesDir.appendingPathComponent(state.image!.url!.lastPathComponent, isDirectory: false), placeholder: {
                 Rectangle()
             })
             .renderingMode(.original)
@@ -27,12 +27,6 @@ struct SaveStateCell: View, StorageProtocol {
             .scaleEffect(0.99)
                 .overlay(LinearGradient(gradient: Gradient(colors: [.clear, .secondary]), startPoint: .top, endPoint: .bottom).opacity(0.5)
             .mask(RoundedRectangle(cornerRadius: 10, style: .continuous)))
-            Text((auto ? "Auto Save • " : "") + formatter.localizedString(for: state.createdAt!, relativeTo: Date()))
-            .foregroundColor(.white)
-            .font(.headline)
-            .bold()
-            .padding()
-            .shadow(radius: 2)
         }
         .onTapGesture {
             self.selected(self.state)

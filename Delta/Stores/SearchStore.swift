@@ -13,29 +13,29 @@ class SearchStore: NSObject, ObservableObject, NSFetchedResultsControllerDelegat
     @Published var searchTerm = ""
     @Published var scope: Int = 0
     
-    @Published var fetchRequest: NSFetchRequest<GameEntity>? = nil    
+    @Published var fetchRequest: NSFetchRequest<ItemEntity>? = nil
     
-    @Published var gba: [GameEntity] = []
-    @Published var gbc: [GameEntity] = []
-    @Published var gb: [GameEntity] = []
-    @Published var snes: [GameEntity] = []
-    @Published var nes: [GameEntity] = []
+    @Published var gba: [ItemEntity] = []
+    @Published var gbc: [ItemEntity] = []
+    @Published var gb: [ItemEntity] = []
+    @Published var snes: [ItemEntity] = []
+    @Published var nes: [ItemEntity] = []
 
-    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<GameEntity> = {
-        let fetchRequest: NSFetchRequest<GameEntity> = GameEntity.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "type", ascending: true), NSSortDescriptor(key: "title", ascending: true)]
+    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<ItemEntity> = {
+        let fetchRequest: NSFetchRequest<ItemEntity> = ItemEntity.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "systemShort", ascending: true), NSSortDescriptor(key: "title", ascending: true)]
         
         if scope == 0 {
-            let predicate = NSPredicate(format: "gameURL != nil")
+            let predicate = NSPredicate(format: "rom != nil")
             fetchRequest.predicate = predicate
         } else {
-            let predicate = NSPredicate(format: "gameURL == nil")
+            let predicate = NSPredicate(format: "rom == nil")
             fetchRequest.predicate = predicate
         }
                 
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                                   managedObjectContext: (UIApplication.shared.delegate as? AppDelegate)!.persistentContainer.viewContext,
-                                                                  sectionNameKeyPath: "type",
+                                                                  sectionNameKeyPath: "systemShort",
                                                                   cacheName: nil)
         fetchedResultsController.delegate = self
         
@@ -45,18 +45,18 @@ class SearchStore: NSObject, ObservableObject, NSFetchedResultsControllerDelegat
     func search() {
         if !searchTerm.isEmpty {
             if scope == 0 {
-                let predicate = NSPredicate(format: "title contains[cd] %@ && gameURL != nil", "\(searchTerm)")
+                let predicate = NSPredicate(format: "title contains[cd] %@ && rom != nil", "\(searchTerm)")
                 self.fetchedResultsController.fetchRequest.predicate = predicate
             } else {
-                let predicate = NSPredicate(format: "title contains[cd] %@ && gameURL == nil", "\(searchTerm)")
+                let predicate = NSPredicate(format: "title contains[cd] %@ && rom == nil", "\(searchTerm)")
                 self.fetchedResultsController.fetchRequest.predicate = predicate
             }
         } else {
             if scope == 0 {
-                let predicate = NSPredicate(format: "gameURL != nil")
+                let predicate = NSPredicate(format: "rom != nil")
                 self.fetchedResultsController.fetchRequest.predicate = predicate
             } else {
-                let predicate = NSPredicate(format: "gameURL == nil")
+                let predicate = NSPredicate(format: "rom == nil")
                 self.fetchedResultsController.fetchRequest.predicate = predicate
             }
         }
@@ -74,16 +74,16 @@ class SearchStore: NSObject, ObservableObject, NSFetchedResultsControllerDelegat
                 
         self.fetchedResultsController.sections?.forEach { section in
             switch section.name {
-            case "gameboy":
-            self.gb = (section.objects as? [GameEntity])?.prefix(limit).asArray() ?? []
-            case "gameboy-color":
-            self.gbc = (section.objects as? [GameEntity])?.prefix(limit).asArray() ?? []
-            case "gameboy-advance":
-            self.gba = (section.objects as? [GameEntity])?.prefix(limit).asArray() ?? []
-            case "nintendo":
-            self.nes = (section.objects as? [GameEntity])?.prefix(limit).asArray() ?? []
-            case "super-nintendo":
-            self.snes = (section.objects as? [GameEntity])?.prefix(limit).asArray() ?? []
+            case "GB":
+            self.gb = (section.objects as? [ItemEntity])?.prefix(limit).asArray() ?? []
+            case "GBC":
+            self.gbc = (section.objects as? [ItemEntity])?.prefix(limit).asArray() ?? []
+            case "GBA":
+            self.gba = (section.objects as? [ItemEntity])?.prefix(limit).asArray() ?? []
+            case "NES":
+            self.nes = (section.objects as? [ItemEntity])?.prefix(limit).asArray() ?? []
+            case "SNES":
+            self.snes = (section.objects as? [ItemEntity])?.prefix(limit).asArray() ?? []
             default:
                 break
             }

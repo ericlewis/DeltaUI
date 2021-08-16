@@ -24,7 +24,6 @@
 		681C7A4723184DB100DFC744 /* ForYouView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A4623184DB100DFC744 /* ForYouView.swift */; };
 		681C7A49231858CD00DFC744 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A48231858CD00DFC744 /* SearchView.swift */; };
 		681C7A4D2318600900DFC744 /* FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A4C2318600900DFC744 /* FetchRequests.swift */; };
-		681C7A4F231860A000DFC744 /* GameEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A4E231860A000DFC744 /* GameEntity.swift */; };
 		681C7A51231861B400DFC744 /* GameListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A50231861B400DFC744 /* GameListCell.swift */; };
 		681C7A572318636B00DFC744 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A562318636B00DFC744 /* SettingsView.swift */; };
 		681C7A59231871A500DFC744 /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681C7A58231871A500DFC744 /* BrowseView.swift */; };
@@ -35,7 +34,8 @@
 		682640A72324AC5D003B86A3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682640A62324AC5D003B86A3 /* HeaderView.swift */; };
 		682640A92324AC88003B86A3 /* FavoriteForYouView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682640A82324AC88003B86A3 /* FavoriteForYouView.swift */; };
 		6832F4642316E219002B3FD9 /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6832F4632316E219002B3FD9 /* GameListView.swift */; };
-		6856F878231617D30060CC7A /* Games.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6856F876231617D30060CC7A /* Games.xcdatamodeld */; };
+		683B52B72328A1700053B213 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 683B52B62328A1700053B213 /* CryptoSwift */; };
+		6856F878231617D30060CC7A /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6856F876231617D30060CC7A /* Database.xcdatamodeld */; };
 		6856F87C2316B82A0060CC7A /* SearchNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6856F87B2316B82A0060CC7A /* SearchNavigationView.swift */; };
 		68707E5F2324D57400C30C9D /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68707E5E2324D57400C30C9D /* WebView.swift */; };
 		68707E732325B38000C30C9D /* EmulatorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68707E722325B38000C30C9D /* EmulatorStore.swift */; };
@@ -56,7 +56,6 @@
 		687DDD742326E85A0087DDC7 /* SaveStatesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDD732326E85A0087DDC7 /* SaveStatesStore.swift */; };
 		687DDD772326ECBF0087DDC7 /* PublishedSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDD762326ECBF0087DDC7 /* PublishedSetting.swift */; };
 		687DDD792326FA4B0087DDC7 /* QuickActionsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687DDD782326FA4B0087DDC7 /* QuickActionsStore.swift */; };
-		6882E2D42320C1350003AA02 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 6882E2D32320C1350003AA02 /* SwiftSoup */; };
 		6882E2DE2320C1C00003AA02 /* ZIPFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6856F86A2315E5C80060CC7A /* ZIPFoundation.framework */; platformFilter = ios; };
 		6882E2DF2320C1C00003AA02 /* ZIPFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6856F86A2315E5C80060CC7A /* ZIPFoundation.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6882E2E02320C1C20003AA02 /* DeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC25B23198C3D00D30DA1 /* DeltaCore.framework */; platformFilter = ios; };
@@ -67,22 +66,20 @@
 		6882E2F22320C5A80003AA02 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882E2F12320C5A80003AA02 /* String.swift */; };
 		6882E2F52320C65D0003AA02 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882E2F42320C65D0003AA02 /* Game.swift */; };
 		6882E2F82320C87F0003AA02 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882E2F72320C87F0003AA02 /* PlaceholderView.swift */; };
-		6882E2FA2320CC710003AA02 /* PlaylistEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882E2F92320CC710003AA02 /* PlaylistEntity.swift */; };
+		6882E2FA2320CC710003AA02 /* CollectionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882E2F92320CC710003AA02 /* CollectionEntity.swift */; };
 		6882E2FE2320CD2A0003AA02 /* SearchStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688D5104231592CC00B9127F /* SearchStore.swift */; };
 		6882E3002320D0F70003AA02 /* RecentsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882E2FF2320D0F70003AA02 /* RecentsStore.swift */; };
 		6882E3032320D3AC0003AA02 /* EmulatorMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882E3022320D3AC0003AA02 /* EmulatorMenu.swift */; };
 		6882E3052320D4480003AA02 /* DeltaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882E3042320D4480003AA02 /* DeltaView.swift */; };
 		6882E3072320D6400003AA02 /* PlaylistStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882E3062320D6400003AA02 /* PlaylistStore.swift */; };
-		6882E3092320DAD30003AA02 /* SaveStateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882E3082320DAD30003AA02 /* SaveStateEntity.swift */; };
 		688D50C62315888900B9127F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688D50C52315888900B9127F /* AppDelegate.swift */; };
 		688D50C82315888900B9127F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688D50C72315888900B9127F /* SceneDelegate.swift */; };
 		688D50CA2315888900B9127F /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688D50C92315888900B9127F /* RootView.swift */; };
 		688D50CC2315888B00B9127F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 688D50CB2315888B00B9127F /* Assets.xcassets */; };
 		688D50CF2315888B00B9127F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 688D50CE2315888B00B9127F /* Preview Assets.xcassets */; };
 		688D50D22315888B00B9127F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 688D50D02315888B00B9127F /* LaunchScreen.storyboard */; };
-		689B37B62327170800B694DC /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 689B37B52327170800B694DC /* SQLite */; };
-		689B37C22327172300B694DC /* VGDBStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689B37C12327172300B694DC /* VGDBStore.swift */; };
-		689B37C42327174100B694DC /* openvgdb.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 689B37C32327173F00B694DC /* openvgdb.sqlite */; };
+		689B37C82328321700B694DC /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689B37C72328321700B694DC /* ItemEntity.swift */; };
+		689B37CA232848BD00B694DC /* all.json in Resources */ = {isa = PBXBuildFile; fileRef = 689B37C9232848BD00B694DC /* all.json */; };
 		68D84E9023270CA8006987E4 /* GBADeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26223198C4200D30DA1 /* GBADeltaCore.framework */; platformFilter = ios; };
 		68D84E9123270CA8006987E4 /* GBADeltaCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26223198C4200D30DA1 /* GBADeltaCore.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		68D84E9223270CA8006987E4 /* GBCDeltaCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 684AC26B23198C4800D30DA1 /* GBCDeltaCore.framework */; platformFilter = ios; };
@@ -179,7 +176,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6818AACE231F339D00C67FDA /* all.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = all.json; path = ../../../Downloads/all.json; sourceTree = "<group>"; };
 		6818AAF1232005F700C67FDA /* PlaylistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsView.swift; sourceTree = "<group>"; };
 		6818AAF32320097100C67FDA /* LibraryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCell.swift; sourceTree = "<group>"; };
 		6818AAF52320180700C67FDA /* PlatformsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformsView.swift; sourceTree = "<group>"; };
@@ -194,7 +190,6 @@
 		681C7A4623184DB100DFC744 /* ForYouView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouView.swift; sourceTree = "<group>"; };
 		681C7A48231858CD00DFC744 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		681C7A4C2318600900DFC744 /* FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRequests.swift; sourceTree = "<group>"; };
-		681C7A4E231860A000DFC744 /* GameEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEntity.swift; sourceTree = "<group>"; };
 		681C7A50231861B400DFC744 /* GameListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListCell.swift; sourceTree = "<group>"; };
 		681C7A562318636B00DFC744 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		681C7A58231871A500DFC744 /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
@@ -237,12 +232,11 @@
 		6882E2F12320C5A80003AA02 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		6882E2F42320C65D0003AA02 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		6882E2F72320C87F0003AA02 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
-		6882E2F92320CC710003AA02 /* PlaylistEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistEntity.swift; sourceTree = "<group>"; };
+		6882E2F92320CC710003AA02 /* CollectionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionEntity.swift; sourceTree = "<group>"; };
 		6882E2FF2320D0F70003AA02 /* RecentsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsStore.swift; sourceTree = "<group>"; };
 		6882E3022320D3AC0003AA02 /* EmulatorMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmulatorMenu.swift; sourceTree = "<group>"; };
 		6882E3042320D4480003AA02 /* DeltaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltaView.swift; sourceTree = "<group>"; };
 		6882E3062320D6400003AA02 /* PlaylistStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistStore.swift; sourceTree = "<group>"; };
-		6882E3082320DAD30003AA02 /* SaveStateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveStateEntity.swift; sourceTree = "<group>"; };
 		688D50C22315888900B9127F /* Delta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Delta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		688D50C52315888900B9127F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		688D50C72315888900B9127F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -253,8 +247,8 @@
 		688D50D32315888B00B9127F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		688D5104231592CC00B9127F /* SearchStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStore.swift; sourceTree = "<group>"; };
 		688D51242315B8DF00B9127F /* Delta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Delta.entitlements; sourceTree = "<group>"; };
-		689B37C12327172300B694DC /* VGDBStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VGDBStore.swift; sourceTree = "<group>"; };
-		689B37C32327173F00B694DC /* openvgdb.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = openvgdb.sqlite; sourceTree = "<group>"; };
+		689B37C72328321700B694DC /* ItemEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
+		689B37C9232848BD00B694DC /* all.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = all.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,7 +256,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				689B37B62327170800B694DC /* SQLite in Frameworks */,
+				683B52B72328A1700053B213 /* CryptoSwift in Frameworks */,
 				6882E2E02320C1C20003AA02 /* DeltaCore.framework in Frameworks */,
 				68D84E9223270CA8006987E4 /* GBCDeltaCore.framework in Frameworks */,
 				687DDCDA2321B97C0087DDC7 /* ProgressView in Frameworks */,
@@ -270,7 +264,6 @@
 				6818AABA231F061D00C67FDA /* URLImage in Frameworks */,
 				68149F7E2315C0DB00421038 /* SFSafeSymbols in Frameworks */,
 				68D84E9023270CA8006987E4 /* GBADeltaCore.framework in Frameworks */,
-				6882E2D42320C1350003AA02 /* SwiftSoup in Frameworks */,
 				6882E2DE2320C1C00003AA02 /* ZIPFoundation.framework in Frameworks */,
 				68D84E9823270CA8006987E4 /* SNESDeltaCore.framework in Frameworks */,
 				687DDD722326D4E70087DDC7 /* ActivityIndicatorView in Frameworks */,
@@ -442,10 +435,9 @@
 			children = (
 				687DDD38232309BF0087DDC7 /* Destination.swift */,
 				681C7A4C2318600900DFC744 /* FetchRequests.swift */,
-				681C7A4E231860A000DFC744 /* GameEntity.swift */,
-				6856F876231617D30060CC7A /* Games.xcdatamodeld */,
-				6882E2F92320CC710003AA02 /* PlaylistEntity.swift */,
-				6882E3082320DAD30003AA02 /* SaveStateEntity.swift */,
+				6856F876231617D30060CC7A /* Database.xcdatamodeld */,
+				6882E2F92320CC710003AA02 /* CollectionEntity.swift */,
+				689B37C72328321700B694DC /* ItemEntity.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -516,7 +508,6 @@
 				68707E912325F45E00C30C9D /* NotificationStore.swift */,
 				687DDD732326E85A0087DDC7 /* SaveStatesStore.swift */,
 				687DDD782326FA4B0087DDC7 /* QuickActionsStore.swift */,
-				689B37C12327172300B694DC /* VGDBStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -551,8 +542,7 @@
 			isa = PBXGroup;
 			children = (
 				688D51242315B8DF00B9127F /* Delta.entitlements */,
-				6818AACE231F339D00C67FDA /* all.json */,
-				689B37C32327173F00B694DC /* openvgdb.sqlite */,
+				689B37C9232848BD00B694DC /* all.json */,
 				688D50D32315888B00B9127F /* Info.plist */,
 				688D50CB2315888B00B9127F /* Assets.xcassets */,
 				6856F8802316B9360060CC7A /* App Launch */,
@@ -620,10 +610,9 @@
 				68149F7D2315C0DB00421038 /* SFSafeSymbols */,
 				68149F852315C5A000421038 /* Files */,
 				6818AAB9231F061D00C67FDA /* URLImage */,
-				6882E2D32320C1350003AA02 /* SwiftSoup */,
 				687DDCD92321B97C0087DDC7 /* ProgressView */,
 				687DDD712326D4E70087DDC7 /* ActivityIndicatorView */,
-				689B37B52327170800B694DC /* SQLite */,
+				683B52B62328A1700053B213 /* CryptoSwift */,
 			);
 			productName = Delta;
 			productReference = 688D50C22315888900B9127F /* Delta.app */;
@@ -657,10 +646,9 @@
 				68149F7C2315C0DB00421038 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				68149F842315C5A000421038 /* XCRemoteSwiftPackageReference "Files" */,
 				6818AAB8231F061D00C67FDA /* XCRemoteSwiftPackageReference "url-image" */,
-				6882E2D22320C1350003AA02 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				687DDCD82321B97C0087DDC7 /* XCRemoteSwiftPackageReference "ProgressView" */,
 				687DDD702326D4E70087DDC7 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */,
-				689B37B42327170800B694DC /* XCRemoteSwiftPackageReference "SQLite" */,
+				683B52B52328A1700053B213 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 			);
 			productRefGroup = 688D50C32315888900B9127F /* Products */;
 			projectDirPath = "";
@@ -764,9 +752,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				689B37C42327174100B694DC /* openvgdb.sqlite in Resources */,
 				688D50D22315888B00B9127F /* LaunchScreen.storyboard in Resources */,
 				688D50CF2315888B00B9127F /* Preview Assets.xcassets in Resources */,
+				689B37CA232848BD00B694DC /* all.json in Resources */,
 				688D50CC2315888B00B9127F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -789,14 +777,13 @@
 				6818ABA8232188F300C67FDA /* StorageProtocol.swift in Sources */,
 				6818AAF62320180700C67FDA /* PlatformsView.swift in Sources */,
 				687DDD0023229F6C0087DDC7 /* TableView.swift in Sources */,
-				6882E3092320DAD30003AA02 /* SaveStateEntity.swift in Sources */,
 				687DDD742326E85A0087DDC7 /* SaveStatesStore.swift in Sources */,
 				687DDD792326FA4B0087DDC7 /* QuickActionsStore.swift in Sources */,
 				687B519823235D270028B711 /* View.swift in Sources */,
+				689B37C82328321700B694DC /* ItemEntity.swift in Sources */,
 				6818AAF8232019E500C67FDA /* PlaylistView.swift in Sources */,
 				682640A92324AC88003B86A3 /* FavoriteForYouView.swift in Sources */,
 				688D50C62315888900B9127F /* AppDelegate.swift in Sources */,
-				681C7A4F231860A000DFC744 /* GameEntity.swift in Sources */,
 				687DDCF42321C9E30087DDC7 /* SaveStatesView.swift in Sources */,
 				6882E2ED2320C3820003AA02 /* PlaylistCell.swift in Sources */,
 				6882E2F02320C4070003AA02 /* URLImage.swift in Sources */,
@@ -806,9 +793,9 @@
 				6818AAF42320097100C67FDA /* LibraryCell.swift in Sources */,
 				6818AAF2232005F700C67FDA /* PlaylistsView.swift in Sources */,
 				688D50C82315888900B9127F /* SceneDelegate.swift in Sources */,
-				6856F878231617D30060CC7A /* Games.xcdatamodeld in Sources */,
+				6856F878231617D30060CC7A /* Database.xcdatamodeld in Sources */,
 				681C7A5B2318725000DFC744 /* ConsoleLibraryCell.swift in Sources */,
-				6882E2FA2320CC710003AA02 /* PlaylistEntity.swift in Sources */,
+				6882E2FA2320CC710003AA02 /* CollectionEntity.swift in Sources */,
 				681C7A49231858CD00DFC744 /* SearchView.swift in Sources */,
 				68707E732325B38000C30C9D /* EmulatorStore.swift in Sources */,
 				68707E8C2325BDB000C30C9D /* Text.swift in Sources */,
@@ -836,7 +823,6 @@
 				6818ABB623218E8D00C67FDA /* OurGameViewController.swift in Sources */,
 				681C7A51231861B400DFC744 /* GameListCell.swift in Sources */,
 				682640A52324AC3D003B86A3 /* HorizontalGameScroller.swift in Sources */,
-				689B37C22327172300B694DC /* VGDBStore.swift in Sources */,
 				6882E2F52320C65D0003AA02 /* Game.swift in Sources */,
 				6882E3072320D6400003AA02 /* PlaylistStore.swift in Sources */,
 			);
@@ -1064,6 +1050,14 @@
 				minimumVersion = 0.6.1;
 			};
 		};
+		683B52B52328A1700053B213 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		687DDCD82321B97C0087DDC7 /* XCRemoteSwiftPackageReference "ProgressView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ericlewis/ProgressView";
@@ -1078,22 +1072,6 @@
 			requirement = {
 				branch = master;
 				kind = branch;
-			};
-		};
-		6882E2D22320C1350003AA02 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scinfu/SwiftSoup";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.2.0;
-			};
-		};
-		689B37B42327170800B694DC /* XCRemoteSwiftPackageReference "SQLite" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.12.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1114,6 +1092,11 @@
 			package = 6818AAB8231F061D00C67FDA /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
 		};
+		683B52B62328A1700053B213 /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 683B52B52328A1700053B213 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
+			productName = CryptoSwift;
+		};
 		687DDCD92321B97C0087DDC7 /* ProgressView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 687DDCD82321B97C0087DDC7 /* XCRemoteSwiftPackageReference "ProgressView" */;
@@ -1124,26 +1107,16 @@
 			package = 687DDD702326D4E70087DDC7 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */;
 			productName = ActivityIndicatorView;
 		};
-		6882E2D32320C1350003AA02 /* SwiftSoup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6882E2D22320C1350003AA02 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
-		};
-		689B37B52327170800B694DC /* SQLite */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 689B37B42327170800B694DC /* XCRemoteSwiftPackageReference "SQLite" */;
-			productName = SQLite;
-		};
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		6856F876231617D30060CC7A /* Games.xcdatamodeld */ = {
+		6856F876231617D30060CC7A /* Database.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				6856F877231617D30060CC7A /* GamesModel.xcdatamodel */,
 			);
 			currentVersion = 6856F877231617D30060CC7A /* GamesModel.xcdatamodel */;
-			path = Games.xcdatamodeld;
+			path = Database.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         registerDeltaCores()
         registerLocalNotifications()
-
+        //sync()
+        
         return true
     }
     
@@ -35,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentCloudKitContainer = {
-        let container = NSPersistentCloudKitContainer(name: "Games")
+        let container = NSPersistentCloudKitContainer(name: "Database")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -47,14 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data Saving support
 
     func saveContext () {
-        QuickActionsStore.shared.fetch()
-        UIApplication.shared.shortcutItems = QuickActionsStore.shared.games.map { game in
-            return UIApplicationShortcutItem(type: "FavoriteAction",
-                                             localizedTitle: game.splitTitle.0 ?? game.title!,
-                                             localizedSubtitle: game.splitTitle.1,
-                                             icon: .init(systemImageName: "play.fill"),
-                                             userInfo: ["id": game.id! as NSSecureCoding])
-        }
+        populateQuickActions()
         
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -65,7 +59,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+}
 
+extension AppDelegate {
+    func populateQuickActions() {
+        // TODO:
+//        QuickActionsStore.shared.fetch()
+//        UIApplication.shared.shortcutItems = QuickActionsStore.shared.games.map { game in
+//            return UIApplicationShortcutItem(type: "FavoriteAction",
+//                                             localizedTitle: game.title!,
+//                                             icon: .init(systemImageName: "play.fill"),
+//                                             userInfo: ["id": game.id as NSSecureCoding])
+//        }
+    }
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
@@ -88,13 +94,14 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         // todo: migrate to actions
         // TODO: DRY
         if let id = response.notification.request.content.userInfo["id"] as? String {
-            let request: NSFetchRequest<GameEntity> = GameEntity.fetchRequest()
+            let request: NSFetchRequest<ItemEntity> = ItemEntity.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
             request.predicate = NSPredicate(format: "id = %@", id)
             request.fetchLimit = 1
             guard let games = try? persistentContainer.viewContext.fetch(request), let game = games.first else {
                 return
             }
+
             ActionCreator().presentEmulator(game)()
         }
     }
@@ -102,17 +109,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
 extension AppDelegate {
     func sync() {
-        self.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
-        self.persistentContainer.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
-        
         let decoder = JSONDecoder()
-        decoder.userInfo[CodingUserInfoKey
-            .managedObjectContext] = self.persistentContainer.viewContext
-        
+
+        decoder.userInfo[CodingUserInfoKey.managedObjectContext] = persistentContainer.viewContext
         guard let filePath = Bundle.main.url(forResource: "all", withExtension: "json") else {return}
         guard let data = try? Data(contentsOf: filePath) else {return}
-        let _ = try? decoder.decode(SearchResults.self, from: data)
-
-        self.saveContext()
+        guard let _ = try? decoder.decode([ItemEntity].self, from: data) else {return}
+        print("sync complete")
     }
 }

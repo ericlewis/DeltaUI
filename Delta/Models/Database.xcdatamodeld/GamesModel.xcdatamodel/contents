@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14897.2" systemVersion="19A546d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CollectionEntity" representedClassName="CollectionEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="games" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ItemEntity" inverseName="collections" inverseEntity="ItemEntity"/>
+        <relationship name="saves" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SaveEntity" inverseName="collections" inverseEntity="SaveEntity"/>
+    </entity>
+    <entity name="FileEntity" representedClassName="FileEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
+    </entity>
+    <entity name="ImageEntity" representedClassName="ImageEntity" parentEntity="FileEntity" syncable="YES" codeGenerationType="class">
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ItemEntity" inverseName="images" inverseEntity="ItemEntity"/>
+        <relationship name="save" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SaveEntity" inverseName="image" inverseEntity="SaveEntity"/>
+    </entity>
+    <entity name="ItemEntity" representedClassName="ItemEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="backCovers" optional="YES" attributeType="String"/>
+        <attribute name="crc" optional="YES" attributeType="String"/>
+        <attribute name="detail" optional="YES" attributeType="String"/>
+        <attribute name="developer" optional="YES" attributeType="String"/>
+        <attribute name="favorited" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="fileName" optional="YES" attributeType="String"/>
+        <attribute name="frontCovers" optional="YES" attributeType="String"/>
+        <attribute name="genres" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastPlayed" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="md5" optional="YES" attributeType="String"/>
+        <attribute name="regions" optional="YES" attributeType="String"/>
+        <attribute name="sha1" optional="YES" attributeType="String"/>
+        <attribute name="systemShort" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
+        <relationship name="collections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CollectionEntity" inverseName="games" inverseEntity="CollectionEntity"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ImageEntity" inverseName="game" inverseEntity="ImageEntity"/>
+        <relationship name="rom" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ROMEntity" inverseName="game" inverseEntity="ROMEntity"/>
+        <relationship name="saves" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SaveEntity" inverseName="game" inverseEntity="SaveEntity"/>
+    </entity>
+    <entity name="ROMEntity" representedClassName="ROMEntity" parentEntity="FileEntity" syncable="YES" codeGenerationType="category">
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ItemEntity" inverseName="rom" inverseEntity="ItemEntity"/>
+    </entity>
+    <entity name="SaveEntity" representedClassName="SaveEntity" parentEntity="FileEntity" syncable="YES" codeGenerationType="category">
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="collections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CollectionEntity" inverseName="saves" inverseEntity="CollectionEntity"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ItemEntity" inverseName="saves" inverseEntity="ItemEntity"/>
+        <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageEntity" inverseName="save" inverseEntity="ImageEntity"/>
+    </entity>
+    <elements>
+        <element name="CollectionEntity" positionX="-233.8671875" positionY="142.99609375" width="128" height="118"/>
+        <element name="FileEntity" positionX="-511.28125" positionY="131.76171875" width="128" height="103"/>
+        <element name="ImageEntity" positionX="-411.17578125" positionY="412.84765625" width="128" height="73"/>
+        <element name="ItemEntity" positionX="-63.0078125" positionY="226.69140625" width="128" height="343"/>
+        <element name="ROMEntity" positionX="-316.74609375" positionY="287.75" width="128" height="58"/>
+        <element name="SaveEntity" positionX="-599.09765625" positionY="308.0390625" width="128" height="103"/>
+    </elements>
+</model>
